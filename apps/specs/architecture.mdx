@@ -1,0 +1,28 @@
+---
+title: "Architecture"
+description: "The core architectural model behind Hiaka."
+---
+
+Hiaka separates civic process design from reusable civic capabilities.
+
+## Invariant
+
+```text
+Civic Blueprint
+      ↓
+composes
+
+Civic Patterns
+      ↓
+coordinate
+
+Civic Modules
+      ↓
+consume
+
+Shared Digital Services
+```
+
+Blueprints should not become monolithic applications. Patterns should not own
+core business data. Modules should not depend on a single blueprint.
+

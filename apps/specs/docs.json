@@ -1,0 +1,40 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Hiaka Civic Stack",
+  "colors": {
+    "primary": "#0f766e",
+    "light": "#14b8a6",
+    "dark": "#115e59"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Overview",
+        "groups": [
+          {
+            "group": "Start",
+            "pages": [
+              "index",
+              "architecture",
+              "repository-strategy"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Specifications",
+        "groups": [
+          {
+            "group": "Civic Stack",
+            "pages": [
+              "modules/overview",
+              "blueprints/public-consultation-v0"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+

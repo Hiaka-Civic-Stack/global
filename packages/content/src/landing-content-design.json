@@ -1,0 +1,105 @@
+{
+  "source": {
+    "name": "Decidim homepage",
+    "url": "https://decidim.org/",
+    "extractedAt": "2026-09-16",
+    "purpose": "Reference structure for content design and page composition. This file is not runtime page content."
+  },
+  "contentDesignPrinciples": [
+    "Treat the landing as a composition of reusable editorial blocks, not a single React page.",
+    "Let Payload own page content, order, drafts, preview and localization.",
+    "Let Next own routing, server rendering and block component rendering.",
+    "Keep the JSON as a reference for editorial structure and block taxonomy.",
+    "Each block should have one editorial job and a predictable rendering component."
+  ],
+  "structuralPattern": [
+    {
+      "id": "header",
+      "role": "navigation",
+      "purpose": "Expose primary paths before the civic claim.",
+      "payloadModel": "pages.navigation",
+      "hiakaUse": "Stack, Modules, Blueprints, Specs, GitHub."
+    },
+    {
+      "id": "hero",
+      "role": "positioning",
+      "purpose": "State the category, project name and civic promise in the first viewport.",
+      "payloadBlock": "hero",
+      "requiredFields": ["title", "body"],
+      "optionalFields": ["eyebrow", "primaryLink", "secondaryLink", "asideTitle", "asideLabel", "asideItems"]
+    },
+    {
+      "id": "early-proof",
+      "role": "credibility",
+      "purpose": "Show principles or adoption signals immediately after the hero.",
+      "payloadBlock": "trustStrip",
+      "requiredFields": ["items"]
+    },
+    {
+      "id": "feature-preview",
+      "role": "capability demonstration",
+      "purpose": "Use one large preview area with a navigable capability list.",
+      "payloadBlock": "moduleExplorer",
+      "requiredFields": ["title", "modules"],
+      "optionalFields": ["eyebrow", "body", "anchor", "previewLabel"]
+    },
+    {
+      "id": "mission-band",
+      "role": "thesis",
+      "purpose": "Condense the project philosophy into one strong sentence.",
+      "payloadBlock": "statementBand",
+      "requiredFields": ["statement"]
+    },
+    {
+      "id": "value-pillars",
+      "role": "principles",
+      "purpose": "Turn values into implementation promises.",
+      "payloadBlock": "principlesGrid",
+      "requiredFields": ["items"]
+    },
+    {
+      "id": "blueprint-journey",
+      "role": "evidence",
+      "purpose": "Show the first complete civic journey rather than abstract claims only.",
+      "payloadBlock": "journey",
+      "requiredFields": ["title", "steps"],
+      "optionalFields": ["eyebrow", "body", "anchor"]
+    },
+    {
+      "id": "adoption-grid",
+      "role": "ecosystem signal",
+      "purpose": "Describe how hub, specs, UI package and independent module repositories relate.",
+      "payloadBlock": "ecosystemGrid",
+      "requiredFields": ["title", "items"],
+      "optionalFields": ["eyebrow", "body"]
+    },
+    {
+      "id": "news-and-community",
+      "role": "project vitality",
+      "purpose": "Surface roadmap, specs updates and contribution paths.",
+      "payloadBlock": "updatesGrid",
+      "requiredFields": ["title", "items"]
+    }
+  ],
+  "recommendedHomeLayout": [
+    "hero",
+    "trustStrip",
+    "layeredModel",
+    "moduleExplorer",
+    "statementBand",
+    "journey",
+    "principlesGrid",
+    "ecosystemGrid",
+    "updatesGrid"
+  ],
+  "nextPayloadContract": {
+    "collection": "pages",
+    "routing": {
+      "home": "slug=home renders /",
+      "dynamic": "slug=<value> renders /<value>"
+    },
+    "field": "layout",
+    "renderer": "apps/landing/src/components/blocks/BlockRenderer.tsx",
+    "sourceOfTruth": "Payload database documents"
+  }
+}

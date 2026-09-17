@@ -1,0 +1,18 @@
+---
+title: "Repository Strategy"
+description: "How the Hiaka hub and implementation repositories fit together."
+---
+
+The Hiaka hub is a Turborepo monorepo.
+
+```text
+apps/landing
+apps/specs
+packages/ui
+packages/content
+packages/config
+```
+
+Civic Module implementations live in separate repositories so that each module
+can keep its own contracts, tests and release cycle.
+
