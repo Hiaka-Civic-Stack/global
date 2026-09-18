@@ -153,7 +153,7 @@ export interface Page {
   id: number;
   title: string;
   /**
-   * Use 'home' for the homepage. Other slugs become top-level routes.
+   * Use 'home' for the homepage. Nested slugs like 'blueprints/public-consultation-v0' are supported.
    */
   slug: string;
   /**
@@ -161,7 +161,7 @@ export interface Page {
    */
   summary?: string | null;
   /**
-   * Optional page-level navigation. Use anchors for same-page sections.
+   * Optional page-level navigation for this page.
    */
   navigation?:
     | {

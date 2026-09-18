@@ -37,7 +37,7 @@ export const Pages: CollectionConfig = {
       unique: true,
       index: true,
       admin: {
-        description: "Use 'home' for the homepage. Other slugs become top-level routes."
+        description: "Use 'home' for the homepage. Nested slugs like 'blueprints/public-consultation-v0' are supported."
       }
     },
     {
@@ -51,7 +51,7 @@ export const Pages: CollectionConfig = {
       name: "navigation",
       type: "array",
       admin: {
-        description: "Optional page-level navigation. Use anchors for same-page sections."
+        description: "Optional page-level navigation for this page."
       },
       fields: [
         {

@@ -53,3 +53,40 @@ This repository should contain:
 * [Civic Stack specification](docs/product-specs/civic-stack.md)
 * [Repository strategy](docs/design-docs/repository-strategy.md)
 * [Site information architecture](docs/site/information-architecture.md)
+
+## Local Development
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Prepare the Payload app environment:
+
+```bash
+cp apps/landing/.env.example apps/landing/.env
+```
+
+Seed the editable Payload pages:
+
+```bash
+pnpm seed:landing
+```
+
+Run the Payload landing app:
+
+```bash
+pnpm dev:landing
+```
+
+The landing app is available at `http://localhost:3000`. The Payload admin is
+available at `http://localhost:3000/admin`.
+
+Run the Mintlify specifications app separately:
+
+```bash
+pnpm dev:specs
+```
+
+The specifications app is available at `http://localhost:3001`.

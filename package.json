@@ -8,6 +8,7 @@
     "dev:landing": "pnpm --filter @hiaka/landing dev",
     "dev:specs": "pnpm --filter @hiaka/specs dev",
     "lint": "turbo run lint",
+    "seed:landing": "pnpm --filter @hiaka/landing seed:pages",
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
