@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 
 import { MissingPage, PageFrame } from "@/components/site/PageFrame"
 import { getPageBySlug } from "@/lib/pages"
+import { getSiteSettings } from "@/lib/site-settings"
 
 type PageProps = {
   params: Promise<{
@@ -35,11 +36,11 @@ export default async function DynamicPage({ params }: PageProps) {
     notFound()
   }
 
-  const page = await getPageBySlug(pageSlug)
+  const [page, siteSettings] = await Promise.all([getPageBySlug(pageSlug), getSiteSettings()])
 
   if (!page) {
     return <MissingPage slug={pageSlug} />
   }
 
-  return <PageFrame page={page} />
+  return <PageFrame page={page} siteSettings={siteSettings} />
 }

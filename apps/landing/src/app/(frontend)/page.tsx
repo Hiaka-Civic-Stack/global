@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import { MissingPage, PageFrame } from "@/components/site/PageFrame"
 import { getPageBySlug } from "@/lib/pages"
+import { getSiteSettings } from "@/lib/site-settings"
 
 export const dynamic = "force-dynamic"
 
@@ -18,11 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const page = await getPageBySlug("home")
+  const [page, siteSettings] = await Promise.all([getPageBySlug("home"), getSiteSettings()])
 
   if (!page) {
     return <MissingPage slug="home" />
   }
 
-  return <PageFrame page={page} />
+  return <PageFrame page={page} siteSettings={siteSettings} />
 }

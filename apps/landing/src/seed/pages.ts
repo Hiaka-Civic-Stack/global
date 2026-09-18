@@ -4,6 +4,10 @@ import config from "../payload.config"
 import type { Page } from "../payload-types"
 
 type PageSeed = Pick<Page, "title" | "slug" | "summary" | "navigation" | "layout" | "meta" | "_status">
+type NavigationSeed = {
+  label: string
+  href: string
+}
 
 const mainNavigation = [
   {
@@ -22,7 +26,14 @@ const mainNavigation = [
     label: "Specifications",
     href: "http://localhost:3001"
   }
-] satisfies PageSeed["navigation"]
+] satisfies NavigationSeed[]
+
+const siteSettings = {
+  siteName: "Hiaka",
+  footerSummary: "Open-source Civic Stack for transparent, inclusive and interoperable digital participation services.",
+  headerNavigation: mainNavigation,
+  footerNavigation: mainNavigation
+}
 
 const pages: PageSeed[] = [
   {
@@ -30,7 +41,7 @@ const pages: PageSeed[] = [
     slug: "home",
     summary:
       "Hiaka is an open-source Civic Stack for transparent, inclusive and interoperable digital participation services.",
-    navigation: mainNavigation,
+    navigation: [],
     layout: [
       {
         blockType: "hero",
@@ -119,7 +130,7 @@ const pages: PageSeed[] = [
     slug: "model",
     summary:
       "The Hiaka model separates complete civic processes, recurring civic interactions, reusable modules and shared digital services.",
-    navigation: mainNavigation,
+    navigation: [],
     layout: [
       {
         blockType: "layeredModel",
@@ -195,7 +206,7 @@ const pages: PageSeed[] = [
     slug: "modules",
     summary:
       "Hiaka starts with Participation, Contribution, Deliberation, Decision and Accountability as independent civic capabilities.",
-    navigation: mainNavigation,
+    navigation: [],
     layout: [
       {
         blockType: "moduleExplorer",
@@ -266,7 +277,7 @@ const pages: PageSeed[] = [
     slug: "blueprints/public-consultation-v0",
     summary:
       "Public Consultation v0 is the first reference blueprint for proving the Hiaka Civic Stack end to end.",
-    navigation: mainNavigation,
+    navigation: [],
     layout: [
       {
         blockType: "journey",
@@ -333,6 +344,14 @@ const pages: PageSeed[] = [
 
 async function seedPages() {
   const payload = await getPayload({ config })
+
+  await payload.updateGlobal({
+    slug: "site-settings",
+    data: siteSettings,
+    locale: "fr"
+  })
+
+  payload.logger.info("Updated global seed: site-settings")
 
   for (const page of pages) {
     const existingPage = await payload.find({

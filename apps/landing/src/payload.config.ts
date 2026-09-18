@@ -8,6 +8,7 @@ import { buildConfig } from "payload"
 import { Media } from "./collections/Media"
 import { Pages } from "./collections/Pages"
 import { Users } from "./collections/Users"
+import { SiteSettings } from "./globals/SiteSettings"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -44,6 +45,7 @@ export default buildConfig({
     }
   },
   collections: [Users, Pages, Media],
+  globals: [SiteSettings],
   db: sqliteAdapter({
     client: {
       url: process.env.DATABASE_URI || "file:./payload.db"
