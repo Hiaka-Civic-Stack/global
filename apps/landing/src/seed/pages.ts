@@ -9,6 +9,15 @@ type NavigationSeed = {
   href: string
 }
 
+const specsBaseUrl = process.env.SPECS_BASE_URL || "http://localhost:3001"
+
+function specsUrl(path = "") {
+  const normalizedBaseUrl = specsBaseUrl.replace(/\/$/, "")
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`
+
+  return path ? `${normalizedBaseUrl}${normalizedPath}` : normalizedBaseUrl
+}
+
 const mainNavigation = [
   {
     label: "Model",
@@ -24,13 +33,14 @@ const mainNavigation = [
   },
   {
     label: "Specifications",
-    href: "http://localhost:3001"
+    href: specsUrl()
   }
 ] satisfies NavigationSeed[]
 
 const siteSettings = {
   siteName: "Hiaka",
   footerSummary: "Open-source Civic Stack for transparent, inclusive and interoperable digital participation services.",
+  specsBaseUrl,
   headerNavigation: mainNavigation,
   footerNavigation: mainNavigation
 }
@@ -55,7 +65,7 @@ const pages: PageSeed[] = [
         },
         secondaryLink: {
           label: "Read specifications",
-          href: "http://localhost:3001"
+          href: specsUrl()
         },
         asideLabel: "Reference vertical slice",
         asideTitle: "Public Consultation v0",
@@ -165,7 +175,7 @@ const pages: PageSeed[] = [
             body: "Start from public participation needs and domain rules, then choose the technical shape.",
             link: {
               label: "Read architecture",
-              href: "http://localhost:3001/architecture"
+              href: specsUrl("/architecture")
             }
           },
           {
@@ -173,7 +183,7 @@ const pages: PageSeed[] = [
             body: "Expose explicit contracts and preserve module boundaries for long-term reuse.",
             link: {
               label: "Open specs",
-              href: "http://localhost:3001"
+              href: specsUrl()
             }
           },
           {
@@ -181,7 +191,7 @@ const pages: PageSeed[] = [
             body: "Support local administrative hierarchies without hard-coding one national model into the core.",
             link: {
               label: "Read architecture",
-              href: "http://localhost:3001/architecture"
+              href: specsUrl("/architecture")
             }
           },
           {
@@ -189,7 +199,7 @@ const pages: PageSeed[] = [
             body: "Keep accounts, participants, verified identity, eligibility and public profiles separate.",
             link: {
               label: "Open specs",
-              href: "http://localhost:3001"
+              href: specsUrl()
             }
           }
         ]
@@ -319,7 +329,7 @@ const pages: PageSeed[] = [
           {
             title: "Blueprint specification",
             body: "Detailed Public Consultation v0 documentation lives in the specifications portal.",
-            href: "http://localhost:3001/blueprints/public-consultation-v0"
+            href: specsUrl("/blueprints/public-consultation-v0")
           },
           {
             title: "Module dependencies",
@@ -389,7 +399,11 @@ async function seedPages() {
   await payload.destroy()
 }
 
-seedPages().catch((error: unknown) => {
-  console.error(error)
-  process.exit(1)
-})
+seedPages()
+  .then(() => {
+    process.exit(0)
+  })
+  .catch((error: unknown) => {
+    console.error(error)
+    process.exit(1)
+  })

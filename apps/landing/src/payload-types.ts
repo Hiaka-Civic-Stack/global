@@ -754,6 +754,10 @@ export interface SiteSetting {
   id: number;
   siteName: string;
   footerSummary?: string | null;
+  /**
+   * Base URL for the Mintlify specifications portal. Use the local URL in development.
+   */
+  specsBaseUrl: string;
   headerNavigation?:
     | {
         label: string;
@@ -778,6 +782,7 @@ export interface SiteSetting {
 export interface SiteSettingsSelect<T extends boolean = true> {
   siteName?: T;
   footerSummary?: T;
+  specsBaseUrl?: T;
   headerNavigation?:
     | T
     | {
