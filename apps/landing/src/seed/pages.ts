@@ -143,64 +143,73 @@ const pages: PageSeed[] = [
     navigation: [],
     layout: [
       {
-        blockType: "layeredModel",
+        blockType: "pageHero",
         eyebrow: "Core model",
         title: "Civic services composed from clear layers",
         body:
           "Hiaka separates complete public processes, recurring civic interactions, reusable domain capabilities and shared digital services.",
-        layers: [
+        actions: [
           {
-            name: "Civic Blueprints",
-            description: "Complete public participation processes composed from patterns and modules."
-          },
-          {
-            name: "Civic Patterns",
-            description: "Recurring civic interactions coordinated across one or more modules."
-          },
-          {
-            name: "Civic Modules",
-            description: "Reusable civic capabilities and business rules owned independently."
-          },
-          {
-            name: "Shared Digital Services",
-            description: "Identity, territory, notifications, documents, audit, search and other platform capabilities."
+            label: "Read architecture",
+            href: specsUrl("/architecture")
           }
         ]
       },
       {
-        blockType: "principlesGrid",
+        blockType: "contentGrid",
+        eyebrow: "Composition",
+        title: "The four layers",
+        body: "Each layer has a distinct responsibility in the stack.",
+        variant: "index",
+        items: [
+          {
+            label: "01",
+            title: "Civic Blueprints",
+            body: "Complete public participation processes composed from patterns and modules."
+          },
+          {
+            label: "02",
+            title: "Civic Patterns",
+            body: "Recurring civic interactions coordinated across one or more modules."
+          },
+          {
+            label: "03",
+            title: "Civic Modules",
+            body: "Reusable civic capabilities and business rules owned independently."
+          },
+          {
+            label: "04",
+            title: "Shared Digital Services",
+            body: "Identity, territory, notifications, documents, audit, search and other platform capabilities."
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "Principles",
+        title: "Engineering principles",
+        body: "The stack should stay concrete, interoperable and accountable as it grows.",
+        variant: "cards",
         items: [
           {
             title: "Civic first",
             body: "Start from public participation needs and domain rules, then choose the technical shape.",
-            link: {
-              label: "Read architecture",
-              href: specsUrl("/architecture")
-            }
+            href: specsUrl("/architecture")
           },
           {
             title: "Interoperable",
             body: "Expose explicit contracts and preserve module boundaries for long-term reuse.",
-            link: {
-              label: "Open specs",
-              href: specsUrl()
-            }
+            href: specsUrl()
           },
           {
             title: "Territory aware",
             body: "Support local administrative hierarchies without hard-coding one national model into the core.",
-            link: {
-              label: "Read architecture",
-              href: specsUrl("/architecture")
-            }
+            href: specsUrl("/architecture")
           },
           {
             title: "Privacy preserving",
             body: "Keep accounts, participants, verified identity, eligibility and public profiles separate.",
-            link: {
-              label: "Open specs",
-              href: specsUrl()
-            }
+            href: specsUrl()
           }
         ]
       }
@@ -219,59 +228,60 @@ const pages: PageSeed[] = [
     navigation: [],
     layout: [
       {
-        blockType: "moduleExplorer",
+        blockType: "pageHero",
         eyebrow: "Initial Civic Modules",
         title: "Reusable modules, independent repositories",
         body:
           "Each Civic Module can live in its own repository with its own contracts, tests, release cycle and implementation documentation.",
-        previewLabel: "Initial module map",
-        modules: [
+        actions: [
           {
-            name: "Participation",
-            description: "Manage civic processes, publics, eligibility and participant access."
-          },
-          {
-            name: "Contribution",
-            description: "Collect, publish, classify and respond to civic contributions."
-          },
-          {
-            name: "Deliberation",
-            description: "Support structured debate, argumentation and collective sense-making."
-          },
-          {
-            name: "Decision",
-            description: "Record decisions, rationale, mandates and institutional outcomes."
-          },
-          {
-            name: "Accountability",
-            description: "Track commitments, milestones, progress evidence and public follow-up."
+            label: "Open specifications",
+            href: specsUrl("/modules/overview")
           }
         ]
       },
       {
-        blockType: "ecosystemGrid",
-        eyebrow: "Ecosystem",
-        title: "Built for institutions, implementers and civic contributors",
-        body:
-          "The hub should explain the stack, document the contracts and connect independent module work into one coherent civic architecture.",
+        blockType: "contentGrid",
+        eyebrow: "Initial module map",
+        title: "Reusable civic capabilities",
+        body: "These modules define the first reusable capability set for public participation services.",
+        variant: "cards",
         items: [
           {
-            label: "Public institutions"
+            title: "Participation",
+            body: "Manage civic processes, publics, eligibility and participant access."
           },
           {
-            label: "Civic technology teams"
+            title: "Contribution",
+            body: "Collect, publish, classify and respond to civic contributions."
           },
           {
-            label: "Civil society organizations"
+            title: "Deliberation",
+            body: "Support structured debate, argumentation and collective sense-making."
           },
           {
-            label: "Module maintainers"
+            title: "Decision",
+            body: "Record decisions, rationale, mandates and institutional outcomes."
           },
           {
-            label: "Implementation partners"
+            title: "Accountability",
+            body: "Track commitments, milestones, progress evidence and public follow-up."
+          }
+        ]
+      },
+      {
+        blockType: "richTextSection",
+        eyebrow: "Ecosystem",
+        title: "Built for institutions, implementers and civic contributors",
+        items: [
+          {
+            body: "The hub explains the stack, documents contracts and connects independent module work into one coherent civic architecture."
           },
           {
-            label: "Open-source contributors"
+            body: "Module repositories can evolve independently while still sharing common contracts, design principles and documentation conventions."
+          },
+          {
+            body: "Shared services such as identity, territory, notifications, search and audit infrastructure should remain reusable platform capabilities, not Civic Modules."
           }
         ]
       }
@@ -290,41 +300,65 @@ const pages: PageSeed[] = [
     navigation: [],
     layout: [
       {
-        blockType: "journey",
+        blockType: "pageHero",
         eyebrow: "First implementation priority",
         title: "Public Consultation v0",
         body:
           "The first end-to-end target proves the stack through a concrete public participation flow before generalizing abstractions.",
-        steps: [
+        actions: [
           {
-            label: "Institution creates consultation"
-          },
-          {
-            label: "Institution publishes consultation"
-          },
-          {
-            label: "Participant submits contribution"
-          },
-          {
-            label: "Contribution is published"
-          },
-          {
-            label: "Institution responds"
-          },
-          {
-            label: "Institution creates commitment"
-          },
-          {
-            label: "Commitment progress is updated"
-          },
-          {
-            label: "Participant sees implementation progress"
+            label: "Read blueprint specification",
+            href: specsUrl("/blueprints/public-consultation-v0")
           }
         ]
       },
       {
-        blockType: "updatesGrid",
+        blockType: "contentGrid",
+        eyebrow: "Reference journey",
+        title: "End-to-end civic flow",
+        body: "The first blueprint focuses the product around a concrete institutional and participant journey.",
+        variant: "index",
+        items: [
+          {
+            label: "01",
+            title: "Institution creates consultation"
+          },
+          {
+            label: "02",
+            title: "Institution publishes consultation"
+          },
+          {
+            label: "03",
+            title: "Participant submits contribution"
+          },
+          {
+            label: "04",
+            title: "Contribution is published"
+          },
+          {
+            label: "05",
+            title: "Institution responds"
+          },
+          {
+            label: "06",
+            title: "Institution creates commitment"
+          },
+          {
+            label: "07",
+            title: "Commitment progress is updated"
+          },
+          {
+            label: "08",
+            title: "Participant sees implementation progress"
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "Specifications",
         title: "Specification surfaces",
+        body: "Reference implementation work should point back to stable public specifications.",
+        variant: "index",
         items: [
           {
             title: "Blueprint specification",
@@ -342,6 +376,15 @@ const pages: PageSeed[] = [
             href: "/model"
           }
         ]
+      },
+      {
+        blockType: "calloutBand",
+        title: "Keep implementation concrete before generalizing",
+        body: "Public Consultation v0 should prove Participation, Contribution and Accountability before introducing broader abstractions.",
+        action: {
+          label: "Review module map",
+          href: "/modules"
+        }
       }
     ],
     meta: {

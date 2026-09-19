@@ -1,21 +1,29 @@
 import {
+  CalloutBand,
+  ContentGrid,
   EcosystemGrid,
   HeroSection,
   Journey,
   LayeredModel,
   ModuleExplorer,
+  PageHero,
   PrinciplesGrid,
+  RichTextSection,
   StatementBand,
   TrustStrip,
   UpdatesGrid
 } from "@hiaka/ui"
 
+import { adaptCalloutBandBlock } from "@/adapters/blocks/callout-band.adapter"
+import { adaptContentGridBlock } from "@/adapters/blocks/content-grid.adapter"
 import { adaptEcosystemGridBlock } from "@/adapters/blocks/ecosystem-grid.adapter"
 import { adaptHeroBlock } from "@/adapters/blocks/hero.adapter"
 import { adaptJourneyBlock } from "@/adapters/blocks/journey.adapter"
 import { adaptLayeredModelBlock } from "@/adapters/blocks/layered-model.adapter"
 import { adaptModuleExplorerBlock } from "@/adapters/blocks/module-explorer.adapter"
+import { adaptPageHeroBlock } from "@/adapters/blocks/page-hero.adapter"
 import { adaptPrinciplesGridBlock } from "@/adapters/blocks/principles-grid.adapter"
+import { adaptRichTextSectionBlock } from "@/adapters/blocks/rich-text-section.adapter"
 import { adaptStatementBandBlock } from "@/adapters/blocks/statement-band.adapter"
 import { adaptTrustStripBlock } from "@/adapters/blocks/trust-strip.adapter"
 import { adaptUpdatesGridBlock } from "@/adapters/blocks/updates-grid.adapter"
@@ -42,6 +50,14 @@ export function BlockRenderer({ blocks }: BlocksProps) {
         const key = `${block.blockType || "block"}-${index}`
 
         switch (block.blockType) {
+          case "pageHero":
+            return <PageHero key={key} {...adaptPageHeroBlock(block)} />
+          case "richTextSection":
+            return <RichTextSection key={key} {...adaptRichTextSectionBlock(block)} />
+          case "contentGrid":
+            return <ContentGrid key={key} {...adaptContentGridBlock(block)} />
+          case "calloutBand":
+            return <CalloutBand key={key} {...adaptCalloutBandBlock(block)} />
           case "hero":
             return <HeroSection key={key} {...adaptHeroBlock(block)} />
           case "trustStrip":

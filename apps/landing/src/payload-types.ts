@@ -176,6 +176,10 @@ export interface Page {
     | null;
   layout?:
     | (
+        | PageHeroBlock
+        | RichTextSectionBlock
+        | ContentGridBlock
+        | CalloutBandBlock
         | HeroBlock
         | TrustStripBlock
         | LayeredModelBlock
@@ -197,6 +201,84 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeroBlock".
+ */
+export interface PageHeroBlock {
+  eyebrow?: string | null;
+  title: string;
+  body?: string | null;
+  actions?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pageHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextSectionBlock".
+ */
+export interface RichTextSectionBlock {
+  eyebrow?: string | null;
+  title: string;
+  body?: string | null;
+  items?:
+    | {
+        body: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'richTextSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentGridBlock".
+ */
+export interface ContentGridBlock {
+  eyebrow?: string | null;
+  title: string;
+  body?: string | null;
+  variant?: ('cards' | 'index') | null;
+  items?:
+    | {
+        title: string;
+        body?: string | null;
+        href?: string | null;
+        /**
+         * Optional compact marker shown before the item title.
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CalloutBandBlock".
+ */
+export interface CalloutBandBlock {
+  title: string;
+  body?: string | null;
+  action: {
+    label: string;
+    href: string;
+    id?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'calloutBand';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "HeroBlock".
  */
 export interface HeroBlock {
@@ -206,10 +288,12 @@ export interface HeroBlock {
   primaryLink: {
     label: string;
     href: string;
+    id?: string | null;
   };
   secondaryLink: {
     label: string;
     href: string;
+    id?: string | null;
   };
   asideTitle?: string | null;
   asideLabel?: string | null;
@@ -320,6 +404,7 @@ export interface PrinciplesGridBlock {
         link: {
           label: string;
           href: string;
+          id?: string | null;
         };
         id?: string | null;
       }[]
@@ -502,6 +587,10 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        pageHero?: T | PageHeroBlockSelect<T>;
+        richTextSection?: T | RichTextSectionBlockSelect<T>;
+        contentGrid?: T | ContentGridBlockSelect<T>;
+        calloutBand?: T | CalloutBandBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         trustStrip?: T | TrustStripBlockSelect<T>;
         layeredModel?: T | LayeredModelBlockSelect<T>;
@@ -524,6 +613,79 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeroBlock_select".
+ */
+export interface PageHeroBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  body?: T;
+  actions?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextSectionBlock_select".
+ */
+export interface RichTextSectionBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  body?: T;
+  items?:
+    | T
+    | {
+        body?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentGridBlock_select".
+ */
+export interface ContentGridBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  body?: T;
+  variant?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        href?: T;
+        label?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CalloutBandBlock_select".
+ */
+export interface CalloutBandBlockSelect<T extends boolean = true> {
+  title?: T;
+  body?: T;
+  action?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "HeroBlock_select".
  */
 export interface HeroBlockSelect<T extends boolean = true> {
@@ -535,12 +697,14 @@ export interface HeroBlockSelect<T extends boolean = true> {
     | {
         label?: T;
         href?: T;
+        id?: T;
       };
   secondaryLink?:
     | T
     | {
         label?: T;
         href?: T;
+        id?: T;
       };
   asideTitle?: T;
   asideLabel?: T;
@@ -648,6 +812,7 @@ export interface PrinciplesGridBlockSelect<T extends boolean = true> {
           | {
               label?: T;
               href?: T;
+              id?: T;
             };
         id?: T;
       };
