@@ -20,6 +20,10 @@ function specsUrl(path = "") {
 
 const mainNavigation = [
   {
+    label: "Triad",
+    href: "/triad"
+  },
+  {
     label: "Design System",
     href: "/design-system"
   },
@@ -58,7 +62,7 @@ const pages: PageSeed[] = [
         actions: [
           {
             label: "Explore the triad",
-            href: "/design-system"
+            href: "/triad"
           },
           {
             label: "Read specifications",
@@ -139,6 +143,113 @@ const pages: PageSeed[] = [
       title: "Hiaka Civic Stack",
       description:
         "Open-source civic building blocks for transparent, inclusive and interoperable digital participation services."
+    },
+    _status: "published"
+  },
+  {
+    title: "Hiaka Triad",
+    slug: "triad",
+    summary:
+      "The Hiaka triad explains how the Civic Design System, Civic Stack Model and Civic Stack Specs work together.",
+    navigation: [],
+    layout: [
+      {
+        blockType: "pageHero",
+        eyebrow: "Hiaka triad",
+        title: "Three concepts for building civic products",
+        body:
+          "Hiaka is organized around three distinct but connected products: the Civic Design System, the Civic Stack Model and the Civic Stack Specs.",
+        actions: [
+          {
+            label: "Explore the design system",
+            href: "/design-system"
+          },
+          {
+            label: "Read the specs",
+            href: specsUrl()
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "The three pillars",
+        title: "Design, model and specs each have their own job",
+        body: "The triad keeps experience, conceptual architecture and implementation contracts separate so builders know where each decision belongs.",
+        variant: "index",
+        items: [
+          {
+            label: "01",
+            title: "Civic Design System",
+            body: "A standalone Hiaka product model for builders who need to design trustworthy, inclusive and auditable civic interfaces.",
+            href: "/design-system"
+          },
+          {
+            label: "02",
+            title: "Civic Stack Model",
+            body: "The conceptual model for composing civic services from Modules, Patterns, Blueprints and Shared Digital Services.",
+            href: "/model"
+          },
+          {
+            label: "03",
+            title: "Civic Stack Specs",
+            body: "The implementation and conformance layer for module contracts, blueprint specifications, APIs, events and interoperability.",
+            href: specsUrl()
+          }
+        ]
+      },
+      {
+        blockType: "richTextSection",
+        eyebrow: "Boundary rule",
+        title: "Use the right pillar for the right decision",
+        items: [
+          {
+            body: "Experience decisions belong to the Civic Design System: trust, accessibility, localization, interaction patterns and civic interface quality."
+          },
+          {
+            body: "Conceptual composition decisions belong to the Civic Stack Model: what Modules, Patterns, Blueprints and Shared Digital Services mean."
+          },
+          {
+            body: "Implementation contract decisions belong to the Civic Stack Specs: APIs, events, authorization, auditability, interoperability and conformance."
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "Builder paths",
+        title: "Start from the question you need to answer",
+        body: "Each pillar gives builders a different entry point into Hiaka.",
+        variant: "cards",
+        items: [
+          {
+            title: "How should the product feel and behave?",
+            body: "Start with the Civic Design System when the question is about civic experience, interface trust or accessibility.",
+            href: "/design-system"
+          },
+          {
+            title: "What is the civic service made of?",
+            body: "Start with the Civic Stack Model when the question is about modules, patterns, blueprints or shared digital services.",
+            href: "/model"
+          },
+          {
+            title: "How do we implement and verify it?",
+            body: "Start with the Civic Stack Specs when the question is about contracts, APIs, events, authorization or conformance.",
+            href: specsUrl()
+          }
+        ]
+      },
+      {
+        blockType: "calloutBand",
+        title: "The triad is the front door to Hiaka",
+        body: "Use it to decide whether you need experience guidance, conceptual architecture or implementation contracts.",
+        action: {
+          label: "Open specifications",
+          href: specsUrl()
+        }
+      }
+    ],
+    meta: {
+      title: "Hiaka Triad",
+      description: "How the Civic Design System, Civic Stack Model and Civic Stack Specs work together."
     },
     _status: "published"
   },
