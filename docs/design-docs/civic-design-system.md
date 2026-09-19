@@ -2,8 +2,8 @@
 
 ## Purpose
 
-The Hiaka Civic Design System is an autonomous Hiaka domain for designing
-civic technology products.
+The Hiaka Civic Design System is the Civic Stack Model component for designing
+civic technology experiences.
 
 It is both:
 
@@ -18,6 +18,10 @@ of this repository.
 
 The hub presents the Civic Design System and may use local UI infrastructure to
 illustrate it. The hub does not define the system by itself.
+
+Within the Civic Stack Model, the Civic Design System generalizes the former
+Civic Patterns layer. Civic Patterns remain named, but they live inside the
+Civic Design System.
 
 ## Relationship To Radius
 
@@ -40,33 +44,31 @@ References:
 * Rangle Radius: <https://rangle.io/radius>
 * Radius Workspace: <https://github.com/rangle/radius-workspace>
 
-## Domain Boundary
+## Model Boundary
 
-The Civic Design System owns experience rules and standards. It does not own
-civic domain rules, module APIs or blueprint lifecycle contracts.
+The Civic Design System owns civic experience rules and standards inside the
+Civic Stack Model. It does not own module business rules or blueprint lifecycle
+contracts.
 
 ```text
-Civic Design System
-  -> civic experience framework
-  -> interface standards
-  -> interaction patterns
-  -> experience conformance
-
 Civic Stack Model
-  -> conceptual composition model
-  -> Modules, Patterns, Blueprints and Shared Digital Services
+  -> Civic Modules
+  -> Civic Design System
+       -> Civic Patterns
+  -> Civic Blueprints
+  -> Shared Digital Services
 
 Civic Stack Specs
-  -> implementation contracts
-  -> APIs, events, authorization, interoperability and technical conformance
+  -> specs for all model components
+  -> APIs, events, authorization, interoperability and conformance
 ```
 
-Important distinction:
+Important rules:
 
-* Civic Design System specs belong to the Civic Design System domain.
-* Civic Stack Specs belong to the implementation-contract domain.
-* Both may be presented in the same specs portal, but they are not the same
-  pillar.
+* Civic Design System is part of the Civic Stack Model.
+* Civic Design System specs are part of Civic Stack Specs.
+* Civic Patterns are concepts of the Civic Design System, not a separate
+  top-level layer.
 
 ## Layer 1: Civic Principles
 
@@ -146,9 +148,9 @@ Token layers:
 Civic-purpose tokens should be introduced only when a meaning repeats across
 multiple civic products or surfaces.
 
-## Layer 4: Civic Interaction Patterns
+## Layer 4: Civic Patterns
 
-Hiaka should name recurring civic interactions so design, product and
+Hiaka should name recurring civic experience patterns so design, product and
 engineering teams can share one vocabulary.
 
 ### Inform
@@ -179,8 +181,9 @@ outcomes.
 
 Track commitments, milestones, evidence, progress and public follow-up.
 
-These patterns are not UI components by themselves. They are civic experience
-patterns that can be implemented through many tools, libraries or applications.
+These patterns are not UI components by themselves. They are Civic Stack Model
+concepts inside the Civic Design System and can be implemented through many
+tools, libraries or applications.
 
 ## Layer 5: Conformance
 
@@ -196,8 +199,9 @@ Conformance should answer:
 * does it avoid hiding domain uncertainty behind visual polish;
 * does it respect the boundaries of the Civic Stack Model.
 
-Conformance can begin as manual review checklists. Automated testing and design
-linting can come later when stable artifacts exist.
+Conformance criteria for the Civic Design System are specified through Civic
+Stack Specs. They can begin as manual review checklists. Automated testing and
+design linting can come later when stable artifacts exist.
 
 ## Layer 6: Governance
 
@@ -231,9 +235,9 @@ Contribution workflow:
 
 ## Future Repository Orientation
 
-The current hub documents and presents the Civic Design System. A future
-dedicated repository should contain the canonical implementation workspace for
-the domain.
+The current hub documents and presents the Civic Design System as a component
+of the Civic Stack Model. A future dedicated repository can contain the
+canonical implementation workspace for that component.
 
 Light orientation for that future repository:
 
@@ -249,7 +253,7 @@ hiaka-civic-design-system/
 
 The future repository is expected to contain:
 
-* Civic Design System specs;
+* Civic Design System specs aligned with Civic Stack Specs;
 * token definitions;
 * UI component reference implementation;
 * Figma bridge or design assets;

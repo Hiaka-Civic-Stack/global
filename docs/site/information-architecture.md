@@ -12,15 +12,13 @@ The landing site should be implemented as a Payload app. The specifications
 site should be implemented as a Mintlify app. Shared interface components for
 the hub should live in a local `packages/ui` library.
 
-The public hub should make the Hiaka triad visible:
+The public hub should make the two Hiaka concepts visible:
 
-* **Civic Design System** for civic-tech experience framework, standards and
-  UX governance;
 * **Civic Stack Model** for conceptual architecture and composition;
-* **Civic Stack Specs** for implementation contracts and conformance.
+* **Civic Stack Specs** for specifications and conformance.
 
 The detailed doctrine lives in
-[Hiaka Triad](../design-docs/hiaka-triad.md).
+[Hiaka Civic Stack Model And Specs](../design-docs/hiaka-triad.md).
 
 ## Landing Site
 
@@ -80,9 +78,9 @@ Payload page slug "community" -> /community
 Recommended sections:
 
 * What Hiaka is
-* Civic Design System
 * Civic Stack Model
 * Civic Stack Specs
+* Civic Design System as a model component
 * Initial modules
 * Initial blueprints
 * Public Consultation v0
@@ -110,13 +108,12 @@ hub UI components from packages/ui where supported
 
 Recommended sections:
 
-* Hiaka triad overview
-* Civic Design System orientation
 * Civic Stack Model orientation
 * Civic Stack Specs orientation
+* Civic Design System specifications
 * Architecture overview
 * Civic Module specifications
-* Civic Pattern specifications
+* Civic Design System pattern specifications
 * Civic Blueprint specifications
 * Shared digital service interfaces
 * API conventions
@@ -150,8 +147,8 @@ becoming a home for civic domain behavior.
 
 This package is the hub UI implementation. It may be informed by the
 [Civic Design System](../design-docs/civic-design-system.md), but it is not the
-Civic Design System itself. The Civic Design System is an autonomous Hiaka
-domain for civic product experience, standards and conformance.
+Civic Design System itself. The Civic Design System is the Civic Stack Model
+component for civic product experience, standards and conformance.
 
 ### Hub UI Structure
 
@@ -225,11 +222,10 @@ packages/ui/src/blocks/page-hero/page-hero.tsx
 ```text
 Home
 About Hiaka
-Architecture
+Model
 Modules
-Patterns
+Design System
 Blueprints
-Implementation Playbooks
 Specifications
 Community
 ```

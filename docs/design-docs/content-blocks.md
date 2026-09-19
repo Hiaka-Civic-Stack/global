@@ -12,7 +12,7 @@ hard-coded React composition.
 
 This document describes the hub's Payload editorial block model. It is
 separate from the [Civic Design System](./civic-design-system.md), which is a
-standalone product model for builders of civic products.
+Civic Stack Model component for civic product experience.
 
 ## Dependency Direction
 

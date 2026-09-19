@@ -21,22 +21,6 @@
         ]
       },
       {
-        "tab": "Civic Design System",
-        "groups": [
-          {
-            "group": "Experience",
-            "pages": [
-              "design-system",
-              "design-system/principles",
-              "design-system/experience-standards",
-              "design-system/interaction-patterns",
-              "design-system/conformance",
-              "design-system/repository-orientation"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Civic Stack Model",
         "groups": [
           {
@@ -55,8 +39,14 @@
             "group": "Implementation",
             "pages": [
               "specs",
+              "design-system",
+              "design-system/principles",
+              "design-system/experience-standards",
+              "design-system/interaction-patterns",
+              "design-system/conformance",
               "modules/overview",
               "blueprints/public-consultation-v0",
+              "design-system/repository-orientation",
               "repository-strategy"
             ]
           }

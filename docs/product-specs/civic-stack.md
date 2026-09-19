@@ -10,9 +10,18 @@ institutional and territorial contexts.
 
 Hiaka is not a single civic application.
 
-It is a composable stack built around three concepts:
+It is a composable stack built around a conceptual model and a specification
+layer.
 
-**Civic Modules → Civic Patterns → Civic Blueprints**
+The Civic Stack Model contains:
+
+```text
+Civic Modules
+Civic Design System
+  -> Civic Patterns
+Civic Blueprints
+Shared Digital Services
+```
 
 The reference Hiaka application is only one possible consumer of the stack.
 
@@ -23,30 +32,30 @@ This repository is the public hub and specification source for the stack. It
 should support a landing-page experience and a specifications experience,
 similar in role to a public project site and a dedicated specs portal.
 
-The hub is organized around three essential concepts:
+The hub is organized around two essential concepts:
 
-* **Civic Design System**: the civic-tech design framework and experience
-  conformance standard for trust, inclusion, interaction patterns,
-  accessibility, localization and design governance.
 * **Civic Stack Model**: the conceptual model for composing civic services from
-  Modules, Patterns, Blueprints and Shared Digital Services.
-* **Civic Stack Specs**: the implementation and conformance layer for module
-  contracts, blueprint specifications, APIs, events, authorization,
-  interoperability and auditability.
+  Modules, the Civic Design System, Blueprints and Shared Digital Services.
+* **Civic Stack Specs**: the specification layer for the components of the
+  Civic Stack Model: module specs, design system specs, blueprint specs, shared
+  service/interface specs, APIs, events, authorization, interoperability and
+  conformance.
 
-These concepts are complementary. The Design System does not own civic domain
-rules, the Stack Model does not define visual interaction details, and the
-Specs should remain precise implementation contracts rather than marketing
-storytelling.
+The Civic Design System is part of the Civic Stack Model. It generalizes the
+former Civic Patterns layer: patterns remain named, but they live inside the
+Civic Design System.
+
+Civic Blueprints compose Civic Modules and Civic Design System patterns to form
+complete civic processes.
 
 The hub should be implemented as a Turborepo monorepo with a Payload app for
 the landing site, a Mintlify app for the specifications portal and shared
 packages used by those apps.
 
 The hub's UI package is local hub infrastructure. It must not be treated as the
-canonical Civic Design System. The Civic Design System is an autonomous Hiaka
-domain and may later have a dedicated repository containing specs, tokens,
-components, Figma bridge, examples and conformance guidance.
+canonical Civic Design System. The Civic Design System may later have a
+dedicated repository as a component of the Civic Stack Model, containing specs,
+tokens, components, Figma bridge, examples and conformance guidance.
 
 Implementation repositories for individual Civic Modules should be independent
 repositories with their own contracts, tests, release cycles and documentation.
@@ -291,22 +300,27 @@ Example capabilities:
 
 ---
 
-# Civic Pattern
+# Civic Design System And Civic Patterns
 
-A Civic Pattern describes a reusable civic interaction or workflow.
+The Civic Design System is the Civic Stack Model component that defines civic
+experience principles, standards and reusable Civic Patterns.
+
+A Civic Pattern describes a reusable civic experience pattern.
 
 It answers:
 
-**How should a recurring civic interaction work?**
+**How should a recurring civic interaction be experienced and guided?**
 
 Definition:
 
-> A reusable interaction or workflow pattern describing how civic actors perform a recurring democratic 
-action using one or more Civic Modules.
+> A reusable civic experience pattern describing how civic actors perform,
+understand and trust a recurring democratic action using one or more Civic
+Modules.
 
 A Civic Pattern does not own independent business data.
 
-It coordinates capabilities exposed by Civic Modules.
+It guides how capabilities exposed by Civic Modules are composed into a civic
+experience.
 
 Examples:
 
@@ -330,8 +344,8 @@ A Civic Pattern should define:
 * trigger
 * preconditions
 * participating modules
-* ordered steps
-* business rules
+* interaction steps
+* relevant domain rules
 * outcome
 * emitted or consumed events
 * failure states
@@ -367,7 +381,8 @@ outcome:
   contribution-published
 ```
 
-Patterns should initially be specifications.
+Patterns should initially be specified as part of the Civic Design System
+specs.
 
 Do not build a generic workflow engine until at least two real Blueprints demonstrate the need for one.
 
@@ -384,7 +399,7 @@ It answers:
 Definition:
 
 > A reusable end-to-end model for delivering a civic or democratic process through a composition of 
-Civic Patterns, Civic Modules, actors, rules and lifecycle stages.
+Civic Modules, Civic Design System patterns, actors, rules and lifecycle stages.
 
 A Blueprint defines:
 
@@ -393,7 +408,7 @@ A Blueprint defines:
 * eligibility
 * territorial scope
 * stages
-* Civic Patterns
+* Civic Design System patterns
 * required Civic Modules
 * configuration
 * inputs
@@ -432,7 +447,7 @@ RESPOND
 TRACK
 ```
 
-Patterns:
+Civic Design System patterns:
 
 * publish civic information
 * submit contribution
@@ -1093,7 +1108,7 @@ Before implementing a substantial task:
 3. Inspect existing module boundaries and conventions.
 4. Identify the smallest coherent implementation.
 5. Do not introduce a new abstraction without a concrete need.
-6. Do not silently change the Civic Module, Civic Pattern or Civic Blueprint definitions.
+6. Do not silently change the Civic Module, Civic Design System pattern or Civic Blueprint definitions.
 7. If implementation reveals an architectural conflict, document it rather than working around the 
 architecture invisibly.
 8. Prefer extending existing patterns over creating parallel approaches.
@@ -1114,11 +1129,9 @@ Civic Blueprint
       ↓
 composes
 
-Civic Patterns
-      ↓
-coordinate
-
 Civic Modules
+and
+Civic Design System patterns
       ↓
 consume
 

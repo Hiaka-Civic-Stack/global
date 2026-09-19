@@ -6,35 +6,32 @@ description: "A GovStack-like civic participation stack for transparent, inclusi
 Hiaka is an open-source Civic Stack for building transparent, inclusive and
 interoperable digital participation services.
 
-The hub is organized around three essential concepts:
+The hub is organized around two essential concepts:
 
 ```text
-Civic Design System
-  defines civic-tech experience language
-
 Civic Stack Model
-  defines conceptual composition
+  defines the components of the stack
 
 Civic Stack Specs
-  define implementation contracts and conformance
+  define specs and conformance for those components
 ```
 
-These concepts are complementary. The Design System does not own civic domain
-rules, the Stack Model does not define visual interaction details, and the
-Specs should remain implementation contracts rather than marketing copy.
-
-The portal can present specs from several Hiaka domains. Civic Design System
-specs describe civic experience standards. Civic Stack Specs describe
-implementation contracts.
+The Civic Design System is part of the Civic Stack Model. It generalizes Civic
+Patterns, which now live inside the Design System rather than as a separate
+top-level layer.
 
 The Civic Stack Model is organized around:
 
 ```text
 Civic Blueprints
-  compose Civic Patterns
-    coordinate Civic Modules
-      consume Shared Digital Services
+  compose Civic Modules
+  and Civic Design System patterns
+  with support from Shared Digital Services
 ```
+
+Civic Stack Specs specify those model components: modules, design system,
+blueprints, shared services, APIs, events, authorization, interoperability and
+conformance.
 
 The hub combines a Payload-powered landing site with this Mintlify-powered
 specification portal.

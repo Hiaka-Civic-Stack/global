@@ -4,18 +4,18 @@
 
 This roadmap plans the six one-week sprints after Sprint 1. The goal is to
 bring Hiaka to a specs-ready hub: clear for builders, coherent around the
-triad, and ready to guide the first civic products.
+two-concept model, and ready to guide the first civic products.
 
-Sprint 1 is handled separately. It establishes the Civic Design System as an
-autonomous Hiaka domain for future civic product builders: both a civic-tech
-design framework and an experience conformance standard. It must not be
-confused with the local UI infrastructure used by the landing site or hub.
+Sprint 1 is handled separately. It establishes the Civic Design System as the
+Civic Stack Model component for civic experience: both a civic-tech design
+framework and an experience conformance standard. It must not be confused with
+the local UI infrastructure used by the landing site or hub.
 
 ## Roadmap Outcome
 
 At the end of this roadmap, the hub should provide:
 
-* a clear public explanation of the Hiaka triad;
+* a clear public explanation of Civic Stack Model and Civic Stack Specs;
 * a stable Civic Stack Model;
 * a navigable Civic Stack Specs portal;
 * a builder-ready Public Consultation v0 specification;
@@ -25,24 +25,27 @@ At the end of this roadmap, the hub should provide:
 This roadmap does not create the independent Civic Module repositories. It
 prepares the hub so those repositories can be created from stable guidance.
 
-## Sprint 1: Civic Design System Product Foundation
+## Sprint 1: Civic Design System Model Component Foundation
 
 Sprint 1 is the prerequisite for the rest of the roadmap.
 
 Primary goal:
 
-* define the Civic Design System as an autonomous Hiaka domain for builders of
-  civic products.
+* define the Civic Design System as the Civic Stack Model component for civic
+  product experience.
 
 Key boundary:
 
 * the Civic Design System is not the landing site's local UI system;
-* `packages/ui` is hub UI infrastructure, not the Civic Design System domain;
-* Payload editorial blocks are not part of the Civic Design System domain.
+* `packages/ui` is hub UI infrastructure, not the Civic Design System model
+  component;
+* Payload editorial blocks are not part of the Civic Design System model
+  component.
 
 Expected output:
 
-* doctrine and specs orientation for the Civic Design System;
+* doctrine and specs orientation for the Civic Design System as part of the
+  Civic Stack Model;
 * landing content that presents the product without implying it is implemented
   by the landing UI;
 * specs content that explains how builders should use the Civic Design System;
@@ -58,12 +61,12 @@ Make the conceptual model fully readable and stable.
 
 Deliverables:
 
-* clarify the doctrine `Civic Modules -> Civic Patterns -> Civic Blueprints ->
-  Shared Digital Services`;
-* create dedicated specs pages for Civic Modules, Civic Patterns, Civic
-  Blueprints and Shared Digital Services;
-* separate the conceptual model from implementation specs and design-system
-  guidance;
+* clarify the doctrine `Civic Modules + Civic Design System patterns -> Civic
+  Blueprints`, supported by Shared Digital Services;
+* create dedicated specs pages for Civic Modules, Civic Design System patterns,
+  Civic Blueprints and Shared Digital Services;
+* separate the conceptual model from implementation specs while keeping the
+  Civic Design System inside the model;
 * update landing content so the model is presented without being confused with
   the specs.
 
@@ -202,8 +205,8 @@ Deliverables:
 
 * create a "Build with Hiaka" guide;
 * clarify how a builder chooses between:
-  * Civic Design System;
   * Civic Stack Model;
+  * Civic Design System as a model component;
   * Civic Stack Specs;
   * module repository;
   * blueprint repository;
@@ -236,9 +239,9 @@ Stabilize the hub as a readable public product.
 Deliverables:
 
 * review landing content so it clearly presents:
-  * Civic Design System;
   * Civic Stack Model;
   * Civic Stack Specs;
+  * Civic Design System as a model component;
   * Public Consultation v0;
   * builder entrypoints;
 * review Mintlify navigation to remove duplicates and dead ends;
@@ -256,14 +259,16 @@ Validation:
 * `pnpm --filter @hiaka/landing typecheck`;
 * `pnpm seed:landing`;
 * `pnpm --filter @hiaka/landing build`;
-* manual review of `/`, `/design-system`, `/model`, `/modules` and
-  `/blueprints/public-consultation-v0`.
+* manual review of `/`, `/model`, `/model/design-system`, `/modules`,
+  `/blueprints/public-consultation-v0`, `/triad` redirect and `/design-system`
+  redirect.
 
 Acceptance criteria:
 
 * the public hub can be understood by readers with no prior context;
 * the specs portal has no obvious navigation dead ends;
-* the triad is consistently explained across landing and specs;
+* Civic Stack Model and Civic Stack Specs are consistently explained across
+  landing and specs;
 * the hub is ready to guide the first builders.
 
 ## Global Assumptions
@@ -271,6 +276,6 @@ Acceptance criteria:
 * Sprint cadence is one week.
 * The target outcome is a specs-ready hub, not a complete runtime product.
 * Landing content presents concepts but does not define implementation specs.
-* The Civic Design System is autonomous and distinct from the landing design
-  system.
+* The Civic Design System is a component of the Civic Stack Model and remains
+  distinct from the landing design system.
 * Independent module repositories are not created during this roadmap.

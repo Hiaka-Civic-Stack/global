@@ -2,9 +2,14 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Formalize the Civic Design System as an autonomous Hiaka domain that is both a civic-tech design framework and an experience conformance standard.
+**Goal:** Historical Sprint 1 plan. Superseded by the later two-concept model
+where the Civic Design System is a Civic Stack Model component and its specs
+belong to Civic Stack Specs.
 
-**Architecture:** The hub presents the Civic Design System, but does not define or implement it. Mintlify presents current specs pages, while future canonical sources may live in a separate Civic Design System repository that contains specs, tokens, UI components, Figma bridge and examples.
+**Architecture:** The hub presents the Civic Design System, but does not define
+or implement it. Mintlify presents current specs pages, while future canonical
+sources may live in a separate Civic Design System repository that contains
+specs, tokens, UI components, Figma bridge and examples.
 
 **Tech Stack:** Markdown doctrine, Mintlify MDX navigation, Payload seed content.
 
@@ -14,7 +19,9 @@
 
 * The Civic Design System is not the hub UI implementation.
 * `packages/ui`, shadcn and Payload are hub implementation details.
-* Civic Design System specs are not the same thing as Civic Stack Specs.
+* Superseded by the later two-concept model: Civic Design System specs are now
+  part of Civic Stack Specs because they specify a component of the Civic Stack
+  Model.
 * The future Civic Design System repository is one repository, but this hub should document that as a light orientation rather than a locked implementation decision.
 * No runtime UI components, tokens or Payload schemas change in this sprint.
 
@@ -30,7 +37,7 @@
 
 **Interfaces:**
 
-* Consumes: current triad doctrine.
+* Consumes: the then-current three-concept doctrine.
 * Produces: corrected doctrine used by landing and specs pages.
 
 - [x] **Step 1: Remove hub implementation language**
@@ -43,7 +50,8 @@
 
 - [x] **Step 3: Clarify specs boundary**
 
-  State that Civic Design System specs belong to the Civic Design System domain and are distinct from Civic Stack Specs.
+  Historical note: this boundary was later superseded by the two-concept model,
+  where Civic Design System specs are included in Civic Stack Specs.
 
 ### Task 2: Add Specs Portal Structure
 
@@ -72,7 +80,8 @@
 
 - [x] **Step 3: Update navigation**
 
-  Add the pages under the Civic Design System tab without moving Civic Stack Specs pages.
+  Historical note: this was later superseded; the pages now live under Civic
+  Stack Specs navigation.
 
 ### Task 3: Correct Hub Strategy Docs
 

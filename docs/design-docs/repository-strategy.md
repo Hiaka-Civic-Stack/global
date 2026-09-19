@@ -28,7 +28,7 @@ Responsibilities:
 * host the Payload landing app
 * host the Mintlify specifications app
 * host shared packages used by the hub applications
-* publish Civic Module, Civic Pattern and Civic Blueprint specifications
+* publish Civic Module, Civic Design System and Civic Blueprint specifications
 * define cross-stack principles and invariants
 * document interoperability expectations
 * document implementation playbooks
@@ -81,7 +81,8 @@ pretend to define Civic Design System standards.
 
 ### Civic Design System Repository
 
-The Civic Design System should eventually have a dedicated repository.
+The Civic Design System should eventually have a dedicated repository as a
+component of the Civic Stack Model.
 
 Light orientation:
 
@@ -89,9 +90,11 @@ Light orientation:
 hiaka-civic-design-system
 ```
 
-This repository is expected to contain the Design System's own specs, token
+This repository is expected to contain the Design System's specs, token
 definitions, UI component reference implementation, Figma bridge or design
-assets, examples and conformance guidance.
+assets, examples and conformance guidance. Its specs are part of Civic Stack
+Specs because Civic Stack Specs specify the components of the Civic Stack
+Model.
 
 This is an orientation, not a locked repository contract. Until that repository
 exists, the hub can present the doctrine and current specs orientation, but it
@@ -181,7 +184,7 @@ Before creating every module repository, this hub should define:
 
 * the Payload landing app information architecture
 * the Mintlify specifications portal structure
-* the Civic Design System doctrine and repository orientation
+* the Civic Design System model component and repository orientation
 * the Public Consultation v0 blueprint
 * the Participation module specification
 * the Contribution module specification

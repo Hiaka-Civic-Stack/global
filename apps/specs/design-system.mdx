@@ -1,14 +1,18 @@
 ---
 title: "Civic Design System"
-description: "The Hiaka domain for civic product experience, standards and conformance."
+description: "The Civic Stack Model component for civic experience patterns and standards."
 ---
 
-The Civic Design System is an autonomous Hiaka domain for designing civic
-technology products.
+The Civic Design System is the Civic Stack Model component for designing civic
+technology experiences.
 
 It is both a civic-tech design framework and an experience standard that
 products can use for conformance review. It is not the Hiaka hub UI, Payload,
 shadcn or `packages/ui`.
+
+It generalizes the former Civic Patterns layer. Patterns such as inform,
+consult, contribute, deliberate, decide and account now live inside the Civic
+Design System.
 
 ## What It Owns
 
@@ -16,24 +20,20 @@ The Civic Design System owns:
 
 * civic experience principles;
 * experience standards;
-* civic interaction patterns;
+* Civic Patterns;
 * accessibility and localization expectations;
 * experience conformance;
 * design-system governance.
 
-It does not own civic domain rules. Those belong to the Civic Stack Model.
+It does not own module business rules. Those belong to Civic Modules.
 
-It does not own module APIs, domain events, authorization contracts or
-interoperability rules. Those belong to Civic Stack Specs.
+It does not own blueprint lifecycle contracts. Those belong to Civic
+Blueprints.
 
 ## Specs Boundary
 
-The word "specs" appears in more than one Hiaka domain.
-
-Design System specs define civic experience standards. Civic Stack Specs define
-implementation contracts for the stack.
-
-Both can be presented in this Mintlify portal, but they are different domains.
+Civic Design System specs are part of Civic Stack Specs because Civic Stack
+Specs specify the components of the Civic Stack Model.
 
 ## Start Here
 
