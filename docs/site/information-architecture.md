@@ -133,6 +133,12 @@ hub, such as buttons, navigation, cards, callouts, layout primitives and content
 blocks. It should serve the landing and specifications experiences without
 becoming a home for civic domain behavior.
 
+The higher-level doctrine for this package is the
+[Civic Design System](../design-docs/civic-design-system.md). That document
+defines how Hiaka adapts a Radius-like design system meta-model to civic tech:
+civic principles, token layers, component hierarchy, interaction patterns,
+governance, adoption and quality.
+
 ### Atomic Design System
 
 The Hiaka Design System should be separated from the standard shadcn component
