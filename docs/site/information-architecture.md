@@ -47,17 +47,17 @@ Use a block-first model:
 * JSON structure references may document content-design patterns, but they must
   not become the runtime source of page content.
 
-Initial landing blocks:
+Core editorial landing blocks:
 
-* `hero`
-* `trustStrip`
-* `layeredModel`
-* `moduleExplorer`
-* `statementBand`
-* `journey`
-* `principlesGrid`
-* `ecosystemGrid`
-* `updatesGrid`
+* `pageHero` for page positioning and primary actions.
+* `contentGrid` for card grids, index lists and hub navigation surfaces.
+* `richTextSection` for short editorial explanation blocks.
+* `calloutBand` for a focused next action.
+
+Specialized blocks may still exist for product-specific storytelling, but they
+should be introduced only when the editorial job is not covered by the core
+blocks. The homepage should prefer the core editorial blocks so that the
+content model stays reusable across pages.
 
 Routing convention:
 
@@ -193,10 +193,10 @@ Rules:
 Example vertical slice:
 
 ```text
-apps/landing/src/blocks/payload/hero.block.ts
-apps/landing/src/adapters/blocks/hero.adapter.ts
-packages/ui/src/blocks/hero/hero-section.types.ts
-packages/ui/src/blocks/hero/hero-section.tsx
+apps/landing/src/blocks/payload/page-hero.block.ts
+apps/landing/src/adapters/blocks/page-hero.adapter.ts
+packages/ui/src/blocks/page-hero/page-hero.types.ts
+packages/ui/src/blocks/page-hero/page-hero.tsx
 ```
 
 ## Navigation Model

@@ -54,61 +54,73 @@ const pages: PageSeed[] = [
     navigation: [],
     layout: [
       {
-        blockType: "hero",
+        blockType: "pageHero",
         eyebrow: "GovStack-like civic building blocks",
         title: "Hiaka Civic Stack",
         body:
           "An open-source Civic Stack for transparent, inclusive and interoperable digital participation services. Designed first for Madagascar, reusable across institutional and territorial contexts.",
-        primaryLink: {
-          label: "Explore the model",
-          href: "/model"
-        },
-        secondaryLink: {
-          label: "Read specifications",
-          href: specsUrl()
-        },
-        asideLabel: "Reference vertical slice",
-        asideTitle: "Public Consultation v0",
-        asideItems: [
+        actions: [
           {
-            label: "Institution publishes a consultation"
+            label: "Explore the model",
+            href: "/model"
           },
           {
-            label: "Participants submit contributions"
-          },
-          {
-            label: "Institution responds and tracks commitments"
+            label: "Read specifications",
+            href: specsUrl()
           }
         ]
       },
       {
-        blockType: "trustStrip",
+        blockType: "contentGrid",
+        eyebrow: "Stack principles",
+        title: "Built for trustworthy civic participation",
+        body: "Hiaka turns civic values into concrete architecture constraints for public digital services.",
+        variant: "cards",
         items: [
           {
-            label: "Open source"
+            title: "Open source",
+            body: "Specifications and source code should be suitable for public review, reuse and contribution."
           },
           {
-            label: "API first"
+            title: "API first",
+            body: "Every important capability should be available through explicit contracts, not only through one web interface."
           },
           {
-            label: "Composable"
+            title: "Composable",
+            body: "Civic services should be assembled from reusable modules, patterns and blueprints."
           },
           {
-            label: "Privacy preserving"
+            title: "Privacy preserving",
+            body: "Identity, eligibility and public participation identity must remain separate concepts."
           },
           {
-            label: "Territory aware"
+            title: "Territory aware",
+            body: "The core model supports local administrative hierarchies without hard-coding one national structure."
           }
         ]
       },
       {
-        blockType: "statementBand",
-        statement:
-          "Civic software should be composed from trustworthy public building blocks, not rebuilt from scratch for every institution."
+        blockType: "richTextSection",
+        eyebrow: "Civic Stack",
+        title: "Reusable public building blocks, not one hard-coded application",
+        items: [
+          {
+            body: "Hiaka is not a single civic application. It is a composable stack built around Civic Modules, Civic Patterns and Civic Blueprints."
+          },
+          {
+            body: "The public hub explains the stack, while the specifications portal documents how to implement, compose and evaluate its components."
+          },
+          {
+            body: "The first reference implementation is Public Consultation v0, focused on Participation, Contribution and Accountability before broader generalization."
+          }
+        ]
       },
       {
-        blockType: "updatesGrid",
+        blockType: "contentGrid",
+        eyebrow: "Explore",
         title: "Explore the hub",
+        body: "Start from the conceptual model, then move into modules and the first reference blueprint.",
+        variant: "cards",
         items: [
           {
             title: "Core model",
@@ -126,6 +138,15 @@ const pages: PageSeed[] = [
             href: "/blueprints/public-consultation-v0"
           }
         ]
+      },
+      {
+        blockType: "calloutBand",
+        title: "Read the public specifications",
+        body: "The specs portal documents the architecture, module map and Public Consultation v0 blueprint for implementers.",
+        action: {
+          label: "Open specifications",
+          href: specsUrl()
+        }
       }
     ],
     meta: {

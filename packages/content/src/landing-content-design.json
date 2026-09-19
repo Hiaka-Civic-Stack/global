@@ -24,16 +24,17 @@
       "id": "hero",
       "role": "positioning",
       "purpose": "State the category, project name and civic promise in the first viewport.",
-      "payloadBlock": "hero",
+      "payloadBlock": "pageHero",
       "requiredFields": ["title", "body"],
-      "optionalFields": ["eyebrow", "primaryLink", "secondaryLink", "asideTitle", "asideLabel", "asideItems"]
+      "optionalFields": ["eyebrow", "actions"]
     },
     {
       "id": "early-proof",
       "role": "credibility",
       "purpose": "Show principles or adoption signals immediately after the hero.",
-      "payloadBlock": "trustStrip",
-      "requiredFields": ["items"]
+      "payloadBlock": "contentGrid",
+      "requiredFields": ["title", "items"],
+      "optionalFields": ["eyebrow", "body", "variant"]
     },
     {
       "id": "feature-preview",
@@ -47,8 +48,9 @@
       "id": "mission-band",
       "role": "thesis",
       "purpose": "Condense the project philosophy into one strong sentence.",
-      "payloadBlock": "statementBand",
-      "requiredFields": ["statement"]
+      "payloadBlock": "richTextSection",
+      "requiredFields": ["title", "items"],
+      "optionalFields": ["eyebrow"]
     },
     {
       "id": "value-pillars",
@@ -77,20 +79,17 @@
       "id": "news-and-community",
       "role": "project vitality",
       "purpose": "Surface roadmap, specs updates and contribution paths.",
-      "payloadBlock": "updatesGrid",
-      "requiredFields": ["title", "items"]
+      "payloadBlock": "contentGrid",
+      "requiredFields": ["title", "items"],
+      "optionalFields": ["eyebrow", "body", "variant"]
     }
   ],
   "recommendedHomeLayout": [
-    "hero",
-    "trustStrip",
-    "layeredModel",
-    "moduleExplorer",
-    "statementBand",
-    "journey",
-    "principlesGrid",
-    "ecosystemGrid",
-    "updatesGrid"
+    "pageHero",
+    "contentGrid",
+    "richTextSection",
+    "contentGrid",
+    "calloutBand"
   ],
   "nextPayloadContract": {
     "collection": "pages",
