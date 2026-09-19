@@ -4,8 +4,8 @@
 
 The landing app uses a block-first content model. Payload owns page content,
 page order, drafts, previews and localization. Next.js owns routing and server
-rendering. The shared UI package owns reusable rendering contracts and visual
-components.
+rendering. The hub UI package owns reusable rendering contracts and visual
+components for this repository.
 
 This keeps the hub editable without turning the landing page into a single
 hard-coded React composition.
@@ -22,15 +22,15 @@ Use this direction for every reusable block:
 Payload block schema
   -> generated Payload type
   -> landing app adapter
-  -> shared UI props interface
-  -> shared UI block component
+  -> hub UI props interface
+  -> hub UI block component
   -> molecules
   -> atoms
   -> shadcn primitives
 ```
 
 Applications must not pass raw Payload block objects into `packages/ui`.
-Shared UI must not import Payload types.
+Hub UI code must not import Payload types.
 
 ## Current Core Blocks
 
@@ -57,7 +57,7 @@ page or after a complete section.
 ## When To Create A New Block
 
 Create a new Payload block only when the editor needs a distinct content job,
-not merely a different visual treatment. Prefer extending a shared UI component
+not merely a different visual treatment. Prefer extending a hub UI component
 variant when the content shape is unchanged.
 
 Good reasons:
@@ -89,13 +89,13 @@ Adapters live in:
 apps/landing/src/adapters/blocks/
 ```
 
-Shared block props and components live in:
+Hub block props and components live in:
 
 ```text
 packages/ui/src/blocks/
 ```
 
-Hiaka design system primitives live in:
+Hub UI primitives live in:
 
 ```text
 packages/ui/src/components/atoms/
@@ -103,8 +103,8 @@ packages/ui/src/components/molecules/
 packages/ui/src/components/shadcn/
 ```
 
-Do not import `components/shadcn/*` from apps. Apps should consume shared
-atoms, molecules or block components through `@hiaka/ui`.
+Do not import `components/shadcn/*` from apps. Apps should consume hub atoms,
+molecules or block components through `@hiaka/ui`.
 
 ## Runtime Content
 

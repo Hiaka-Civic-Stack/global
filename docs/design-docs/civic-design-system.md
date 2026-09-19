@@ -2,37 +2,71 @@
 
 ## Purpose
 
-The Hiaka Civic Design System is a standalone product model for builders of
-civic technology interfaces.
+The Hiaka Civic Design System is an autonomous Hiaka domain for designing
+civic technology products.
 
-It is inspired by Radius as a design system meta-framework: not a ready-made
-component kit, but a way to structure tokens, components, adoption, governance
-and design-to-code alignment. Hiaka applies that idea to civic technology.
+It is both:
 
-The goal is not to make every interface look like the Hiaka hub. The goal is
-to help civic product teams create trustworthy, inclusive, auditable,
-localizable and coherent civic products while still allowing each product to
-serve its own audience and institutional context.
+* a civic-tech design framework for creating trustworthy participation
+  experiences;
+* an experience standard that products can use for conformance, review and
+  improvement.
+
+The Civic Design System is not the visual identity of the Hiaka hub. It is not
+Payload, Mintlify, shadcn, `packages/ui` or any current implementation detail
+of this repository.
+
+The hub presents the Civic Design System and may use local UI infrastructure to
+illustrate it. The hub does not define the system by itself.
 
 ## Relationship To Radius
 
-Radius frames a design system as more than a component library. It includes
-token management, component creation methods, adoption tracking, intake
-processes and governance.
+Radius is useful as an inspiration because it treats design systems as
+meta-frameworks: governance, tokens, adoption, design-to-code alignment and
+quality practices matter as much as component inventory.
 
-Hiaka should use the same meta-framework mindset:
+Hiaka applies that mindset to civic technology.
 
-* shadcn/ui is a technical substrate, not the Hiaka design language;
-* the landing design system is separate from this Civic Design System product;
-* tokens and components must express civic intent, not only brand styling;
-* adoption, documentation and contribution rules are part of the system;
-* design and engineering should share one vocabulary for components, tokens and
-  interaction patterns.
+The Civic Design System should help teams answer:
+
+* what makes a civic interface trustworthy;
+* how participation flows should guide people;
+* how public actions remain legible and auditable;
+* how localization, territory and accessibility affect product design;
+* how an implementation can show conformance to civic experience standards.
 
 References:
 
 * Rangle Radius: <https://rangle.io/radius>
 * Radius Workspace: <https://github.com/rangle/radius-workspace>
+
+## Domain Boundary
+
+The Civic Design System owns experience rules and standards. It does not own
+civic domain rules, module APIs or blueprint lifecycle contracts.
+
+```text
+Civic Design System
+  -> civic experience framework
+  -> interface standards
+  -> interaction patterns
+  -> experience conformance
+
+Civic Stack Model
+  -> conceptual composition model
+  -> Modules, Patterns, Blueprints and Shared Digital Services
+
+Civic Stack Specs
+  -> implementation contracts
+  -> APIs, events, authorization, interoperability and technical conformance
+```
+
+Important distinction:
+
+* Civic Design System specs belong to the Civic Design System domain.
+* Civic Stack Specs belong to the implementation-contract domain.
+* Both may be presented in the same specs portal, but they are not the same
+  pillar.
 
 ## Layer 1: Civic Principles
 
@@ -72,64 +106,50 @@ from the beginning. English may be used for developer-facing documentation.
 
 ### Accessibility
 
-Components should be keyboard-accessible, screen-reader friendly and readable
-under realistic contrast, zoom and mobile constraints.
+Products should be keyboard-accessible, screen-reader friendly and readable
+under realistic contrast, zoom, device and connectivity constraints.
 
-## Layer 2: Design Tokens
+## Layer 2: Experience Standards
 
-Hiaka tokens should be more than raw values. They should form a bridge from
-visual decisions to civic intent.
+The Civic Design System should define standards that product teams can use to
+evaluate civic experience quality.
 
-### Primitive Tokens
+Initial standards:
 
-Primitive tokens hold raw values such as color scales, font families, spacing,
-radius and motion timings. They should remain implementation-oriented and
-rarely appear directly in product components.
+* process status is visible and understandable;
+* public actions name the actor, timing and next step;
+* eligibility and participation scope are explained before action;
+* institutional responses are separated from participant contributions;
+* territorial scope is represented without assuming one administrative model;
+* public evidence and accountability progress are traceable;
+* language, text length and layout support Malagasy and French;
+* accessibility expectations are documented for each reusable pattern.
 
-### Semantic Tokens
+These standards are experience contracts. They are different from API
+contracts.
 
-Semantic tokens describe interface meaning: background, foreground, primary,
-muted, border, ring, destructive, success, warning and similar roles. They are
-the normal layer for components.
+## Layer 3: Tokens And Visual Language
 
-### Civic-Purpose Tokens
+The Civic Design System may define tokens, but tokens are not the product by
+themselves.
 
-Civic-purpose tokens describe civic meaning: process state, participation
-status, institutional action, public evidence, eligibility, consultation stage,
-accountability progress and territorial scope.
+Token layers:
 
-These tokens should be introduced only when a recurring civic meaning appears
-across multiple surfaces. They should not be invented for one-off decoration.
+* primitive tokens for raw values such as color, spacing, typography and
+  motion;
+* semantic tokens for interface roles such as background, foreground, action,
+  warning, success and destructive;
+* civic-purpose tokens for recurring civic meanings such as process state,
+  participation status, public evidence, eligibility, consultation stage,
+  accountability progress and territorial scope.
 
-## Layer 3: Component Hierarchy
-
-The component hierarchy separates civic product concepts from any one runtime
-implementation.
-
-```text
-civic principles
-  -> design tokens
-  -> civic-purpose tokens
-  -> component archetypes
-  -> civic interaction patterns
-  -> product implementation libraries
-```
-
-Rules:
-
-* the Civic Design System defines reusable civic interface jobs, not one React
-  implementation;
-* runtime packages may implement this model later, but they are not the model
-  itself;
-* hub UI components and Payload editorial blocks are consumers or presentation
-  surfaces, not the Civic Design System product;
-* civic domain behavior belongs in civic product or module code, not in the
-  design system.
+Civic-purpose tokens should be introduced only when a meaning repeats across
+multiple civic products or surfaces.
 
 ## Layer 4: Civic Interaction Patterns
 
-Hiaka should name recurring civic interactions so design and engineering can
-reuse the same mental model across products.
+Hiaka should name recurring civic interactions so design, product and
+engineering teams can share one vocabulary.
 
 ### Inform
 
@@ -159,85 +179,83 @@ outcomes.
 
 Track commitments, milestones, evidence, progress and public follow-up.
 
-These patterns are not UI components by themselves. They are lenses for
-designing components, blocks, flows, states and documentation.
+These patterns are not UI components by themselves. They are civic experience
+patterns that can be implemented through many tools, libraries or applications.
 
-## Layer 5: Governance
+## Layer 5: Conformance
 
-The design system should be governed as a product.
+The Civic Design System should support conformance review for products that
+claim to follow Hiaka experience standards.
 
-Add a token when:
+Conformance should answer:
 
-* the value represents a recurring semantic or civic meaning;
-* multiple components or surfaces need the same role;
-* changing the value centrally would preserve coherence.
+* does the product make civic process state visible;
+* does it communicate actor, authority, responsibility and next step;
+* does it preserve accessibility and localization under realistic content;
+* does it expose public evidence and accountability where relevant;
+* does it avoid hiding domain uncertainty behind visual polish;
+* does it respect the boundaries of the Civic Stack Model.
 
-Add a component when:
+Conformance can begin as manual review checklists. Automated testing and design
+linting can come later when stable artifacts exist.
 
-* the interface job repeats across multiple surfaces;
-* the component can be described without referencing one page;
-* the component has clear props and accessibility expectations;
-* the component can be tested or visually reviewed independently.
+## Layer 6: Governance
+
+The Civic Design System should be governed as a civic product.
+
+Add a principle when:
+
+* it expresses a recurring civic experience concern;
+* it improves decisions across several products;
+* it can be reviewed through concrete examples.
+
+Add a pattern when:
+
+* the interaction repeats across civic processes;
+* it can be described without naming one product page;
+* it has clear accessibility, localization and public-trust implications.
+
+Add a token or component specification when:
+
+* the interface meaning repeats across products;
+* the expected behavior can be tested or reviewed;
+* the artifact supports civic clarity rather than isolated decoration.
 
 Contribution workflow:
 
 1. Identify the civic job and audience.
-2. Check whether an existing token, component archetype or interaction pattern
-   already fits.
-3. Propose the smallest reusable contract.
-4. Document usage guidance and constraints.
-5. Verify accessibility, localization and responsive behavior.
+2. Check whether an existing principle, standard or pattern already applies.
+3. Propose the smallest reusable experience contract.
+4. Document intended use, non-use and conformance expectations.
+5. Validate accessibility, localization and long-content behavior.
 
-## Layer 6: Adoption And Quality
+## Future Repository Orientation
 
-A civic design system has value only when teams use it consistently.
+The current hub documents and presents the Civic Design System. A future
+dedicated repository should contain the canonical implementation workspace for
+the domain.
 
-### Adoption
-
-Early adoption can be tracked manually through documentation and code review.
-Later, the hub can introduce automated component usage reporting inspired by
-Radius Tracker.
-
-### Quality
-
-Every reusable component or block should be evaluated against:
-
-* accessibility and keyboard behavior;
-* mobile readability;
-* localization and long-text behavior;
-* contrast and state clarity;
-* civic meaning and editorial fit;
-* whether it duplicates an existing pattern.
-
-### Documentation
-
-Every stable token group, component archetype or interaction pattern should
-document:
-
-* intended use;
-* not-for-use cases;
-* expected information contract;
-* accessibility expectations;
-* localization notes;
-* examples from Hiaka pages or specs.
-
-## Product Boundary
-
-Keep this boundary:
+Light orientation for that future repository:
 
 ```text
-docs/design-docs/civic-design-system.md
-  -> Civic Design System product doctrine
-
-apps/specs/design-system.mdx
-  -> public specs orientation for builders
-
-packages/ui
-  -> hub UI implementation, not the Civic Design System product
-
-apps/landing
-  -> presentation surface for the Civic Design System product
+hiaka-civic-design-system/
+  specs/
+  tokens/
+  components/
+  figma/
+  examples/
+  conformance/
 ```
 
-Future runtime packages for the Civic Design System should be planned
-separately from the landing site's UI package.
+The future repository is expected to contain:
+
+* Civic Design System specs;
+* token definitions;
+* UI component reference implementation;
+* Figma bridge or design assets;
+* examples of product implementation;
+* conformance guidance and review checklists.
+
+This is an orientation, not a frozen repository contract. The hub should avoid
+pretending that its local UI package is the canonical implementation of the
+Civic Design System.

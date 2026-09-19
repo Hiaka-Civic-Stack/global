@@ -25,9 +25,9 @@ similar in role to a public project site and a dedicated specs portal.
 
 The hub is organized around three essential concepts:
 
-* **Civic Design System**: the civic-tech experience language for tokens,
-  components, interaction patterns, accessibility, localization and design
-  governance.
+* **Civic Design System**: the civic-tech design framework and experience
+  conformance standard for trust, inclusion, interaction patterns,
+  accessibility, localization and design governance.
 * **Civic Stack Model**: the conceptual model for composing civic services from
   Modules, Patterns, Blueprints and Shared Digital Services.
 * **Civic Stack Specs**: the implementation and conformance layer for module
@@ -41,9 +41,12 @@ storytelling.
 
 The hub should be implemented as a Turborepo monorepo with a Payload app for
 the landing site, a Mintlify app for the specifications portal and shared
-packages, including a UI library based on shadcn/ui.
-This UI package should be treated as the Hiaka Design System rather than as an
-imitation of shadcn/ui.
+packages used by those apps.
+
+The hub's UI package is local hub infrastructure. It must not be treated as the
+canonical Civic Design System. The Civic Design System is an autonomous Hiaka
+domain and may later have a dedicated repository containing specs, tokens,
+components, Figma bridge, examples and conformance guidance.
 
 Implementation repositories for individual Civic Modules should be independent
 repositories with their own contracts, tests, release cycles and documentation.
@@ -849,7 +852,7 @@ hiaka-civic-stack/
 ├── packages/
 │   ├── content/
 │   ├── config/
-│   └── ui/        # Hiaka Design System based on shadcn/ui
+│   └── ui/        # hub UI primitives and content components
 │
 └── docs/
     ├── site/
@@ -878,6 +881,7 @@ hiaka-module-contribution
 hiaka-module-deliberation
 hiaka-module-decision
 hiaka-module-accountability
+hiaka-civic-design-system
 hiaka-contracts
 hiaka-events
 hiaka-sdk

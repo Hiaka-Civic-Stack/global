@@ -79,7 +79,7 @@ const pages: PageSeed[] = [
         items: [
           {
             title: "Civic Design System",
-            body: "A standalone Hiaka product model for builders who need to create trustworthy, inclusive and auditable civic interfaces.",
+            body: "A civic-tech design framework and experience standard for trustworthy, inclusive and auditable civic products.",
             href: "/design-system"
           },
           {
@@ -180,7 +180,7 @@ const pages: PageSeed[] = [
           {
             label: "01",
             title: "Civic Design System",
-            body: "A standalone Hiaka product model for builders who need to design trustworthy, inclusive and auditable civic interfaces.",
+            body: "A civic-tech design framework and experience standard for builders who need trustworthy, inclusive and auditable civic products.",
             href: "/design-system"
           },
           {
@@ -222,7 +222,7 @@ const pages: PageSeed[] = [
         items: [
           {
             title: "How should the product feel and behave?",
-            body: "Start with the Civic Design System when the question is about civic experience, interface trust or accessibility.",
+            body: "Start with the Civic Design System when the question is about civic experience, interface trust, accessibility or experience conformance.",
             href: "/design-system"
           },
           {
@@ -257,18 +257,18 @@ const pages: PageSeed[] = [
     title: "Civic Design System",
     slug: "design-system",
     summary:
-      "The Civic Design System is Hiaka's civic-tech experience meta-model for trust, inclusion, accessibility and design governance.",
+      "The Civic Design System is Hiaka's civic-tech framework and experience standard for trust, inclusion, accessibility and conformance.",
     navigation: [],
     layout: [
       {
         blockType: "pageHero",
         eyebrow: "Civic Design System",
-        title: "A meta design system for civic technology",
+        title: "A civic experience framework and standard",
         body:
-          "Hiaka treats design as civic infrastructure. The Civic Design System defines how interfaces should guide, reassure, include and remain accountable across public participation services.",
+          "Hiaka treats design as civic infrastructure. The Civic Design System defines how civic products should guide, reassure, include and remain accountable across public participation services.",
         actions: [
           {
-            label: "Read the specs orientation",
+            label: "Read design-system specs",
             href: specsUrl("/design-system")
           },
           {
@@ -279,9 +279,9 @@ const pages: PageSeed[] = [
       },
       {
         blockType: "contentGrid",
-        eyebrow: "Meta-model",
-        title: "Six layers of the Civic Design System",
-        body: "The system is not a skin over shadcn. It is a civic-tech meta-model for designing public interfaces coherently.",
+        eyebrow: "Domain model",
+        title: "Six layers of civic experience",
+        body: "The system is not the hub UI. It is a civic-tech domain for designing and reviewing public interfaces coherently.",
         variant: "cards",
         items: [
           {
@@ -289,24 +289,24 @@ const pages: PageSeed[] = [
             body: "Trust, inclusion, transparency, auditability, territory awareness, localization and accessibility guide every design decision."
           },
           {
-            title: "Design tokens",
-            body: "Primitive, semantic and civic-purpose tokens connect visual choices to civic meaning."
+            title: "Experience standards",
+            body: "Process status, actor responsibility, eligibility, evidence and accountability should remain visible and understandable."
           },
           {
-            title: "Component hierarchy",
-            body: "shadcn primitives become Hiaka atoms, molecules, organisms and shared UI blocks through explicit contracts."
+            title: "Tokens and visual language",
+            body: "Future tokens can express recurring civic meanings such as process state, evidence, eligibility and accountability progress."
           },
           {
             title: "Civic interaction patterns",
             body: "Inform, consult, contribute, deliberate, decide and account provide a shared vocabulary for civic flows."
           },
           {
-            title: "Governance",
-            body: "Rules for adding tokens, component archetypes and civic interaction patterns keep the system coherent as it grows."
+            title: "Experience conformance",
+            body: "Products can be reviewed against civic clarity, public trust, inclusion, accessibility and auditability expectations."
           },
           {
-            title: "Adoption and quality",
-            body: "Accessibility, localization, responsiveness and adoption practices make the system usable beyond this hub."
+            title: "Governance",
+            body: "Rules for adding principles, patterns, tokens and component specifications keep the system coherent as it grows."
           }
         ]
       },
@@ -322,7 +322,7 @@ const pages: PageSeed[] = [
             body: "It does not define the domain rules for participation, contribution, deliberation, decision or accountability."
           },
           {
-            body: "Those rules belong to the Civic Stack Model and are implemented through the Civic Stack Specs."
+            body: "Its own specs are experience specs. They are different from Civic Stack Specs, which define implementation contracts."
           }
         ]
       },
@@ -330,7 +330,7 @@ const pages: PageSeed[] = [
         blockType: "contentGrid",
         eyebrow: "Builder relationship",
         title: "How builders use it",
-        body: "The Civic Design System helps teams design civic products from Hiaka without copying the landing site's local UI system.",
+        body: "The Civic Design System helps teams design civic products from Hiaka without copying the hub's local UI implementation.",
         variant: "index",
         items: [
           {
@@ -345,15 +345,20 @@ const pages: PageSeed[] = [
           },
           {
             label: "03",
-            title: "Implement in your product",
-            body: "Translate the model into the runtime and component library appropriate for your civic product."
+            title: "Review conformance",
+            body: "Check whether the product makes civic process, actor responsibility, accessibility and public evidence clear."
+          },
+          {
+            label: "04",
+            title: "Prepare implementation",
+            body: "Future implementation work can live in a dedicated Design System repository with specs, tokens, components, Figma bridge and examples."
           }
         ]
       },
       {
         blockType: "calloutBand",
         title: "Design is part of civic trust",
-        body: "Future token and component work should start from the Civic Design System doctrine, not from isolated visual preferences.",
+        body: "Future token, component and design-asset work should start from the Civic Design System doctrine, not from isolated visual preferences.",
         action: {
           label: "Open design-system specs",
           href: specsUrl("/design-system")
@@ -362,7 +367,7 @@ const pages: PageSeed[] = [
     ],
     meta: {
       title: "Hiaka Civic Design System",
-      description: "The civic-tech experience meta-model behind Hiaka interfaces, tokens and components."
+      description: "The civic-tech design framework and experience standard behind Hiaka civic products."
     },
     _status: "published"
   },

@@ -1,45 +1,53 @@
 ---
 title: "Civic Design System"
-description: "The civic-tech experience meta-model behind Hiaka interfaces."
+description: "The Hiaka domain for civic product experience, standards and conformance."
 ---
 
-The Civic Design System is Hiaka's experience language.
+The Civic Design System is an autonomous Hiaka domain for designing civic
+technology products.
 
-It defines how civic technology interfaces should behave, guide, reassure and
-include people across public participation services.
+It is both a civic-tech design framework and an experience standard that
+products can use for conformance review. It is not the Hiaka hub UI, Payload,
+shadcn or `packages/ui`.
 
-It is inspired by Radius as a design-system meta-framework, not as a ready-made
-component kit. For Hiaka, that means design is not decoration. It is part of
-public trust.
-
-## Responsibilities
+## What It Owns
 
 The Civic Design System owns:
 
-* civic UX principles;
-* design tokens;
-* component hierarchy;
-* interaction patterns;
+* civic experience principles;
+* experience standards;
+* civic interaction patterns;
 * accessibility and localization expectations;
-* design-system governance and adoption.
+* experience conformance;
+* design-system governance.
 
-It does not own civic domain rules. Domain rules belong to the Civic Stack
-Model and are implemented through the Civic Stack Specs.
+It does not own civic domain rules. Those belong to the Civic Stack Model.
 
-## Core Layers
+It does not own module APIs, domain events, authorization contracts or
+interoperability rules. Those belong to Civic Stack Specs.
 
-```text
-Civic principles
-  -> design tokens
-  -> component hierarchy
-  -> civic interaction patterns
-  -> governance
-  -> adoption and quality
-```
+## Specs Boundary
+
+The word "specs" appears in more than one Hiaka domain.
+
+Design System specs define civic experience standards. Civic Stack Specs define
+implementation contracts for the stack.
+
+Both can be presented in this Mintlify portal, but they are different domains.
+
+## Start Here
+
+Use these pages as the Sprint 1 entry points:
+
+* [Civic Principles](/design-system/principles)
+* [Experience Standards](/design-system/experience-standards)
+* [Interaction Patterns](/design-system/interaction-patterns)
+* [Experience Conformance](/design-system/conformance)
+* [Repository Orientation](/design-system/repository-orientation)
 
 ## Related Doctrine
 
-The canonical doctrine lives in the hub documentation:
+The canonical doctrine currently lives in the hub documentation:
 
 * `docs/design-docs/civic-design-system.md`
 * `docs/design-docs/hiaka-triad.md`

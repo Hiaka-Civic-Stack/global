@@ -27,7 +27,7 @@ Responsibilities:
 * explain the Hiaka vision and architecture
 * host the Payload landing app
 * host the Mintlify specifications app
-* host shared packages, including a UI library based on shadcn/ui
+* host shared packages used by the hub applications
 * publish Civic Module, Civic Pattern and Civic Blueprint specifications
 * define cross-stack principles and invariants
 * document interoperability expectations
@@ -45,7 +45,7 @@ hiaka-civic-stack/
 ├── packages/
 │   ├── content/
 │   ├── config/
-│   └── ui/        # Hiaka Design System based on shadcn/ui
+│   └── ui/        # hub UI primitives and content components
 │
 └── docs/
     ├── site/
@@ -71,13 +71,32 @@ packages/config
 packages/ui
 ```
 
-`packages/ui` should contain the shared design system and reusable React
-components. It should be based on shadcn/ui components copied into the codebase,
-owned by Hiaka and adapted for Hiaka's visual identity, accessibility
-requirements and content needs.
+`packages/ui` should contain reusable React components for the hub experience.
+It may use shadcn/ui components copied into the codebase and adapted for the
+hub's visual identity, accessibility requirements and content needs.
 
-The UI package should remain focused on presentation components for the hub. It
-must not contain Civic Module domain logic.
+The UI package is hub infrastructure. It is not the canonical implementation of
+the Civic Design System. It must not contain Civic Module domain logic or
+pretend to define Civic Design System standards.
+
+### Civic Design System Repository
+
+The Civic Design System should eventually have a dedicated repository.
+
+Light orientation:
+
+```text
+hiaka-civic-design-system
+```
+
+This repository is expected to contain the Design System's own specs, token
+definitions, UI component reference implementation, Figma bridge or design
+assets, examples and conformance guidance.
+
+This is an orientation, not a locked repository contract. Until that repository
+exists, the hub can present the doctrine and current specs orientation, but it
+should not treat `packages/ui`, Payload blocks or shadcn as the Design System
+itself.
 
 ### Civic Module Repositories
 
@@ -162,6 +181,7 @@ Before creating every module repository, this hub should define:
 
 * the Payload landing app information architecture
 * the Mintlify specifications portal structure
+* the Civic Design System doctrine and repository orientation
 * the Public Consultation v0 blueprint
 * the Participation module specification
 * the Contribution module specification

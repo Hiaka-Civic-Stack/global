@@ -7,8 +7,9 @@ bring Hiaka to a specs-ready hub: clear for builders, coherent around the
 triad, and ready to guide the first civic products.
 
 Sprint 1 is handled separately. It establishes the Civic Design System as an
-autonomous Hiaka product for future civic product builders. It must not be
-confused with the local design system used by the landing site or the hub UI.
+autonomous Hiaka domain for future civic product builders: both a civic-tech
+design framework and an experience conformance standard. It must not be
+confused with the local UI infrastructure used by the landing site or hub.
 
 ## Roadmap Outcome
 
@@ -30,21 +31,24 @@ Sprint 1 is the prerequisite for the rest of the roadmap.
 
 Primary goal:
 
-* define the Civic Design System as a standalone Hiaka product for builders of
+* define the Civic Design System as an autonomous Hiaka domain for builders of
   civic products.
 
 Key boundary:
 
-* the Civic Design System is not the landing design system;
-* `packages/ui` is hub UI infrastructure, not the Civic Design System product;
-* Payload editorial blocks are not part of the Civic Design System product.
+* the Civic Design System is not the landing site's local UI system;
+* `packages/ui` is hub UI infrastructure, not the Civic Design System domain;
+* Payload editorial blocks are not part of the Civic Design System domain.
 
 Expected output:
 
-* product doctrine and specs for the Civic Design System;
+* doctrine and specs orientation for the Civic Design System;
 * landing content that presents the product without implying it is implemented
   by the landing UI;
-* specs content that explains how builders should use the Civic Design System.
+* specs content that explains how builders should use the Civic Design System;
+* light repository orientation for a future single Civic Design System
+  repository containing specs, tokens, components, Figma bridge, examples and
+  conformance guidance.
 
 ## Sprint 2: Civic Stack Model Foundation
 

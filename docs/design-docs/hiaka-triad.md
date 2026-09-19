@@ -8,13 +8,14 @@ Hiaka is organized around three essential concepts:
 2. Civic Stack Model
 3. Civic Stack Specs
 
-Together, they define how Hiaka explains, designs and implements trustworthy
-civic technology. They are complementary pillars. None of them replaces the
+Together, they define how Hiaka designs, models and implements trustworthy
+civic technology. They are complementary domains. None of them replaces the
 others.
 
 ## Civic Design System
 
-The Civic Design System is the experience language for Hiaka.
+The Civic Design System is an autonomous Hiaka domain for civic product
+experience.
 
 It answers:
 
@@ -22,15 +23,22 @@ It answers:
 
 It owns:
 
-* civic UX principles;
-* design tokens;
-* component hierarchy;
+* civic experience principles;
+* experience standards;
 * interaction patterns;
-* design-system governance;
-* accessibility, localization and adoption expectations.
+* accessibility and localization expectations;
+* experience conformance;
+* design-system governance.
 
-It does not own civic domain rules. Those belong to the Civic Stack Model and
-implementation specifications.
+It is both a design framework and a standard/spec for civic experience
+conformance.
+
+It does not own civic domain rules. Those belong to the Civic Stack Model. It
+also does not own module APIs, events or interoperability contracts. Those
+belong to the Civic Stack Specs.
+
+Civic Design System specs are part of the Civic Design System domain. They are
+not the same thing as Civic Stack Specs.
 
 Reference:
 
@@ -64,7 +72,8 @@ Reference:
 
 ## Civic Stack Specs
 
-The Civic Stack Specs are the implementation and conformance layer.
+The Civic Stack Specs are the implementation-contract and technical
+conformance layer.
 
 They answer:
 
@@ -78,7 +87,7 @@ They own:
 * domain events;
 * authorization rules;
 * interoperability expectations;
-* conformance guidance.
+* implementation conformance guidance.
 
 They should stay precise enough for implementation. They should not become
 marketing copy or high-level conceptual storytelling.
@@ -99,9 +108,14 @@ Implementation contract decision -> Civic Stack Specs
 
 Examples:
 
-* a process-status color belongs first to the Civic Design System;
+* a process-status experience standard belongs first to the Civic Design
+  System;
 * the meaning of a participation stage belongs to the Civic Stack Model;
 * the API shape for publishing a consultation belongs to the Civic Stack Specs.
+
+The word "specs" can appear in more than one domain. Design System specs
+describe civic experience standards. Civic Stack Specs describe implementation
+contracts for stack capabilities.
 
 ## Hub Structure
 
@@ -114,15 +128,17 @@ Landing site
 Specifications portal
   -> documents the triad for implementers, architects and evaluators
 
-Shared UI package
-  -> implements local hub UI primitives
+Hub UI infrastructure
+  -> supports the landing and specs experiences
 ```
 
 The landing experience should help readers understand Hiaka quickly. The specs
-experience should help builders implement Hiaka correctly.
+experience should help builders understand the relevant specifications without
+collapsing all specs into the Civic Stack Specs pillar.
 
 ## Roadmap
 
 The post-Sprint 1 roadmap is documented in
 [Specs-Ready Hub Roadmap](./specs-ready-roadmap.md). It plans the sequence from
-Civic Design System foundation to a builder-ready specifications hub.
+Civic Design System foundation to a builder-ready hub for stack model and
+implementation specs.

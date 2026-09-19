@@ -9,12 +9,13 @@ This repository should be able to power two public-facing experiences:
    Hiaka components.
 
 The landing site should be implemented as a Payload app. The specifications
-site should be implemented as a Mintlify app. Shared interface components
-should live in a `packages/ui` library based on shadcn/ui.
+site should be implemented as a Mintlify app. Shared interface components for
+the hub should live in a local `packages/ui` library.
 
 The public hub should make the Hiaka triad visible:
 
-* **Civic Design System** for civic-tech experience language and UX governance;
+* **Civic Design System** for civic-tech experience framework, standards and
+  UX governance;
 * **Civic Stack Model** for conceptual architecture and composition;
 * **Civic Stack Specs** for implementation contracts and conformance.
 
@@ -36,7 +37,7 @@ Primary technology:
 
 ```text
 Payload
-shared shadcn/ui components from packages/ui
+hub UI components from packages/ui
 ```
 
 ### Payload block-first model
@@ -104,7 +105,7 @@ Primary technology:
 
 ```text
 Mintlify
-shared shadcn/ui components from packages/ui where supported
+hub UI components from packages/ui where supported
 ```
 
 Recommended sections:
@@ -142,48 +143,49 @@ Tailwind CSS
 React
 ```
 
-The shared UI package should provide reusable visual primitives for the Hiaka
+The hub UI package should provide reusable visual primitives for the Hiaka
 hub, such as buttons, navigation, cards, callouts, layout primitives and content
 blocks. It should serve the landing and specifications experiences without
 becoming a home for civic domain behavior.
 
 This package is the hub UI implementation. It may be informed by the
 [Civic Design System](../design-docs/civic-design-system.md), but it is not the
-Civic Design System product itself. The Civic Design System is a standalone
-model for builders of civic products.
+Civic Design System itself. The Civic Design System is an autonomous Hiaka
+domain for civic product experience, standards and conformance.
 
-### Hub UI Atomic Structure
+### Hub UI Structure
 
-The hub UI implementation should be separated from the standard shadcn
-component directory.
+The hub UI implementation may be separated from the standard shadcn component
+directory when that helps maintainability.
 
 Use this package structure:
 
 ```text
 packages/ui/src/components/
-  shadcn/      # generated or adapted shadcn/ui primitives
-  atoms/       # Hiaka atoms built from shadcn primitives and design tokens
-  molecules/   # reusable component compositions
-  organisms/   # reusable product-level interface sections, when generic enough
+  shadcn/      # generated or adapted hub primitives
+  atoms/       # small hub primitives
+  molecules/   # reusable hub compositions
+  organisms/   # reusable hub sections, when generic enough
 ```
 
 Payload blocks should map to page organisms at render time, but blocks are still
 CMS/editorial structures. They should not replace atoms, molecules or the shared
-design system hierarchy.
+hub UI hierarchy.
 
 Rules:
 
-* add new shadcn components into `components/shadcn/`;
-* expose Hiaka-facing primitives through `atoms/` and `molecules/`;
+* add generated or adapted primitives into `components/shadcn/` when the hub
+  uses shadcn;
+* expose hub-facing primitives through `atoms/` and `molecules/`;
 * keep app-specific block renderers in the app until they become reusable across
   landing and specs;
 * do not import `components/shadcn/*` directly from applications.
 
 ### Block Contracts And Adapters
 
-Payload blocks and UI blocks are different contracts.
+Payload blocks and hub UI blocks are different contracts.
 
-Payload blocks describe the CMS editing model. Shared UI blocks describe
+Payload blocks describe the CMS editing model. Hub UI blocks describe
 renderable component props. The landing app must translate between the two with
 explicit adapters.
 
@@ -193,8 +195,8 @@ Use this dependency direction:
 Payload block schema
   -> generated Payload block type
   -> app adapter
-  -> shared UI block props
-  -> shared UI organism
+  -> hub UI block props
+  -> hub UI organism
   -> molecules
   -> atoms
   -> shadcn primitives
@@ -202,12 +204,12 @@ Payload block schema
 
 Rules:
 
-* do not pass raw Payload block objects into shared UI organisms;
-* define one shared props interface per reusable UI block;
-* define one adapter per Payload block when the block is rendered by shared UI;
+* do not pass raw Payload block objects into hub UI organisms;
+* define one hub props interface per reusable UI block;
+* define one adapter per Payload block when the block is rendered by hub UI;
 * keep adapters in the consuming app because they know about Payload field names,
   locale behavior and CMS defaults;
-* keep shared UI free from Payload imports and generated Payload types.
+* keep hub UI free from Payload imports and generated Payload types.
 
 Example vertical slice:
 

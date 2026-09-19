@@ -26,7 +26,12 @@
           {
             "group": "Experience",
             "pages": [
-              "design-system"
+              "design-system",
+              "design-system/principles",
+              "design-system/experience-standards",
+              "design-system/interaction-patterns",
+              "design-system/conformance",
+              "design-system/repository-orientation"
             ]
           }
         ]
