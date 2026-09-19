@@ -23,6 +23,22 @@ This repository is the public hub and specification source for the stack. It
 should support a landing-page experience and a specifications experience,
 similar in role to a public project site and a dedicated specs portal.
 
+The hub is organized around three essential concepts:
+
+* **Civic Design System**: the civic-tech experience language for tokens,
+  components, interaction patterns, accessibility, localization and design
+  governance.
+* **Civic Stack Model**: the conceptual model for composing civic services from
+  Modules, Patterns, Blueprints and Shared Digital Services.
+* **Civic Stack Specs**: the implementation and conformance layer for module
+  contracts, blueprint specifications, APIs, events, authorization,
+  interoperability and auditability.
+
+These concepts are complementary. The Design System does not own civic domain
+rules, the Stack Model does not define visual interaction details, and the
+Specs should remain precise implementation contracts rather than marketing
+storytelling.
+
 The hub should be implemented as a Turborepo monorepo with a Payload app for
 the landing site, a Mintlify app for the specifications portal and shared
 packages, including a UI library based on shadcn/ui.

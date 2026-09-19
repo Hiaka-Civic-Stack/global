@@ -20,16 +20,12 @@ function specsUrl(path = "") {
 
 const mainNavigation = [
   {
+    label: "Design System",
+    href: "/design-system"
+  },
+  {
     label: "Model",
     href: "/model"
-  },
-  {
-    label: "Modules",
-    href: "/modules"
-  },
-  {
-    label: "Blueprint",
-    href: "/blueprints/public-consultation-v0"
   },
   {
     label: "Specifications",
@@ -61,8 +57,8 @@ const pages: PageSeed[] = [
           "An open-source Civic Stack for transparent, inclusive and interoperable digital participation services. Designed first for Madagascar, reusable across institutional and territorial contexts.",
         actions: [
           {
-            label: "Explore the model",
-            href: "/model"
+            label: "Explore the triad",
+            href: "/design-system"
           },
           {
             label: "Read specifications",
@@ -72,61 +68,51 @@ const pages: PageSeed[] = [
       },
       {
         blockType: "contentGrid",
-        eyebrow: "Stack principles",
-        title: "Built for trustworthy civic participation",
-        body: "Hiaka turns civic values into concrete architecture constraints for public digital services.",
+        eyebrow: "Hiaka triad",
+        title: "Three pillars for civic technology",
+        body: "Hiaka combines experience design, conceptual architecture and implementation contracts into one coherent public stack.",
         variant: "cards",
         items: [
           {
-            title: "Open source",
-            body: "Specifications and source code should be suitable for public review, reuse and contribution."
+            title: "Civic Design System",
+            body: "A standalone Hiaka product model for builders who need to create trustworthy, inclusive and auditable civic interfaces.",
+            href: "/design-system"
           },
           {
-            title: "API first",
-            body: "Every important capability should be available through explicit contracts, not only through one web interface."
+            title: "Civic Stack Model",
+            body: "The conceptual architecture for composing civic services from Modules, Patterns, Blueprints and Shared Digital Services.",
+            href: "/model"
           },
           {
-            title: "Composable",
-            body: "Civic services should be assembled from reusable modules, patterns and blueprints."
-          },
-          {
-            title: "Privacy preserving",
-            body: "Identity, eligibility and public participation identity must remain separate concepts."
-          },
-          {
-            title: "Territory aware",
-            body: "The core model supports local administrative hierarchies without hard-coding one national structure."
+            title: "Civic Stack Specs",
+            body: "The implementation and conformance layer for module contracts, blueprint specifications, APIs, events and interoperability.",
+            href: specsUrl()
           }
         ]
       },
       {
         blockType: "richTextSection",
-        eyebrow: "Civic Stack",
-        title: "Reusable public building blocks, not one hard-coded application",
+        eyebrow: "Boundary rule",
+        title: "Design, model and specs stay distinct",
         items: [
           {
-            body: "Hiaka is not a single civic application. It is a composable stack built around Civic Modules, Civic Patterns and Civic Blueprints."
+            body: "The Civic Design System shapes experience, interaction and interface trust, but it does not own civic domain rules."
           },
           {
-            body: "The public hub explains the stack, while the specifications portal documents how to implement, compose and evaluate its components."
+            body: "The Civic Stack Model explains how civic services are composed, but it does not define every visual detail."
           },
           {
-            body: "The first reference implementation is Public Consultation v0, focused on Participation, Contribution and Accountability before broader generalization."
+            body: "The Civic Stack Specs define implementation contracts and conformance, but they should remain precise rather than becoming marketing storytelling."
           }
         ]
       },
       {
         blockType: "contentGrid",
-        eyebrow: "Explore",
-        title: "Explore the hub",
-        body: "Start from the conceptual model, then move into modules and the first reference blueprint.",
+        eyebrow: "Reference surfaces",
+        title: "Go deeper into the stack",
+        body: "The triad gives the top-level model. These pages make the first reusable civic capabilities and reference blueprint concrete.",
         variant: "cards",
         items: [
-          {
-            title: "Core model",
-            body: "Understand the relationship between Civic Blueprints, Civic Patterns, Civic Modules and Shared Digital Services.",
-            href: "/model"
-          },
           {
             title: "Initial Civic Modules",
             body: "Review the first reusable civic capabilities and how each can live in its own repository.",
@@ -141,8 +127,8 @@ const pages: PageSeed[] = [
       },
       {
         blockType: "calloutBand",
-        title: "Read the public specifications",
-        body: "The specs portal documents the architecture, module map and Public Consultation v0 blueprint for implementers.",
+        title: "Build from the public specifications",
+        body: "The specs portal turns the triad into implementation guidance for architects, developers and evaluators.",
         action: {
           label: "Open specifications",
           href: specsUrl()
@@ -153,6 +139,119 @@ const pages: PageSeed[] = [
       title: "Hiaka Civic Stack",
       description:
         "Open-source civic building blocks for transparent, inclusive and interoperable digital participation services."
+    },
+    _status: "published"
+  },
+  {
+    title: "Civic Design System",
+    slug: "design-system",
+    summary:
+      "The Civic Design System is Hiaka's civic-tech experience meta-model for trust, inclusion, accessibility and design governance.",
+    navigation: [],
+    layout: [
+      {
+        blockType: "pageHero",
+        eyebrow: "Civic Design System",
+        title: "A meta design system for civic technology",
+        body:
+          "Hiaka treats design as civic infrastructure. The Civic Design System defines how interfaces should guide, reassure, include and remain accountable across public participation services.",
+        actions: [
+          {
+            label: "Read the specs orientation",
+            href: specsUrl("/design-system")
+          },
+          {
+            label: "Explore the model",
+            href: "/model"
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "Meta-model",
+        title: "Six layers of the Civic Design System",
+        body: "The system is not a skin over shadcn. It is a civic-tech meta-model for designing public interfaces coherently.",
+        variant: "cards",
+        items: [
+          {
+            title: "Civic principles",
+            body: "Trust, inclusion, transparency, auditability, territory awareness, localization and accessibility guide every design decision."
+          },
+          {
+            title: "Design tokens",
+            body: "Primitive, semantic and civic-purpose tokens connect visual choices to civic meaning."
+          },
+          {
+            title: "Component hierarchy",
+            body: "shadcn primitives become Hiaka atoms, molecules, organisms and shared UI blocks through explicit contracts."
+          },
+          {
+            title: "Civic interaction patterns",
+            body: "Inform, consult, contribute, deliberate, decide and account provide a shared vocabulary for civic flows."
+          },
+          {
+            title: "Governance",
+            body: "Rules for adding tokens, component archetypes and civic interaction patterns keep the system coherent as it grows."
+          },
+          {
+            title: "Adoption and quality",
+            body: "Accessibility, localization, responsiveness and adoption practices make the system usable beyond this hub."
+          }
+        ]
+      },
+      {
+        blockType: "richTextSection",
+        eyebrow: "Boundary",
+        title: "Experience language, not domain ownership",
+        items: [
+          {
+            body: "The Civic Design System helps people understand public processes and trust digital civic interfaces."
+          },
+          {
+            body: "It does not define the domain rules for participation, contribution, deliberation, decision or accountability."
+          },
+          {
+            body: "Those rules belong to the Civic Stack Model and are implemented through the Civic Stack Specs."
+          }
+        ]
+      },
+      {
+        blockType: "contentGrid",
+        eyebrow: "Builder relationship",
+        title: "How builders use it",
+        body: "The Civic Design System helps teams design civic products from Hiaka without copying the landing site's local UI system.",
+        variant: "index",
+        items: [
+          {
+            label: "01",
+            title: "Model civic experience",
+            body: "Start from trust, inclusion, auditability, localization and territory-aware participation."
+          },
+          {
+            label: "02",
+            title: "Choose civic patterns",
+            body: "Use patterns such as inform, consult, contribute, deliberate, decide and account."
+          },
+          {
+            label: "03",
+            title: "Implement in your product",
+            body: "Translate the model into the runtime and component library appropriate for your civic product."
+          }
+        ]
+      },
+      {
+        blockType: "calloutBand",
+        title: "Design is part of civic trust",
+        body: "Future token and component work should start from the Civic Design System doctrine, not from isolated visual preferences.",
+        action: {
+          label: "Open design-system specs",
+          href: specsUrl("/design-system")
+        }
+      }
+    ],
+    meta: {
+      title: "Hiaka Civic Design System",
+      description: "The civic-tech experience meta-model behind Hiaka interfaces, tokens and components."
     },
     _status: "published"
   },
@@ -186,7 +285,8 @@ const pages: PageSeed[] = [
           {
             label: "01",
             title: "Civic Blueprints",
-            body: "Complete public participation processes composed from patterns and modules."
+            body: "Complete public participation processes composed from patterns and modules.",
+            href: "/blueprints/public-consultation-v0"
           },
           {
             label: "02",
@@ -196,7 +296,8 @@ const pages: PageSeed[] = [
           {
             label: "03",
             title: "Civic Modules",
-            body: "Reusable civic capabilities and business rules owned independently."
+            body: "Reusable civic capabilities and business rules owned independently.",
+            href: "/modules"
           },
           {
             label: "04",

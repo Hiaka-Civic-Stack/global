@@ -12,6 +12,15 @@ The landing site should be implemented as a Payload app. The specifications
 site should be implemented as a Mintlify app. Shared interface components
 should live in a `packages/ui` library based on shadcn/ui.
 
+The public hub should make the Hiaka triad visible:
+
+* **Civic Design System** for civic-tech experience language and UX governance;
+* **Civic Stack Model** for conceptual architecture and composition;
+* **Civic Stack Specs** for implementation contracts and conformance.
+
+The detailed doctrine lives in
+[Hiaka Triad](../design-docs/hiaka-triad.md).
+
 ## Landing Site
 
 The landing site should be oriented toward decision makers, institutions, civil
@@ -70,8 +79,9 @@ Payload page slug "community" -> /community
 Recommended sections:
 
 * What Hiaka is
-* Why civic participation needs a reusable stack
-* Core model: Civic Modules, Civic Patterns and Civic Blueprints
+* Civic Design System
+* Civic Stack Model
+* Civic Stack Specs
 * Initial modules
 * Initial blueprints
 * Public Consultation v0
@@ -99,6 +109,10 @@ shared shadcn/ui components from packages/ui where supported
 
 Recommended sections:
 
+* Hiaka triad overview
+* Civic Design System orientation
+* Civic Stack Model orientation
+* Civic Stack Specs orientation
 * Architecture overview
 * Civic Module specifications
 * Civic Pattern specifications
@@ -133,16 +147,15 @@ hub, such as buttons, navigation, cards, callouts, layout primitives and content
 blocks. It should serve the landing and specifications experiences without
 becoming a home for civic domain behavior.
 
-The higher-level doctrine for this package is the
-[Civic Design System](../design-docs/civic-design-system.md). That document
-defines how Hiaka adapts a Radius-like design system meta-model to civic tech:
-civic principles, token layers, component hierarchy, interaction patterns,
-governance, adoption and quality.
+This package is the hub UI implementation. It may be informed by the
+[Civic Design System](../design-docs/civic-design-system.md), but it is not the
+Civic Design System product itself. The Civic Design System is a standalone
+model for builders of civic products.
 
-### Atomic Design System
+### Hub UI Atomic Structure
 
-The Hiaka Design System should be separated from the standard shadcn component
-directory.
+The hub UI implementation should be separated from the standard shadcn
+component directory.
 
 Use this package structure:
 

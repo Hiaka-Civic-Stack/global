@@ -10,10 +10,9 @@ components.
 This keeps the hub editable without turning the landing page into a single
 hard-coded React composition.
 
-This document sits under the broader
-[Civic Design System](./civic-design-system.md) doctrine. The Civic Design
-System defines the design-system meta-model for civic tech; this document
-defines how that doctrine is applied to Payload editorial blocks.
+This document describes the hub's Payload editorial block model. It is
+separate from the [Civic Design System](./civic-design-system.md), which is a
+standalone product model for builders of civic products.
 
 ## Dependency Direction
 

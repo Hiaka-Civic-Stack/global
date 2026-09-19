@@ -13,23 +13,46 @@
         "tab": "Overview",
         "groups": [
           {
-            "group": "Start",
+            "group": "Hiaka",
             "pages": [
-              "index",
-              "architecture",
-              "repository-strategy"
+              "index"
             ]
           }
         ]
       },
       {
-        "tab": "Specifications",
+        "tab": "Civic Design System",
         "groups": [
           {
-            "group": "Civic Stack",
+            "group": "Experience",
             "pages": [
+              "design-system"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Civic Stack Model",
+        "groups": [
+          {
+            "group": "Model",
+            "pages": [
+              "model",
+              "architecture"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Civic Stack Specs",
+        "groups": [
+          {
+            "group": "Implementation",
+            "pages": [
+              "specs",
               "modules/overview",
-              "blueprints/public-consultation-v0"
+              "blueprints/public-consultation-v0",
+              "repository-strategy"
             ]
           }
         ]
@@ -37,4 +60,3 @@
     ]
   }
 }
-

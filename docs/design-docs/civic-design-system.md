@@ -2,17 +2,17 @@
 
 ## Purpose
 
-The Hiaka Civic Design System is the meta-model for designing civic technology
-interfaces across the Hiaka hub, specifications portal and future public
-participation products.
+The Hiaka Civic Design System is a standalone product model for builders of
+civic technology interfaces.
 
 It is inspired by Radius as a design system meta-framework: not a ready-made
 component kit, but a way to structure tokens, components, adoption, governance
 and design-to-code alignment. Hiaka applies that idea to civic technology.
 
-The goal is not to make every interface look identical. The goal is to make
-civic interfaces trustworthy, inclusive, auditable, localizable and coherent
-while still allowing each product surface to serve its own audience.
+The goal is not to make every interface look like the Hiaka hub. The goal is
+to help civic product teams create trustworthy, inclusive, auditable,
+localizable and coherent civic products while still allowing each product to
+serve its own audience and institutional context.
 
 ## Relationship To Radius
 
@@ -23,7 +23,7 @@ processes and governance.
 Hiaka should use the same meta-framework mindset:
 
 * shadcn/ui is a technical substrate, not the Hiaka design language;
-* `packages/ui` is the implementation home for shared visual primitives;
+* the landing design system is separate from this Civic Design System product;
 * tokens and components must express civic intent, not only brand styling;
 * adoption, documentation and contribution rules are part of the system;
 * design and engineering should share one vocabulary for components, tokens and
@@ -103,27 +103,28 @@ across multiple surfaces. They should not be invented for one-off decoration.
 
 ## Layer 3: Component Hierarchy
 
-The component hierarchy separates technical primitives, Hiaka design language
-and CMS editorial structures.
+The component hierarchy separates civic product concepts from any one runtime
+implementation.
 
 ```text
-shadcn primitives
-  -> Hiaka atoms
-  -> Hiaka molecules
-  -> Hiaka organisms
-  -> shared UI blocks
-  -> Payload editorial blocks
-  -> app renderers and adapters
+civic principles
+  -> design tokens
+  -> civic-purpose tokens
+  -> component archetypes
+  -> civic interaction patterns
+  -> product implementation libraries
 ```
 
 Rules:
 
-* applications must not import `components/shadcn/*` directly;
-* `packages/ui` must not import Payload generated types;
-* Payload blocks describe editorial structure, not design system internals;
-* adapters translate Payload data into shared UI props;
-* new components should be named for reusable interface jobs, not for one page;
-* civic domain behavior belongs in product or module code, not in `packages/ui`.
+* the Civic Design System defines reusable civic interface jobs, not one React
+  implementation;
+* runtime packages may implement this model later, but they are not the model
+  itself;
+* hub UI components and Payload editorial blocks are consumers or presentation
+  surfaces, not the Civic Design System product;
+* civic domain behavior belongs in civic product or module code, not in the
+  design system.
 
 ## Layer 4: Civic Interaction Patterns
 
@@ -178,16 +179,11 @@ Add a component when:
 * the component has clear props and accessibility expectations;
 * the component can be tested or visually reviewed independently.
 
-Add a Payload block when:
-
-* editors need to control a distinct content job;
-* the content shape differs from existing blocks;
-* the block belongs to page composition rather than low-level UI.
-
 Contribution workflow:
 
 1. Identify the civic job and audience.
-2. Check whether an existing token, component or block already fits.
+2. Check whether an existing token, component archetype or interaction pattern
+   already fits.
 3. Propose the smallest reusable contract.
 4. Document usage guidance and constraints.
 5. Verify accessibility, localization and responsive behavior.
@@ -215,32 +211,33 @@ Every reusable component or block should be evaluated against:
 
 ### Documentation
 
-Every stable token group, component family or block family should document:
+Every stable token group, component archetype or interaction pattern should
+document:
 
 * intended use;
 * not-for-use cases;
-* props or content contract;
+* expected information contract;
 * accessibility expectations;
 * localization notes;
 * examples from Hiaka pages or specs.
 
-## Current Implementation Boundary
+## Product Boundary
 
-The current hub implementation should keep this boundary:
+Keep this boundary:
 
 ```text
 docs/design-docs/civic-design-system.md
-  -> doctrine and governance
+  -> Civic Design System product doctrine
 
-docs/design-docs/content-blocks.md
-  -> Payload block contracts and page composition rules
+apps/specs/design-system.mdx
+  -> public specs orientation for builders
 
 packages/ui
-  -> tokens, atoms, molecules, organisms and shared UI blocks
+  -> hub UI implementation, not the Civic Design System product
 
 apps/landing
-  -> Payload schemas, adapters, routing and page rendering
+  -> presentation surface for the Civic Design System product
 ```
 
-Future token and component work should reference this doctrine before changing
-`packages/ui`.
+Future runtime packages for the Civic Design System should be planned
+separately from the landing site's UI package.
