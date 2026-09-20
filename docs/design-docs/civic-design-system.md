@@ -2,26 +2,26 @@
 
 ## Purpose
 
-The Hiaka Civic Design System is the Civic Stack Model component for designing
-civic technology experiences.
+The Hiaka Civic Design System is the Civic Stack Model component for civic
+product experience.
 
 It is both:
 
-* a civic-tech design framework for creating trustworthy participation
-  experiences;
-* an experience standard that products can use for conformance, review and
-  improvement.
+* a civic-tech design framework for creating trustworthy public participation
+  products;
+* a civic experience standard that products can use for specification,
+  conformance review and improvement.
 
 The Civic Design System is not the visual identity of the Hiaka hub. It is not
 Payload, Mintlify, shadcn, `packages/ui` or any current implementation detail
 of this repository.
 
-The hub presents the Civic Design System and may use local UI infrastructure to
-illustrate it. The hub does not define the system by itself.
+The hub presents the Civic Design System and may contain examples or local UI
+infrastructure. The hub does not define the system by itself.
 
 Within the Civic Stack Model, the Civic Design System generalizes the former
-Civic Patterns layer. Civic Patterns remain named, but they live inside the
-Civic Design System.
+standalone Civic Patterns concept. Civic Patterns remain named, but they live
+inside the Civic Design System.
 
 ## Relationship To Radius
 
@@ -29,15 +29,10 @@ Radius is useful as an inspiration because it treats design systems as
 meta-frameworks: governance, tokens, adoption, design-to-code alignment and
 quality practices matter as much as component inventory.
 
-Hiaka applies that mindset to civic technology.
-
-The Civic Design System should help teams answer:
-
-* what makes a civic interface trustworthy;
-* how participation flows should guide people;
-* how public actions remain legible and auditable;
-* how localization, territory and accessibility affect product design;
-* how an implementation can show conformance to civic experience standards.
+Hiaka applies that mindset to civic technology. The Civic Design System should
+not begin as a component kit. It should begin as a model for the civic intents,
+semantic language and patterns that make digital public participation legible,
+inclusive and auditable.
 
 References:
 
@@ -69,171 +64,255 @@ Important rules:
 * Civic Design System specs are part of Civic Stack Specs.
 * Civic Patterns are concepts of the Civic Design System, not a separate
   top-level layer.
+* Standards, conformance, tokens, components, Figma bridge and implementation
+  guidance are operational dimensions, not conceptual layers.
 
-## Layer 1: Civic Principles
+## Civic Principles
 
-Every design decision should be traceable to one or more civic principles.
+Civic principles are transverse foundations. They govern every part of the
+Conceptual Model and every operational artifact, but they are not a separate
+layer.
 
-### Trust
+Every design decision should be traceable to one or more principles:
 
-Interfaces should make institutional actors, process state, deadlines and
-responsibilities clear. Users should understand who is asking, who decides and
-what happens next.
+* **Trust**: people can identify actors, authority, process state, deadlines,
+  responsibilities and next steps.
+* **Inclusion**: products support different literacy levels, devices, bandwidth
+  conditions, languages and participation contexts.
+* **Transparency**: rules, eligibility, status changes and public outcomes are
+  inspectable without internal knowledge.
+* **Auditability**: important civic actions expose traceable actor, time,
+  state, reason, evidence and process relationship when relevant.
+* **Territory awareness**: products represent territorial scope without
+  hard-coding one country or administrative hierarchy into the design language.
+* **Localization**: products support Malagasy and French from the beginning;
+  English may be used for developer-facing documentation.
+* **Accessibility**: products are keyboard-accessible, screen-reader friendly
+  and readable under realistic contrast, zoom, device and connectivity
+  constraints.
 
-### Inclusion
+## Conceptual Model
 
-Interfaces should support different literacy levels, devices, bandwidth
-conditions, languages and participation contexts. Clarity is not decorative; it
-is access.
+The Conceptual Model defines the reusable civic experience language of the
+Design System.
 
-### Transparency
+```text
+Conceptual Model
+  -> Intent Layer
+  -> Semantic Layer
+  -> Pattern Layer
+```
 
-The system should expose process rules, eligibility, status changes and public
-outcomes in ways people can inspect without needing internal knowledge.
+The layers are not page types or UI components. They are conceptual lenses that
+help teams design and evaluate civic products before choosing an implementation.
 
-### Auditability
+## Intent Layer
 
-Important civic actions should leave visible traces: actor, time, state,
-reason, evidence and relationship to the public process when relevant.
+The Intent Layer names the civic jobs people need to accomplish in a public
+participation product.
 
-### Territory Awareness
+It answers:
 
-Interfaces should represent territorial scope without hard-coding one country
-or administrative hierarchy into the design language.
+> What is the civic purpose of this experience?
 
-### Localization
+Initial civic intents include:
 
-Text, layout density and component behavior should support Malagasy and French
-from the beginning. English may be used for developer-facing documentation.
+* understand a public process;
+* know whether one can participate;
+* contribute to a bounded civic process;
+* compare, discuss or deliberate around public input;
+* verify an official response, decision or rationale;
+* follow a decision, commitment or implementation progress.
 
-### Accessibility
+Intent-driven design prevents teams from starting with screens, components or
+generic workflows. A product surface should first be justified by the civic job
+it helps people complete.
 
-Products should be keyboard-accessible, screen-reader friendly and readable
-under realistic contrast, zoom, device and connectivity constraints.
+## Semantic Layer
 
-## Layer 2: Experience Standards
+The Semantic Layer defines the civic language used across products,
+documentation, specs and implementation.
 
-The Civic Design System should define standards that product teams can use to
-evaluate civic experience quality.
+It answers:
 
-Initial standards:
+> Which civic meanings must remain consistent across products?
 
-* process status is visible and understandable;
-* public actions name the actor, timing and next step;
-* eligibility and participation scope are explained before action;
-* institutional responses are separated from participant contributions;
-* territorial scope is represented without assuming one administrative model;
-* public evidence and accountability progress are traceable;
-* language, text length and layout support Malagasy and French;
-* accessibility expectations are documented for each reusable pattern.
+The Semantic Layer is broader than semantic tokens. It includes:
 
-These standards are experience contracts. They are different from API
-contracts.
+* actors: institution, participant, facilitator, moderator, decision maker,
+  observer, implementation owner;
+* processes: consultation, initiative, participatory budget, co-creation,
+  commitment tracking;
+* stages: draft, scheduled, open, under review, responded, decided, committed,
+  archived;
+* statuses: eligibility, contribution state, moderation state, response state,
+  decision state, commitment progress;
+* evidence: official documents, submitted attachments, response rationale,
+  decision rationale, progress proof;
+* official responses: institutional answer, rejection reason, merge decision,
+  follow-up action;
+* decisions: selected option, mandate, rationale, publication date,
+  responsible institution;
+* commitments: obligation, responsible actor, milestone, progress update,
+  evidence, due date;
+* territories: scope, jurisdiction, administrative hierarchy, local
+  configuration;
+* accountability progress: milestone state, latest update, next expected
+  update, evidence trail;
+* relations: contribution-to-response, response-to-decision,
+  decision-to-commitment, commitment-to-progress.
 
-## Layer 3: Tokens And Visual Language
+This layer gives design, product and engineering teams a shared vocabulary. It
+also creates the bridge from civic experience design to specs, APIs, events and
+future implementation artifacts.
 
-The Civic Design System may define tokens, but tokens are not the product by
-themselves.
+## Pattern Layer
 
-Token layers:
+The Pattern Layer realizes civic intents through the Semantic Layer.
 
-* primitive tokens for raw values such as color, spacing, typography and
-  motion;
-* semantic tokens for interface roles such as background, foreground, action,
-  warning, success and destructive;
-* civic-purpose tokens for recurring civic meanings such as process state,
-  participation status, public evidence, eligibility, consultation stage,
-  accountability progress and territorial scope.
+It answers:
 
-Civic-purpose tokens should be introduced only when a meaning repeats across
-multiple civic products or surfaces.
+> Which recurring civic experience pattern should be used here?
 
-## Layer 4: Civic Patterns
+Initial Civic Design System patterns:
 
-Hiaka should name recurring civic experience patterns so design, product and
-engineering teams can share one vocabulary.
+* **Inform**: publish official information, process rules, dates, territorial
+  scope and institutional responsibilities.
+* **Consult**: ask a public, community or stakeholder group for input within a
+  bounded civic process.
+* **Contribute**: allow participants to submit ideas, proposals, documents,
+  comments or evidence.
+* **Deliberate**: support discussion, comparison, argumentation, moderation and
+  collective sense-making.
+* **Decide**: represent public decisions, institutional responses, mandates,
+  rationales and outcomes.
+* **Account**: track commitments, milestones, evidence, progress and public
+  follow-up.
 
-### Inform
-
-Publish official information, process rules, dates, territorial scope and
-institutional responsibilities.
-
-### Consult
-
-Ask a public, community or stakeholder group for input within a bounded civic
-process.
-
-### Contribute
-
-Allow participants to submit ideas, proposals, documents, comments or evidence.
-
-### Deliberate
-
-Support discussion, comparison, argumentation, moderation and collective
-sense-making.
-
-### Decide
-
-Represent public decisions, institutional responses, mandates, rationales and
-outcomes.
-
-### Account
-
-Track commitments, milestones, evidence, progress and public follow-up.
-
-These patterns are not UI components by themselves. They are Civic Stack Model
+Patterns are not UI components by themselves. They are Civic Stack Model
 concepts inside the Civic Design System and can be implemented through many
 tools, libraries or applications.
 
-## Layer 5: Conformance
+## Operational Model
 
-The Civic Design System should support conformance review for products that
-claim to follow Hiaka experience standards.
+The Operational Model makes the Conceptual Model usable, reviewable and
+eventually implementable.
 
-Conformance should answer:
+```text
+Operational Model
+  -> Standards and conformance
+  -> Reference implementation artifacts
+```
 
-* does the product make civic process state visible;
-* does it communicate actor, authority, responsibility and next step;
-* does it preserve accessibility and localization under realistic content;
-* does it expose public evidence and accountability where relevant;
-* does it avoid hiding domain uncertainty behind visual polish;
-* does it respect the boundaries of the Civic Stack Model.
+These are operational dimensions, not conceptual layers.
+
+## Standards And Conformance
+
+Standards and conformance define how products prove that they respect the Civic
+Design System.
+
+They answer:
+
+> How can a product be reviewed against the civic experience model?
+
+Conformance should check whether a product:
+
+* starts from explicit civic intents;
+* uses the shared semantic language consistently;
+* applies the correct Civic Design System patterns;
+* makes process state, actor responsibility, eligibility and next steps clear;
+* preserves accessibility and localization under realistic content;
+* exposes public evidence and accountability where relevant;
+* respects the boundaries of the Civic Stack Model.
 
 Conformance criteria for the Civic Design System are specified through Civic
-Stack Specs. They can begin as manual review checklists. Automated testing and
-design linting can come later when stable artifacts exist.
+Stack Specs. They can begin as manual review checklists. Automated testing,
+design linting and implementation certification can come later when stable
+artifacts exist.
 
-## Layer 6: Governance
+## Applicable Specs
+
+Civic Design System specs should follow a stable structure:
+
+* purpose;
+* civic intent;
+* semantic concepts;
+* patterns;
+* module touchpoints;
+* accessibility;
+* localization;
+* conformance checks;
+* examples;
+* non-goals.
+
+The first applicable specs are published in the Mintlify specs portal:
+
+* `design-system/spec-structure`;
+* `design-system/intents/understand-process`;
+* `design-system/intents/know-participation-eligibility`;
+* `design-system/intents/contribute-bounded-process`;
+* `design-system/patterns/inform`;
+* `design-system/patterns/consult`;
+* `design-system/patterns/contribute`;
+* `design-system/public-consultation-v0-mapping`.
+
+## Reference Implementation Artifacts
+
+Reference implementation artifacts help builders turn the model into usable
+products.
+
+They may include:
+
+* token definitions for repeated civic meanings;
+* UI component reference implementations;
+* Figma bridge or design assets;
+* examples of product implementation;
+* implementation guidance and accessibility examples;
+* conformance review checklists.
+
+These artifacts are downstream of the Conceptual Model. Tokens, components and
+Figma assets should be introduced only when they express stable civic intents,
+semantic meanings or patterns.
+
+## Governance
 
 The Civic Design System should be governed as a civic product.
 
-Add a principle when:
+Add an intent when:
 
-* it expresses a recurring civic experience concern;
-* it improves decisions across several products;
-* it can be reviewed through concrete examples.
+* it expresses a recurring civic job;
+* it applies across multiple civic products or blueprints;
+* it can be reviewed through concrete product examples.
+
+Add a semantic concept when:
+
+* the meaning repeats across products, specs or APIs;
+* inconsistent naming would weaken trust, auditability or interoperability;
+* the concept has clear relationships to actors, processes, evidence,
+  decisions, commitments or territories.
 
 Add a pattern when:
 
 * the interaction repeats across civic processes;
+* it realizes one or more civic intents;
 * it can be described without naming one product page;
 * it has clear accessibility, localization and public-trust implications.
 
-Add a token or component specification when:
+Add a token, component or Figma artifact when:
 
-* the interface meaning repeats across products;
+* the implementation meaning is stable across products;
 * the expected behavior can be tested or reviewed;
 * the artifact supports civic clarity rather than isolated decoration.
 
 Contribution workflow:
 
-1. Identify the civic job and audience.
-2. Check whether an existing principle, standard or pattern already applies.
+1. Identify the civic intent and audience.
+2. Check whether existing semantic concepts and patterns already apply.
 3. Propose the smallest reusable experience contract.
 4. Document intended use, non-use and conformance expectations.
 5. Validate accessibility, localization and long-content behavior.
 
-## Future Repository Orientation
+## Future Implementation Workspace
 
 The current hub documents and presents the Civic Design System as a component
 of the Civic Stack Model. A future dedicated repository can contain the

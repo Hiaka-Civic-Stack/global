@@ -1,0 +1,43 @@
+---
+title: "Reference Implementation Artifacts"
+description: "Operational artifacts that can implement the Civic Design System model."
+---
+
+Reference implementation artifacts help builders turn the Civic Design System
+model into usable products.
+
+They are downstream of the Conceptual Model. They should not define the Design
+System before intents, semantic meanings and patterns are stable.
+
+## Expected Artifacts
+
+A future Civic Design System repository may contain:
+
+* token definitions for repeated civic meanings;
+* UI component reference implementations;
+* Figma bridge or design assets;
+* examples of product implementation;
+* implementation guidance and accessibility examples;
+* conformance review checklists.
+
+This is an orientation, not a frozen repository contract.
+
+## Relationship To The Hub
+
+The current hub presents doctrine and specs orientation. It should not become
+the canonical implementation workspace for the Civic Design System.
+
+The hub's `packages/ui` package remains local hub UI infrastructure. Payload
+blocks remain landing-site editorial structures. shadcn remains a technical
+substrate when used by the hub.
+
+None of those implementation details replace the Civic Design System model.
+
+## Artifact Rule
+
+Add a token, component, Figma object or example when:
+
+* it expresses a stable civic intent, semantic meaning or pattern;
+* its expected behavior can be tested or reviewed;
+* it improves civic clarity, inclusion, auditability or localization;
+* it can be used without importing one product's business rules.

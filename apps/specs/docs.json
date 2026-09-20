@@ -36,17 +36,75 @@
         "tab": "Civic Stack Specs",
         "groups": [
           {
-            "group": "Implementation",
+            "group": "Start Here",
             "pages": [
-              "specs",
-              "design-system",
-              "design-system/principles",
-              "design-system/experience-standards",
-              "design-system/interaction-patterns",
-              "design-system/conformance",
-              "modules/overview",
-              "blueprints/public-consultation-v0",
-              "design-system/repository-orientation",
+              "specs"
+            ]
+          },
+          {
+            "group": "Civic Design System",
+            "pages": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "design-system",
+                  "design-system/spec-structure"
+                ]
+              },
+              {
+                "group": "Conceptual Model",
+                "pages": [
+                  "design-system/intents",
+                  "design-system/semantic-language",
+                  "design-system/patterns"
+                ]
+              },
+              {
+                "group": "Intent Specs",
+                "pages": [
+                  "design-system/intents/understand-process",
+                  "design-system/intents/know-participation-eligibility",
+                  "design-system/intents/contribute-bounded-process"
+                ]
+              },
+              {
+                "group": "Pattern Specs",
+                "pages": [
+                  "design-system/patterns/inform",
+                  "design-system/patterns/consult",
+                  "design-system/patterns/contribute"
+                ]
+              },
+              {
+                "group": "Operational Model",
+                "pages": [
+                  "design-system/standards-conformance",
+                  "design-system/reference-implementation"
+                ]
+              },
+              {
+                "group": "Blueprint Mapping",
+                "pages": [
+                  "design-system/public-consultation-v0-mapping"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Civic Modules",
+            "pages": [
+              "modules/overview"
+            ]
+          },
+          {
+            "group": "Civic Blueprints",
+            "pages": [
+              "blueprints/public-consultation-v0"
+            ]
+          },
+          {
+            "group": "Repository Strategy",
+            "pages": [
               "repository-strategy"
             ]
           }

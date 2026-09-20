@@ -1,0 +1,96 @@
+---
+title: "Intent: Know Whether One Can Participate"
+description: "Spec for explaining eligibility, scope and participation conditions before action."
+---
+
+## Purpose
+
+People should understand whether they can participate before they invest effort
+in a civic action.
+
+The product should explain eligibility, verification, territorial scope,
+deadlines and submission consequences before requiring the user to act.
+
+## Civic Intent
+
+Primary intent:
+
+* know whether one can participate.
+
+Related intents:
+
+* understand a public process;
+* contribute to a bounded civic process.
+
+## Semantic Concepts
+
+Required concepts:
+
+* participant;
+* eligibility;
+* verified identity;
+* public profile;
+* territorial scope;
+* participation period;
+* stage;
+* action availability;
+* submission consequence.
+
+## Patterns
+
+Primary patterns:
+
+* [Inform](/design-system/patterns/inform);
+* [Consult](/design-system/patterns/consult).
+
+Related pattern:
+
+* [Contribute](/design-system/patterns/contribute).
+
+## Module Touchpoints
+
+Typical module touchpoints:
+
+* Participation for eligibility policy references, active stage and
+  participation period;
+* Shared identity or participant verification services for verification state;
+* Contribution when eligibility affects submission behavior.
+
+The intent does not expose legal identity publicly and does not define
+authorization rules by itself.
+
+## Accessibility
+
+Eligibility information should be available before form submission and should
+not depend on hidden hover-only content.
+
+Disabled or unavailable actions should explain the reason and recovery path.
+
+## Localization
+
+Eligibility explanations must tolerate long civic vocabulary in Malagasy and
+French.
+
+Territorial names and verification labels should be localizable and not
+hard-coded to one administrative model.
+
+## Conformance Checks
+
+* Is eligibility explained before action?
+* Is verification requirement explained separately from public identity?
+* Is territorial scope visible?
+* Is the participation period or stage constraint visible?
+* If action is unavailable, does the interface explain why?
+* Does the product avoid exposing legal identity as the public participation
+  identity?
+
+## Examples
+
+In Public Consultation v0, a participant should know whether contributions are
+open, whether they need verification, and whether the consultation territory
+applies to them before submitting.
+
+## Non-Goals
+
+This intent does not define identity provider behavior, authorization policy,
+module persistence, visual tokens or UI components.

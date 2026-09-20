@@ -1,0 +1,95 @@
+---
+title: "Intent: Understand A Public Process"
+description: "Spec for helping people understand the state, rules and scope of a civic process."
+---
+
+## Purpose
+
+People should be able to understand what a public process is, who runs it,
+what stage it is in, who can participate and what happens next.
+
+## Civic Intent
+
+Primary intent:
+
+* understand a public process.
+
+Related intents:
+
+* know whether one can participate;
+* verify an official response, decision or rationale;
+* follow a decision, commitment or implementation progress.
+
+## Semantic Concepts
+
+Required concepts:
+
+* process;
+* institution;
+* stage;
+* status;
+* territorial scope;
+* participation period;
+* eligibility;
+* official documents;
+* next step.
+
+## Patterns
+
+Primary pattern:
+
+* [Inform](/design-system/patterns/inform).
+
+Related patterns:
+
+* [Consult](/design-system/patterns/consult);
+* [Contribute](/design-system/patterns/contribute);
+* Decide;
+* Account.
+
+## Module Touchpoints
+
+Typical module touchpoints:
+
+* Participation for process state, stages, participation periods and
+  eligibility policy references;
+* Contribution when the process exposes participant submissions;
+* Accountability when the process includes commitments or progress tracking.
+
+The intent does not define these module rules.
+
+## Accessibility
+
+The product should make process status, dates and next steps reachable by
+keyboard and understandable without relying only on color.
+
+Status labels should be readable by assistive technology and remain clear when
+content wraps on small screens.
+
+## Localization
+
+Process names, stage labels, territorial names and next-step text must support
+Malagasy and French without assuming short labels.
+
+Date and territory formatting should be localizable.
+
+## Conformance Checks
+
+* Can a first-time visitor identify the institution responsible for the
+  process?
+* Is the current process stage visible?
+* Are participation dates or deadlines visible where relevant?
+* Is territorial scope explained?
+* Is the next expected public step stated?
+* Are official documents or evidence discoverable when present?
+
+## Examples
+
+In Public Consultation v0, a participant should understand that a consultation
+has been published, what topic it covers, which territory it applies to and
+whether contribution is currently open.
+
+## Non-Goals
+
+This intent does not define process lifecycle rules, API fields, persistence,
+visual tokens or UI components.

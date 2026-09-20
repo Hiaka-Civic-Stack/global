@@ -1,0 +1,63 @@
+---
+title: "Semantic Language"
+description: "The shared civic vocabulary used across Hiaka products, specs and implementations."
+---
+
+The Semantic Layer defines the civic language used across products,
+documentation, specs and implementation.
+
+It is broader than semantic tokens. It defines the meanings that must remain
+consistent when teams design products, write specs, model APIs or create
+reference implementation artifacts.
+
+## Semantic Domains
+
+The initial semantic language includes:
+
+* actors: institution, participant, facilitator, moderator, decision maker,
+  observer, implementation owner;
+* processes: consultation, initiative, participatory budget, co-creation,
+  commitment tracking;
+* stages: draft, scheduled, open, under review, responded, decided, committed,
+  archived;
+* statuses: eligibility, contribution state, moderation state, response state,
+  decision state, commitment progress;
+* evidence: official documents, submitted attachments, response rationale,
+  decision rationale, progress proof;
+* official responses: institutional answer, rejection reason, merge decision,
+  follow-up action;
+* decisions: selected option, mandate, rationale, publication date,
+  responsible institution;
+* commitments: obligation, responsible actor, milestone, progress update,
+  evidence, due date;
+* territories: scope, jurisdiction, administrative hierarchy, local
+  configuration;
+* accountability progress: milestone state, latest update, next expected
+  update, evidence trail;
+* relations: contribution-to-response, response-to-decision,
+  decision-to-commitment, commitment-to-progress.
+
+## Why It Matters
+
+The same civic concept should not be named one way in the interface, another
+way in the API, and a third way in specs.
+
+The Semantic Layer gives design, product and engineering teams a shared
+language for trust, auditability, localization and interoperability.
+
+## Relationship To Tokens
+
+Semantic tokens may eventually express some of these meanings visually, such as
+process state, eligibility or accountability progress.
+
+Tokens are implementation artifacts. The Semantic Layer is the conceptual
+language that tells future tokens what they mean.
+
+## First Mapping
+
+The first applied semantic mapping is
+[Public Consultation v0 Design System Mapping](/design-system/public-consultation-v0-mapping).
+
+It shows how semantic concepts such as process, stage, eligibility,
+contribution, official response, commitment and accountability progress appear
+across the first blueprint.

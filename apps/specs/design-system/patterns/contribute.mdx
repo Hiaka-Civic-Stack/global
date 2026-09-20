@@ -1,0 +1,83 @@
+---
+title: "Pattern: Contribute"
+description: "Pattern spec for participant input inside a bounded civic process."
+---
+
+## Purpose
+
+Contribute helps people submit input, documents, evidence or proposals inside a
+bounded civic process while understanding state, publication behavior and next
+steps.
+
+## Civic Intent
+
+Primary intent:
+
+* [contribute to a bounded civic process](/design-system/intents/contribute-bounded-process).
+
+Related intents:
+
+* [know whether one can participate](/design-system/intents/know-participation-eligibility);
+* verify an official response, decision or rationale.
+
+## Semantic Concepts
+
+Required concepts:
+
+* participant;
+* contribution;
+* draft;
+* submitted contribution;
+* published contribution;
+* attachment;
+* moderation state;
+* eligibility;
+* official response.
+
+## Patterns
+
+Contribute depends on Inform and Consult for context.
+
+It can later connect to Deliberate, Decide and Account, but it should not own
+those downstream responsibilities.
+
+## Module Touchpoints
+
+Typical module touchpoints:
+
+* Participation for process state and eligibility;
+* Contribution for drafts, submissions, publication, moderation, attachments
+  and institutional response links.
+
+## Accessibility
+
+Contribution forms should provide accessible labels, validation errors, draft
+status, submission confirmation and moderation state.
+
+Keyboard users should be able to complete, review and submit the contribution.
+
+## Localization
+
+Contribution forms should support Malagasy and French labels, helper text,
+validation errors and confirmation messages.
+
+Long participant content should not break status or action layout.
+
+## Conformance Checks
+
+* Is process context available before contribution?
+* Is eligibility or action availability clear?
+* Are draft, submitted and published states distinguishable?
+* Are validation errors recoverable?
+* Is moderation state visible when relevant?
+* Is participant content separated from official response?
+
+## Examples
+
+In Public Consultation v0, Contribute covers the participant's submission flow,
+from starting a contribution through publication status.
+
+## Non-Goals
+
+Contribute does not define storage, moderation policy, API shape, visual
+tokens, UI components or institutional response rules.

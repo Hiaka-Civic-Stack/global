@@ -108,7 +108,7 @@ const pages: PageSeed[] = [
         items: [
           {
             title: "Civic Design System",
-            body: "Explore the model component that owns civic experience standards and Civic Patterns.",
+            body: "Explore the intent-driven and semantic model component that owns Civic Design System patterns.",
             href: "/model/design-system"
           },
           {
@@ -144,15 +144,15 @@ const pages: PageSeed[] = [
     title: "Civic Design System",
     slug: "model/design-system",
     summary:
-      "The Civic Design System is the Civic Stack Model component for civic experience patterns, standards and conformance.",
+      "The Civic Design System is the intent-driven and semantic Civic Stack Model component for civic product experience.",
     navigation: [],
     layout: [
       {
         blockType: "pageHero",
         eyebrow: "Civic Design System",
-        title: "The model component for civic experience",
+        title: "Intent-driven civic experience",
         body:
-          "Hiaka treats design as civic infrastructure. The Civic Design System sits inside the Civic Stack Model and generalizes Civic Patterns for trustworthy public participation services.",
+          "Hiaka treats design as civic infrastructure. The Civic Design System sits inside the Civic Stack Model and defines the intents, semantic language and patterns behind trustworthy public participation services.",
         actions: [
           {
             label: "Read design-system specs",
@@ -166,34 +166,34 @@ const pages: PageSeed[] = [
       },
       {
         blockType: "contentGrid",
-        eyebrow: "Domain model",
-        title: "Six layers of civic experience",
-        body: "The system is not the hub UI. It is the model component that defines civic experience standards and reusable Civic Patterns.",
+        eyebrow: "Conceptual model",
+        title: "Three layers for civic experience",
+        body: "The system is not the hub UI. It is the model component that helps teams design civic products from intent, semantic meaning and reusable patterns.",
         variant: "cards",
         items: [
           {
+            title: "Intent Layer",
+            body: "Civic jobs such as understanding a process, knowing if one can participate, contributing, verifying responses and following commitments."
+          },
+          {
+            title: "Semantic Layer",
+            body: "A shared civic language for actors, processes, stages, statuses, evidence, responses, decisions, commitments, territories and relations."
+          },
+          {
+            title: "Pattern Layer",
+            body: "Patterns such as inform, consult, contribute, deliberate, decide and account realize civic intents through the semantic language."
+          },
+          {
             title: "Civic principles",
-            body: "Trust, inclusion, transparency, auditability, territory awareness, localization and accessibility guide every design decision."
+            body: "Trust, inclusion, transparency, auditability, territory awareness, localization and accessibility govern every layer and artifact."
           },
           {
-            title: "Experience standards",
-            body: "Process status, actor responsibility, eligibility, evidence and accountability should remain visible and understandable."
+            title: "Standards and conformance",
+            body: "Operational criteria help products prove that they respect civic intents, semantic consistency, patterns, accessibility and accountability."
           },
           {
-            title: "Tokens and visual language",
-            body: "Future tokens can express recurring civic meanings such as process state, evidence, eligibility and accountability progress."
-          },
-          {
-            title: "Civic interaction patterns",
-            body: "Inform, consult, contribute, deliberate, decide and account are Civic Patterns inside the Design System."
-          },
-          {
-            title: "Experience conformance",
-            body: "Products can be reviewed against civic clarity, public trust, inclusion, accessibility and auditability expectations."
-          },
-          {
-            title: "Governance",
-            body: "Rules for adding principles, patterns, tokens and component specifications keep the system coherent as it grows."
+            title: "Reference implementation artifacts",
+            body: "Future tokens, components, Figma bridge, examples and guidance should implement stable civic meanings rather than define the model."
           }
         ]
       },
@@ -203,7 +203,7 @@ const pages: PageSeed[] = [
         title: "Experience model, not module ownership",
         items: [
           {
-            body: "The Civic Design System helps people understand public processes and trust digital civic interfaces."
+            body: "The Civic Design System helps people understand public processes, know their participation options and verify public action."
           },
           {
             body: "It does not define the business rules for participation, contribution, deliberation, decision or accountability modules."
@@ -222,23 +222,23 @@ const pages: PageSeed[] = [
         items: [
           {
             label: "01",
-            title: "Model civic experience",
-            body: "Start from trust, inclusion, auditability, localization and territory-aware participation."
+            title: "Start from civic intent",
+            body: "Name the civic job before choosing screens, flows or components."
           },
           {
             label: "02",
-            title: "Choose civic patterns",
-            body: "Use patterns such as inform, consult, contribute, deliberate, decide and account."
+            title: "Use semantic language",
+            body: "Represent actors, process state, eligibility, evidence, responses, decisions, commitments and territories consistently."
           },
           {
             label: "03",
-            title: "Review conformance",
-            body: "Check whether the product makes civic process, actor responsibility, accessibility and public evidence clear."
+            title: "Apply civic patterns",
+            body: "Use patterns such as inform, consult, contribute, deliberate, decide and account to realize the intent."
           },
           {
             label: "04",
-            title: "Prepare implementation",
-            body: "Future implementation work can live in a dedicated Design System repository as a component of the Civic Stack Model."
+            title: "Review operational fit",
+            body: "Check standards, conformance expectations and future implementation artifacts without confusing them with the conceptual model."
           }
         ]
       },
@@ -254,7 +254,7 @@ const pages: PageSeed[] = [
     ],
     meta: {
       title: "Hiaka Civic Design System",
-      description: "The Civic Stack Model component for civic experience patterns, standards and conformance."
+      description: "The intent-driven and semantic Civic Stack Model component for civic product experience."
     },
     _status: "published"
   },
@@ -294,7 +294,7 @@ const pages: PageSeed[] = [
           {
             label: "02",
             title: "Civic Design System",
-            body: "The civic experience framework that owns Civic Patterns, standards, accessibility, localization and conformance.",
+            body: "The intent-driven and semantic civic experience framework that owns Civic Design System patterns.",
             href: "/model/design-system"
           },
           {

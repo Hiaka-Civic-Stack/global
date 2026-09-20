@@ -1,0 +1,96 @@
+---
+title: "Intent: Contribute To A Bounded Civic Process"
+description: "Spec for helping people submit input within a clear civic process boundary."
+---
+
+## Purpose
+
+People should be able to contribute input, evidence or proposals while
+understanding the process boundary, publication behavior, moderation state and
+expected institutional follow-up.
+
+## Civic Intent
+
+Primary intent:
+
+* contribute to a bounded civic process.
+
+Related intents:
+
+* understand a public process;
+* know whether one can participate;
+* verify an official response, decision or rationale.
+
+## Semantic Concepts
+
+Required concepts:
+
+* participant;
+* contribution;
+* draft;
+* published contribution;
+* attachment;
+* moderation state;
+* eligibility;
+* stage;
+* official response;
+* evidence.
+
+## Patterns
+
+Primary pattern:
+
+* [Contribute](/design-system/patterns/contribute).
+
+Related patterns:
+
+* [Inform](/design-system/patterns/inform);
+* [Consult](/design-system/patterns/consult);
+* Deliberate;
+* Decide.
+
+## Module Touchpoints
+
+Typical module touchpoints:
+
+* Participation for process state, stage and eligibility;
+* Contribution for draft, submission, publication, moderation, attachment and
+  response state;
+* Accountability if the contribution later leads to a commitment.
+
+## Accessibility
+
+Forms should expose required fields, validation errors, draft state and
+publication confirmation in accessible text.
+
+Users should not lose entered content when recovering from validation or
+eligibility errors.
+
+## Localization
+
+Field labels, helper text, moderation labels and publication confirmation must
+support Malagasy and French.
+
+Long contribution titles and attachment names should wrap without obscuring
+actions.
+
+## Conformance Checks
+
+* Does the product explain what the contribution is for?
+* Is draft versus published state clear?
+* Are required fields and validation errors accessible?
+* Is moderation or publication status visible?
+* Does the participant understand what happens after submission?
+* Are attachments and evidence represented without implying they are official
+  responses?
+
+## Examples
+
+In Public Consultation v0, a participant submits a contribution during the
+open stage, sees publication status, and can later distinguish their
+contribution from the institution's response.
+
+## Non-Goals
+
+This intent does not define contribution storage, moderation policy, API shape,
+visual tokens or UI components.

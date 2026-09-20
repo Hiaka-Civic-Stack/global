@@ -1,34 +1,46 @@
 ---
 title: "Civic Design System"
-description: "The Civic Stack Model component for civic experience patterns and standards."
+description: "The intent-driven and semantic Civic Stack Model component for civic product experience."
 ---
 
 The Civic Design System is the Civic Stack Model component for designing civic
 technology experiences.
 
-It is both a civic-tech design framework and an experience standard that
-products can use for conformance review. It is not the Hiaka hub UI, Payload,
-shadcn or `packages/ui`.
+It is both a civic-tech design framework and a civic experience standard that
+products can use for specification, conformance review and improvement. It is
+not the Hiaka hub UI, Payload, shadcn or `packages/ui`.
 
-It generalizes the former Civic Patterns layer. Patterns such as inform,
-consult, contribute, deliberate, decide and account now live inside the Civic
-Design System.
+It generalizes the former standalone Civic Patterns concept. Patterns such as
+inform, consult, contribute, deliberate, decide and account now live inside the
+Civic Design System.
 
-## What It Owns
+## Model
 
-The Civic Design System owns:
+The Civic Design System is organized around a Conceptual Model and an
+Operational Model.
 
-* civic experience principles;
-* experience standards;
-* Civic Patterns;
-* accessibility and localization expectations;
-* experience conformance;
-* design-system governance.
+```text
+Civic Design System
+├── Conceptual Model
+│   ├── Intent Layer
+│   ├── Semantic Layer
+│   └── Pattern Layer
+│
+└── Operational Model
+    ├── Standards and conformance
+    └── Reference implementation artifacts
+```
 
-It does not own module business rules. Those belong to Civic Modules.
+Civic principles are transverse foundations. They govern all layers and
+artifacts, but they are not a separate conceptual layer.
 
-It does not own blueprint lifecycle contracts. Those belong to Civic
-Blueprints.
+## Boundaries
+
+The Civic Design System owns civic experience rules, semantic language,
+patterns and conformance criteria.
+
+It does not own module business rules. Those belong to Civic Modules. It does
+not own blueprint lifecycle contracts. Those belong to Civic Blueprints.
 
 ## Specs Boundary
 
@@ -37,13 +49,26 @@ Specs specify the components of the Civic Stack Model.
 
 ## Start Here
 
-Use these pages as the Sprint 1 entry points:
+Use these pages as the Design System entry points:
 
-* [Civic Principles](/design-system/principles)
-* [Experience Standards](/design-system/experience-standards)
-* [Interaction Patterns](/design-system/interaction-patterns)
-* [Experience Conformance](/design-system/conformance)
-* [Repository Orientation](/design-system/repository-orientation)
+* [Design System Spec Structure](/design-system/spec-structure)
+* [Intent Layer](/design-system/intents)
+* [Semantic Language](/design-system/semantic-language)
+* [Pattern Layer](/design-system/patterns)
+* [Standards And Conformance](/design-system/standards-conformance)
+* [Reference Implementation Artifacts](/design-system/reference-implementation)
+* [Public Consultation v0 Mapping](/design-system/public-consultation-v0-mapping)
+
+## First Applicable Specs
+
+Sprint 1A expands the model into the first usable specs:
+
+* [Intent: Understand A Public Process](/design-system/intents/understand-process)
+* [Intent: Know Whether One Can Participate](/design-system/intents/know-participation-eligibility)
+* [Intent: Contribute To A Bounded Civic Process](/design-system/intents/contribute-bounded-process)
+* [Pattern: Inform](/design-system/patterns/inform)
+* [Pattern: Consult](/design-system/patterns/consult)
+* [Pattern: Contribute](/design-system/patterns/contribute)
 
 ## Related Doctrine
 

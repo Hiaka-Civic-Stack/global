@@ -11,6 +11,11 @@ or implement it. Mintlify presents current specs pages, while future canonical
 sources may live in a separate Civic Design System repository that contains
 specs, tokens, UI components, Figma bridge and examples.
 
+Current model: the Civic Design System is intent-driven and semantic. Its
+Conceptual Model contains Intent, Semantic and Pattern layers. Standards,
+conformance and reference implementation artifacts are operational dimensions,
+not conceptual layers.
+
 **Tech Stack:** Markdown doctrine, Mintlify MDX navigation, Payload seed content.
 
 **Spec:** `docs/design-docs/civic-design-system.md`
@@ -58,11 +63,11 @@ specs, tokens, UI components, Figma bridge and examples.
 **Files:**
 
 * Modify: `apps/specs/design-system.mdx`
-* Create: `apps/specs/design-system/principles.mdx`
-* Create: `apps/specs/design-system/experience-standards.mdx`
-* Create: `apps/specs/design-system/interaction-patterns.mdx`
-* Create: `apps/specs/design-system/conformance.mdx`
-* Create: `apps/specs/design-system/repository-orientation.mdx`
+* Create: `apps/specs/design-system/intents.mdx`
+* Create: `apps/specs/design-system/semantic-language.mdx`
+* Create: `apps/specs/design-system/patterns.mdx`
+* Create: `apps/specs/design-system/standards-conformance.mdx`
+* Create: `apps/specs/design-system/reference-implementation.mdx`
 * Modify: `apps/specs/docs.json`
 
 **Interfaces:**
@@ -76,7 +81,8 @@ specs, tokens, UI components, Figma bridge and examples.
 
 - [x] **Step 2: Add focused pages**
 
-  Add pages for principles, experience standards, interaction patterns, conformance and future repository orientation.
+  Add pages for intents, semantic language, patterns, standards/conformance and
+  reference implementation artifacts.
 
 - [x] **Step 3: Update navigation**
 

@@ -1,18 +1,29 @@
 ---
-title: "Experience Conformance"
-description: "How products can be reviewed against the Civic Design System."
+title: "Standards And Conformance"
+description: "How products are reviewed against the Civic Design System model."
 ---
 
-Experience conformance checks whether a product follows Hiaka civic experience
-standards.
+Standards and conformance make the Civic Design System reviewable.
 
-It is one part of Civic Stack Specs conformance. Civic Stack Specs also cover
-implementation contracts such as APIs, events and module behavior. Civic Design
-System conformance focuses on civic experience quality.
+They are part of the Operational Model. They are not a fourth conceptual layer.
 
-## Review Questions
+```text
+Operational Model
+  -> Standards and conformance
+  -> Reference implementation artifacts
+```
 
-Use these questions for an early manual review.
+## Review Scope
+
+Civic Design System conformance checks whether a product:
+
+* starts from explicit civic intents;
+* uses the shared semantic language consistently;
+* applies the correct Civic Design System patterns;
+* makes process state, actor responsibility, eligibility and next steps clear;
+* preserves accessibility and localization under realistic content;
+* exposes public evidence and accountability where relevant;
+* respects the boundaries of the Civic Stack Model.
 
 ## Civic Clarity
 
@@ -29,21 +40,15 @@ Use these questions for an early manual review.
 * Does it expose rationale or evidence for public decisions?
 * Does it avoid hiding uncertainty behind polished language?
 
-## Inclusion
+## Inclusion And Accessibility
 
 * Does the flow work on small screens?
 * Does it tolerate long Malagasy and French text?
 * Does it remain readable under zoom?
 * Does it avoid assuming high bandwidth?
 * Does it explain eligibility before requiring action?
-
-## Accessibility
-
 * Can key actions be reached by keyboard?
-* Is focus visible and logical?
-* Are statuses announced or labeled?
-* Are errors tied to fields and recovery actions?
-* Does contrast support realistic reading conditions?
+* Are statuses, errors and next steps labeled clearly?
 
 ## Auditability
 
@@ -62,6 +67,6 @@ An early conformance review can classify findings as:
 * needs product-domain clarification;
 * needs implementation contract clarification.
 
-The last two categories are intentionally separate. Product-domain questions
-belong to the Civic Stack Model. Specification and conformance questions belong
-to Civic Stack Specs.
+The last two categories stay separate. Product-domain questions belong to the
+Civic Stack Model. Specification and conformance questions belong to Civic
+Stack Specs.

@@ -1,0 +1,106 @@
+---
+title: "Design System Spec Structure"
+description: "Standard structure for Civic Design System intent and pattern specs."
+---
+
+Civic Design System specs describe reusable civic experience contracts.
+
+They are part of Civic Stack Specs, but they do not define module business
+rules, APIs, tokens, components or Figma artifacts.
+
+## Standard Sections
+
+Each Civic Design System spec should use this structure:
+
+* purpose;
+* civic intent;
+* semantic concepts;
+* patterns;
+* module touchpoints;
+* accessibility;
+* localization;
+* conformance checks;
+* examples;
+* non-goals.
+
+## Purpose
+
+State the civic experience problem the spec addresses.
+
+The purpose should describe a recurring civic need, not one product page or
+one implementation detail.
+
+## Civic Intent
+
+Name the civic job the product must help people complete.
+
+Intent specs can define one primary intent and related intents. Pattern specs
+should explain which intents they realize.
+
+## Semantic Concepts
+
+List the shared civic concepts that must remain consistent across interface,
+specs and implementation.
+
+Examples:
+
+* actor;
+* process;
+* stage;
+* status;
+* eligibility;
+* evidence;
+* official response;
+* decision;
+* commitment;
+* territory.
+
+## Patterns
+
+List the Civic Design System patterns involved.
+
+Pattern specs should define the reusable interaction contract. Intent specs
+should identify which patterns can realize the intent.
+
+## Module Touchpoints
+
+Identify which Civic Modules usually provide the underlying capability.
+
+This section is not a dependency declaration. It prevents the Design System
+from pretending to own module business rules.
+
+## Accessibility
+
+Define minimum review expectations for keyboard use, focus, readable status,
+screen-reader labeling, error recovery and zoom behavior.
+
+## Localization
+
+Define how the spec behaves with Malagasy and French content, including long
+labels, local civic vocabulary, dates, territories and multi-line actions.
+
+## Conformance Checks
+
+Write checks that a reviewer can answer.
+
+Prefer observable questions over vague quality claims.
+
+## Examples
+
+Examples should show how the spec applies to a civic product or blueprint.
+
+Examples must stay implementation-agnostic unless explicitly labeled as
+reference implementation guidance.
+
+## Non-Goals
+
+List what the spec does not own.
+
+Common non-goals:
+
+* module business rules;
+* API shape;
+* persistence;
+* visual tokens;
+* UI components;
+* Figma object structure.

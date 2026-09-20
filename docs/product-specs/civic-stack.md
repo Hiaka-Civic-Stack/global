@@ -42,8 +42,10 @@ The hub is organized around two essential concepts:
   conformance.
 
 The Civic Design System is part of the Civic Stack Model. It generalizes the
-former Civic Patterns layer: patterns remain named, but they live inside the
-Civic Design System.
+former standalone Civic Patterns concept through an intent-driven and semantic
+model:
+Intent Layer, Semantic Layer and Pattern Layer. Patterns remain named, but they
+live inside the Civic Design System.
 
 Civic Blueprints compose Civic Modules and Civic Design System patterns to form
 complete civic processes.
@@ -54,8 +56,9 @@ packages used by those apps.
 
 The hub's UI package is local hub infrastructure. It must not be treated as the
 canonical Civic Design System. The Civic Design System may later have a
-dedicated repository as a component of the Civic Stack Model, containing specs,
-tokens, components, Figma bridge, examples and conformance guidance.
+dedicated repository as a component of the Civic Stack Model, containing
+reference implementation artifacts such as tokens, components, Figma bridge,
+examples and conformance guidance.
 
 Implementation repositories for individual Civic Modules should be independent
 repositories with their own contracts, tests, release cycles and documentation.
@@ -303,7 +306,13 @@ Example capabilities:
 # Civic Design System And Civic Patterns
 
 The Civic Design System is the Civic Stack Model component that defines civic
-experience principles, standards and reusable Civic Patterns.
+product experience through:
+
+* civic principles as transverse foundations;
+* an Intent Layer for recurring civic jobs;
+* a Semantic Layer for shared civic language;
+* a Pattern Layer for reusable civic experience patterns;
+* operational standards, conformance and reference implementation orientation.
 
 A Civic Pattern describes a reusable civic experience pattern.
 
@@ -319,8 +328,8 @@ Modules.
 
 A Civic Pattern does not own independent business data.
 
-It guides how capabilities exposed by Civic Modules are composed into a civic
-experience.
+It realizes civic intents through the shared semantic language and guides how
+capabilities exposed by Civic Modules are experienced by civic actors.
 
 Examples:
 
@@ -343,11 +352,11 @@ A Civic Pattern should define:
 * actors
 * trigger
 * preconditions
+* related semantic concepts
 * participating modules
 * interaction steps
-* relevant domain rules
 * outcome
-* emitted or consumed events
+* relevant API, event or module specs
 * failure states
 
 Example conceptual definition:
@@ -365,6 +374,12 @@ trigger:
 uses:
   - participation
   - contribution
+
+semanticConcepts:
+  - participant
+  - eligibility
+  - contribution-state
+  - process-stage
 
 preconditions:
   - process-is-open
@@ -874,7 +889,6 @@ hiaka-civic-stack/
     ├── product-specs/
     │   ├── civic-stack.md
     │   ├── modules/
-    │   ├── patterns/
     │   └── blueprints/
     │
     ├── design-docs/

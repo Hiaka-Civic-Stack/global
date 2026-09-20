@@ -96,6 +96,11 @@ assets, examples and conformance guidance. Its specs are part of Civic Stack
 Specs because Civic Stack Specs specify the components of the Civic Stack
 Model.
 
+The repository should implement and document the Civic Design System's
+intent-driven and semantic model: Intent Layer, Semantic Layer and Pattern
+Layer, with standards/conformance and reference implementation artifacts as
+operational dimensions.
+
 This is an orientation, not a locked repository contract. Until that repository
 exists, the hub can present the doctrine and current specs orientation, but it
 should not treat `packages/ui`, Payload blocks or shadcn as the Design System
@@ -184,7 +189,7 @@ Before creating every module repository, this hub should define:
 
 * the Payload landing app information architecture
 * the Mintlify specifications portal structure
-* the Civic Design System model component and repository orientation
+* the Civic Design System intent-driven and semantic model component
 * the Public Consultation v0 blueprint
 * the Participation module specification
 * the Contribution module specification

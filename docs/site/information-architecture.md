@@ -111,9 +111,13 @@ Recommended sections:
 * Civic Stack Model orientation
 * Civic Stack Specs orientation
 * Civic Design System specifications
+  * Intent Layer
+  * Semantic Language
+  * Pattern Layer
+  * Standards and conformance
+  * Reference implementation artifacts
 * Architecture overview
 * Civic Module specifications
-* Civic Design System pattern specifications
 * Civic Blueprint specifications
 * Shared digital service interfaces
 * API conventions
@@ -221,10 +225,9 @@ packages/ui/src/blocks/page-hero/page-hero.tsx
 
 ```text
 Home
-About Hiaka
 Model
 Modules
-Design System
+Design System under Model
 Blueprints
 Specifications
 Community

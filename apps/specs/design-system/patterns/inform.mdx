@@ -1,0 +1,80 @@
+---
+title: "Pattern: Inform"
+description: "Pattern spec for publishing official civic information and process context."
+---
+
+## Purpose
+
+Inform helps people understand official civic information, process rules,
+dates, territorial scope, responsible actors and next steps.
+
+## Civic Intent
+
+Primary intents:
+
+* [understand a public process](/design-system/intents/understand-process);
+* [know whether one can participate](/design-system/intents/know-participation-eligibility).
+
+## Semantic Concepts
+
+Required concepts:
+
+* institution;
+* process;
+* stage;
+* status;
+* territorial scope;
+* official document;
+* participation period;
+* eligibility;
+* next step.
+
+## Patterns
+
+Inform can stand alone for public orientation or support Consult, Contribute,
+Decide and Account.
+
+It should not hide process uncertainty behind marketing copy.
+
+## Module Touchpoints
+
+Typical module touchpoints:
+
+* Participation for process metadata, lifecycle state, stages and eligibility
+  policy references;
+* Shared document service for official documents;
+* Territory service for territorial scope.
+
+## Accessibility
+
+Key status and next-step information should be represented as text, not color
+alone.
+
+Documents should have descriptive labels and accessible file metadata where
+possible.
+
+## Localization
+
+Official information should support Malagasy and French, including longer
+labels and local civic vocabulary.
+
+Territorial labels should come from configuration or data, not hard-coded UI
+text.
+
+## Conformance Checks
+
+* Is the responsible institution visible?
+* Is the process status visible?
+* Are dates, scope and next steps visible?
+* Are official documents distinguishable from participant content?
+* Does the product expose enough context before asking for participation?
+
+## Examples
+
+In Public Consultation v0, Inform appears on the consultation overview before
+any contribution action.
+
+## Non-Goals
+
+Inform does not define document storage, process lifecycle rules, visual
+tokens, UI components or legal publication policy.

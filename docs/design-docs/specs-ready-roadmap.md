@@ -7,9 +7,10 @@ bring Hiaka to a specs-ready hub: clear for builders, coherent around the
 two-concept model, and ready to guide the first civic products.
 
 Sprint 1 is handled separately. It establishes the Civic Design System as the
-Civic Stack Model component for civic experience: both a civic-tech design
-framework and an experience conformance standard. It must not be confused with
-the local UI infrastructure used by the landing site or hub.
+Civic Stack Model component for civic experience: an intent-driven and semantic
+civic-tech design framework with operational standards, conformance and
+reference implementation orientation. It must not be confused with the local UI
+infrastructure used by the landing site or hub.
 
 ## Roadmap Outcome
 
@@ -46,12 +47,44 @@ Expected output:
 
 * doctrine and specs orientation for the Civic Design System as part of the
   Civic Stack Model;
+* an explicit Conceptual Model: Intent Layer, Semantic Layer and Pattern Layer;
+* an explicit Operational Model: standards/conformance and reference
+  implementation artifacts;
 * landing content that presents the product without implying it is implemented
   by the landing UI;
 * specs content that explains how builders should use the Civic Design System;
 * light repository orientation for a future single Civic Design System
   repository containing specs, tokens, components, Figma bridge, examples and
   conformance guidance.
+
+## Sprint 1A: Civic Design System Applicable Specs
+
+Sprint 1A deepens Sprint 1 without changing runtime UI, Payload schemas,
+tokens, components or Figma artifacts.
+
+Primary goal:
+
+* turn the Civic Design System doctrine into first usable specs.
+
+Expected output:
+
+* standard structure for Civic Design System specs;
+* dedicated specs for the first intents:
+  * understand a public process;
+  * know whether one can participate;
+  * contribute to a bounded civic process;
+* dedicated specs for the first patterns:
+  * Inform;
+  * Consult;
+  * Contribute;
+* mapping from Public Consultation v0 to intents, semantic concepts, patterns,
+  module touchpoints and conformance checks.
+
+Validation:
+
+* `git diff --check`;
+* `pnpm --filter @hiaka/specs typecheck`;
+* `pnpm typecheck`.
 
 ## Sprint 2: Civic Stack Model Foundation
 

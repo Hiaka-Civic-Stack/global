@@ -1,0 +1,62 @@
+---
+title: "Public Consultation v0 Design System Mapping"
+description: "Mapping from Civic Design System intents and patterns to the Public Consultation v0 blueprint."
+---
+
+This mapping proves the Civic Design System against the first Hiaka blueprint.
+
+It does not define the blueprint lifecycle or module business rules. It shows
+how civic intents, semantic concepts and patterns guide the experience of
+Public Consultation v0.
+
+## Mapping Table
+
+| Blueprint moment | Civic intent | Semantic concepts | Pattern | Module touchpoints | Conformance checks |
+| --- | --- | --- | --- | --- | --- |
+| Institution creates consultation | Understand a public process | institution, process, stage, territorial scope | Inform | Participation | Process has responsible actor, draft state, scope and next step. |
+| Institution publishes consultation | Understand a public process | process, status, stage, official document, participation period | Inform, Consult | Participation, documents | Published state, dates, topic and official documents are visible. |
+| Participant checks participation | Know whether one can participate | participant, eligibility, verification, territory, action availability | Inform, Consult | Participation, identity or verification service | Eligibility and action availability are explained before contribution. |
+| Participant submits contribution | Contribute to a bounded civic process | contribution, draft, attachment, eligibility, stage | Contribute | Participation, Contribution | Required fields, draft state, errors and submission consequence are clear. |
+| Contribution is published | Contribute to a bounded civic process | published contribution, moderation state, participant, evidence | Contribute | Contribution | Published versus moderated state is visible and participant content is distinct. |
+| Institution responds | Verify an official response | official response, institution, contribution relation, rationale | Decide | Contribution | Response is visibly institutional and linked to the contribution. |
+| Institution creates commitment | Follow a decision or commitment | commitment, responsible actor, milestone, decision relation | Account | Accountability | Commitment owner, rationale and expected progress path are visible. |
+| Commitment progress is updated | Follow a decision or commitment | progress update, evidence, milestone, latest update | Account | Accountability | Progress, evidence and latest update are inspectable. |
+| Participant sees progress | Follow a decision or commitment | accountability progress, evidence trail, next expected update | Account | Accountability | Progress history is legible without insider knowledge. |
+
+## Intent Coverage
+
+Public Consultation v0 covers these Civic Design System intents:
+
+* [understand a public process](/design-system/intents/understand-process);
+* [know whether one can participate](/design-system/intents/know-participation-eligibility);
+* [contribute to a bounded civic process](/design-system/intents/contribute-bounded-process);
+* verify an official response, decision or rationale;
+* follow a decision, commitment or implementation progress.
+
+The final two intents are mapped here but not yet expanded into dedicated
+Sprint 1A specs.
+
+## Pattern Coverage
+
+Public Consultation v0 uses these Civic Design System patterns:
+
+* [Inform](/design-system/patterns/inform);
+* [Consult](/design-system/patterns/consult);
+* [Contribute](/design-system/patterns/contribute);
+* Decide;
+* Account.
+
+Decide and Account are included because the blueprint includes institutional
+response and commitment tracking. They are not expanded into dedicated Sprint
+1A pattern specs.
+
+## Boundary Notes
+
+This mapping does not:
+
+* define Participation, Contribution or Accountability business rules;
+* define API endpoints or event names;
+* define visual tokens, UI components or Figma artifacts;
+* replace the Public Consultation v0 blueprint spec.
+
+It is the Design System view of the blueprint.

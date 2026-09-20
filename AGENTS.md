@@ -5,12 +5,13 @@ participation services.
 
 This repository is the public hub and documentation source for Hiaka. It should
 be a Turborepo monorepo containing a Payload landing app and a Mintlify
-specifications app, plus shared packages including a UI library based on
-shadcn/ui. It is not the implementation repository for every Civic Module.
+specifications app, plus shared packages used by those hub apps. It is not the
+implementation repository for every Civic Module or for the canonical Civic
+Design System implementation.
 
 The architecture is organized around:
 
-**Civic Modules → Civic Patterns → Civic Blueprints**
+**Civic Modules + Civic Design System patterns → Civic Blueprints**
 
 Before making substantial changes, read the relevant documentation under `docs/`.
 
@@ -21,7 +22,8 @@ Start with:
 * `docs/product-specs/civic-stack.md`
 * `ARCHITECTURE.md` when present
 * relevant module documentation under `docs/product-specs/modules/`
-* relevant Civic Pattern documentation under `docs/product-specs/patterns/`
+* relevant Civic Design System documentation under `docs/design-docs/`
+* relevant Civic Design System specs under `apps/specs/design-system/`
 * relevant Civic Blueprint documentation under `docs/product-specs/blueprints/`
 
 Do not silently contradict documented architecture.
@@ -35,18 +37,12 @@ Preserve this dependency model:
 
 ```text
 Civic Blueprint
-      ↓
-composes
+  composes Civic Modules
+  and Civic Design System patterns
+  with support from Shared Digital Services
 
-Civic Patterns
-      ↓
-coordinate
-
-Civic Modules
-      ↓
-consume
-
-Shared Digital Services
+Civic Design System
+  contains Civic Patterns
 ```
 
 Keep these concepts distinct.
@@ -65,17 +61,21 @@ Initial modules:
 
 A Civic Module must not depend on a specific Civic Blueprint.
 
-### Civic Patterns
+### Civic Design System Patterns
 
-Civic Patterns coordinate recurring civic interactions across one or more modules.
+Civic Patterns live inside the Civic Design System.
 
-Patterns should not own core business data.
+They model recurring civic experience patterns such as inform, consult,
+contribute, deliberate, decide and account.
+
+Patterns should not own core business data or module business rules.
 
 Do not introduce a generic workflow engine unless concrete use cases demonstrate the need.
 
 ### Civic Blueprints
 
-Civic Blueprints describe complete civic processes by composing Patterns and Modules.
+Civic Blueprints describe complete civic processes by composing Civic Modules
+and Civic Design System patterns.
 
 Initial Blueprints include:
 
@@ -284,7 +284,7 @@ Treat documentation as part of the product.
 When introducing or materially changing:
 
 * a Civic Module
-* a Civic Pattern
+* a Civic Design System pattern
 * a Civic Blueprint
 * a domain event
 * an API contract
@@ -310,13 +310,12 @@ apps/
 packages/
   content/
   config/
-  ui/        # Hiaka Design System based on shadcn/ui
+  ui/        # hub UI primitives and content components
 
 docs/
   site/
   product-specs/
     modules/
-    patterns/
     blueprints/
 
   design-docs/

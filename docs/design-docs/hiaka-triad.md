@@ -11,8 +11,9 @@ Together, they define what the stack is made of and how its components are
 specified, implemented and evaluated.
 
 The Civic Design System is no longer a top-level peer concept. It is a
-component of the Civic Stack Model. It generalizes the former Civic Patterns
-layer: patterns remain named, but they live inside the Civic Design System.
+component of the Civic Stack Model. It generalizes the former standalone Civic
+Patterns concept through an intent-driven and semantic model. Patterns remain
+named, but they live inside the Civic Design System.
 
 ## Civic Stack Model
 
@@ -61,16 +62,20 @@ The Civic Design System is the model component for civic experience.
 
 It owns:
 
-* civic experience principles;
-* experience standards;
-* Civic Patterns;
-* accessibility and localization expectations;
-* experience conformance;
-* design-system governance.
+* the Intent Layer for recurring civic jobs;
+* the Semantic Layer for shared civic language;
+* the Pattern Layer for reusable civic experience patterns;
+* transverse civic principles such as trust, inclusion, transparency,
+  auditability, territory awareness, localization and accessibility;
+* operational standards, conformance and reference implementation orientation.
 
 Civic Patterns are recurring civic experience patterns such as inform, consult,
 contribute, deliberate, decide and account. They are not a separate top-level
 layer of the stack.
+
+Standards, conformance, tokens, components, Figma bridge and implementation
+guidance are operational dimensions. They are not conceptual layers of the
+Design System.
 
 ### Civic Blueprints
 
