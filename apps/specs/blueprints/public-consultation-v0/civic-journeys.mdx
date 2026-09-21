@@ -1,0 +1,263 @@
+---
+title: "Civic Journeys"
+description: "End-to-end civic journeys, moderation policy and institutional outcome obligations."
+---
+
+<Note>**Status: draft.** This page is normative but not yet stable.</Note>
+
+These journeys connect Public Consultation v0 actors, lifecycle, Modules and
+Civic Design System patterns.
+
+## Journey 1: Configure And Publish
+
+**Actor:** Institution Manager.
+
+**Preconditions:** authorized institution scope; consultation in `DRAFT`.
+
+**Steps:**
+
+1. Define title, question, purpose and responsible institution.
+2. Define contribution period, territorial scope and eligibility policy.
+3. Select `immediate` or `pre_moderated` publication policy.
+4. Attach official documents where relevant.
+5. Validate and publish the consultation.
+6. Open the contribution period at the configured time or through an explicit
+   authorized action.
+
+**Outcome:** the consultation is publicly discoverable and clearly explains
+who can participate, when and what happens after participation.
+
+**Failure states:** missing required content, invalid dates, unauthorized
+institution scope or unavailable required service.
+
+**Components:** Participation; Inform and Consult patterns; conditional
+territory and document services.
+
+## Journey 2: Check Eligibility And Contribute
+
+**Actor:** Participant.
+
+**Preconditions:** consultation in `OPEN`; authenticated Participant account.
+
+**Steps:**
+
+1. Read the consultation and contribution policy.
+2. Inspect eligibility requirements before entering contribution content.
+3. Complete conditional verification when required.
+4. Create and validate a contribution.
+5. Submit the contribution.
+6. Follow publication or moderation state.
+
+**Outcome:** the contribution is published immediately after business
+validation or awaits moderation under the declared policy.
+
+**Failure states:** period closed, ineligible Participant, invalid content,
+verification unavailable, moderation rejection or attachment failure.
+
+**Components:** Participation and Contribution; Inform, Consult and Contribute
+patterns; authentication plus conditional identity, territory and document
+services.
+
+## Journey 3: Close And Publish Outcome
+
+**Actor:** Institution Manager.
+
+**Preconditions:** consultation in `OPEN`; authorized process scope.
+
+**Steps:**
+
+1. Close the contribution period.
+2. Review published contributions and any optional deliberation output.
+3. Perform optional internal evaluation.
+4. Publish the public outcome summary.
+5. Optionally publish individual responses linked to contributions.
+6. Identify concrete announced actions that require commitments.
+
+**Outcome:** the consultation reaches `RESPONDED`; public readers can inspect
+the institutional conclusion and next steps.
+
+**Failure states:** unauthorized closure, incomplete outcome summary, private
+review data exposed or announced action without a commitment.
+
+**Components:** Participation and Contribution; Inform plus provisional Decide
+mapping; audit infrastructure.
+
+## Journey 4: Track Commitments
+
+**Actors:** Institution Manager and Public Visitor.
+
+**Preconditions:** a concrete action has been announced in the outcome or an
+institutional response.
+
+**Steps:**
+
+1. Create a commitment linked to the consultation.
+2. Identify responsible actor, initial status and expected progress path.
+3. Add milestones where useful.
+4. Publish progress updates and public evidence.
+5. Complete the commitment with final evidence or explain why it ended without
+   completion.
+6. Let the public inspect progress history throughout tracking.
+
+**Outcome:** the institution's announced action remains publicly traceable.
+
+**Failure states:** missing responsible actor, progress without evidence where
+evidence is expected, unauthorized update or broken consultation relation.
+
+**Components:** Accountability; Inform plus provisional Account mapping;
+conditional document service and required audit infrastructure.
+
+## Contribution Publication Policies
+
+### Immediate
+
+After submission and business validation, the contribution is published. A
+later moderation action can restrict or remove it under a documented policy and
+must preserve audit evidence.
+
+### Pre-Moderated
+
+After submission and business validation, the contribution enters moderation.
+It is published only after approval.
+
+The selected policy is visible before the Participant starts contributing.
+Moderation state and appropriate reason remain visible to the affected
+Participant.
+
+## Outcome Summary
+
+The mandatory public outcome summary explains:
+
+* what was received;
+* how contributions were considered;
+* what the institution concluded;
+* which next steps are planned;
+* which uncertainties or limitations remain.
+
+Individual responses are optional. They remain visibly institutional and link
+to the contribution they address.
+
+## Commitments
+
+When an outcome or individual response announces a concrete action, the
+institution creates a commitment. The commitment exposes responsible actor,
+status, progress history and public evidence.
+
+## Normative Requirements
+
+### BP-PC-016
+
+Each consultation **MUST** declare either `immediate` or `pre_moderated` as its
+contribution publication policy before contributions are submitted.
+
+**Responsible components:** Participation and Contribution.
+
+**Related contracts:** `INT-002`, `AUTH-002`.
+
+**Expected evidence:** published configuration and journey tests for both
+policies.
+
+### BP-PC-017
+
+A contribution **MUST NOT** be submitted when the consultation is outside its
+open contribution period.
+
+**Responsible components:** Participation and Contribution.
+
+**Related contracts:** `AUTH-001`, `AUTH-002`, `AUD-004`.
+
+**Expected evidence:** closed-period use-case and API tests.
+
+### BP-PC-018
+
+Applicable eligibility rules **MUST** be evaluated before a contribution is
+accepted for publication.
+
+**Responsible components:** Participation and conditional verification service.
+
+**Related contracts:** `AUTH-003`, `AUTH-004`, `INT-003`.
+
+**Expected evidence:** eligibility policy tests and verification adapter
+contracts.
+
+### BP-PC-019
+
+Moderation status and an appropriate reason **MUST** be visible to the affected
+Participant without exposing sensitive administrative information.
+
+**Responsible component:** Contribution.
+
+**Related contracts:** `AUTH-006`, `AUD-004`, `EVT-009`.
+
+**Expected evidence:** participant-state journey, denial response and privacy
+tests.
+
+### BP-PC-020
+
+Eligibility or identity verification **MUST NOT** expose verified legal
+identity through the Participant's public profile by default.
+
+**Responsible components:** Participation and identity or verification service.
+
+**Related contracts:** `AUTH-004`, `AUTH-005`, `EVT-009`.
+
+**Expected evidence:** data-flow review and public representation tests.
+
+### BP-PC-021
+
+The institution **MUST** publish one public outcome summary after the
+contribution period closes.
+
+**Responsible components:** Participation and Contribution.
+
+**Related contracts:** `API-004`, `AUD-001`, `EVT-001`.
+
+**Expected evidence:** outcome publication operation, event and lifecycle test.
+
+### BP-PC-022
+
+The outcome summary **MUST** explain what was received, how contributions were
+considered, what was concluded, which next steps are planned and which
+uncertainties remain.
+
+**Responsible component:** Blueprint composition and institutional content.
+
+**Related contracts:** `SPEC-007`, `AUD-005`.
+
+**Expected evidence:** outcome schema and content conformance review.
+
+### BP-PC-023
+
+Individual institutional responses **MAY** be published and, when present,
+**MUST** be visibly institutional and linked to the relevant contribution.
+
+**Responsible component:** Contribution.
+
+**Related contracts:** `AUTH-008`, `AUD-003`, `INT-002`.
+
+**Expected evidence:** response relation schema and institutional attribution
+tests.
+
+### BP-PC-024
+
+When an institution announces a concrete action, it **MUST** create a public
+commitment for that action.
+
+**Responsible component:** Accountability.
+
+**Related contracts:** `API-004`, `AUD-001`, `EVT-001`.
+
+**Expected evidence:** outcome-to-commitment journey and relation tests.
+
+### BP-PC-025
+
+A public commitment **MUST** identify its consultation, responsible actor,
+current status, progress history and public evidence, and **SHOULD** link to
+related contributions or the outcome summary where relevant.
+
+**Responsible component:** Accountability.
+
+**Related contracts:** `AUD-003`, `AUD-010`, `INT-002`.
+
+**Expected evidence:** commitment representation, history and public evidence
+tests.
