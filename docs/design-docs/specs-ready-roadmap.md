@@ -96,8 +96,8 @@ Deliverables:
 
 * clarify the doctrine `Civic Modules + Civic Design System patterns -> Civic
   Blueprints`, supported by Shared Digital Services;
-* create dedicated specs pages for Civic Modules, Civic Design System patterns,
-  Civic Blueprints and Shared Digital Services;
+* create dedicated model orientation pages for Civic Modules, the Civic Design
+  System, Civic Blueprints, Shared Digital Services and composition;
 * separate the conceptual model from implementation specs while keeping the
   Civic Design System inside the model;
 * update landing content so the model is presented without being confused with
@@ -112,9 +112,10 @@ Validation:
 
 Acceptance criteria:
 
-* a builder can explain the four conceptual layers without reading the full
-  product spec;
-* each model layer has a dedicated orientation page;
+* a builder can explain the three model components and the supporting-services
+  boundary without reading the full product spec;
+* each model component, the supporting-services boundary and their composition
+  have a dedicated orientation page;
 * the model remains distinct from Civic Stack Specs.
 
 ## Sprint 3: Civic Stack Specs Foundation

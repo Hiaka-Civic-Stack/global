@@ -24,10 +24,25 @@
         "tab": "Civic Stack Model",
         "groups": [
           {
-            "group": "Model",
+            "group": "Start Here",
             "pages": [
               "model",
               "architecture"
+            ]
+          },
+          {
+            "group": "Model Components",
+            "pages": [
+              "model/modules",
+              "model/design-system",
+              "model/blueprints",
+              "model/shared-digital-services"
+            ]
+          },
+          {
+            "group": "Composition",
+            "pages": [
+              "model/composition"
             ]
           }
         ]

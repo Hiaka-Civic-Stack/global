@@ -5,6 +5,9 @@ description: "The core architectural model behind Hiaka."
 
 Hiaka separates civic process design from reusable civic capabilities.
 
+This page records the architectural invariants of the Civic Stack Model. Read
+[Composition](/model/composition) for the complete conceptual composition rule.
+
 ## Invariant
 
 ```text
@@ -17,3 +20,18 @@ Civic Blueprint
 Blueprints should not become monolithic applications. Civic Design System
 patterns should not own core business data. Modules should not depend on a
 single blueprint.
+
+## Dependency Boundaries
+
+* Civic Blueprints depend on published Module and Design System contracts.
+* Civic Modules remain independent from individual Blueprints.
+* Civic Design System patterns may reference Module touchpoints but do not own
+  Module state or business rules.
+* Shared Digital Services are accessed through explicit interfaces so the
+  civic domain remains vendor-neutral.
+
+## Specification Boundary
+
+Architecture defines the stable relationships between model components. Civic
+Stack Specs define the detailed interfaces, events, authorization rules and
+conformance requirements used to implement those relationships.

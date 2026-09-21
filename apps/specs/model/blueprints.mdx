@@ -1,0 +1,50 @@
+---
+title: "Civic Blueprints"
+description: "Complete civic process models composed from Modules and Design System patterns."
+---
+
+Civic Blueprints describe complete, reusable civic processes.
+
+They answer:
+
+**How are civic capabilities and experience patterns composed for a particular
+democratic process?**
+
+## Responsibilities
+
+A Blueprint defines the actors, stages, lifecycle and required composition for
+a civic process. It identifies which Civic Modules provide the capabilities and
+which Civic Design System patterns shape the experience.
+
+Initial Blueprint families include:
+
+* Public Consultation;
+* Citizen Initiative;
+* Participatory Budget;
+* Policy Co-Creation;
+* Public Commitment Tracking.
+
+## Boundaries
+
+A Blueprint is not a monolithic application and does not duplicate Module
+business rules. It does not turn a Design System pattern into a workflow engine.
+It may define process-specific constraints while depending on stable component
+contracts.
+
+## Composition
+
+```text
+Civic Blueprint
+  = Civic Modules
+  + Civic Design System patterns
+  + process-specific composition rules
+```
+
+Shared Digital Services support the resulting process through explicit
+interfaces.
+
+## Model Versus Specs
+
+This page defines the conceptual role of Blueprints. [Public Consultation
+v0](/blueprints/public-consultation-v0) is the first Blueprint specification and
+the reference slice used to validate the model.

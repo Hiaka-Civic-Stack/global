@@ -23,6 +23,20 @@ Civic Blueprints
 Shared Digital Services
 ```
 
+These concepts have distinct roles:
+
+* Civic Modules own reusable civic capabilities and business rules.
+* The Civic Design System owns civic intents, semantic language and experience
+  patterns.
+* Civic Blueprints compose Modules and Design System patterns into complete
+  civic processes.
+* Shared Digital Services support those components through explicit,
+  vendor-neutral interfaces; they are not a fourth civic component layer.
+
+The conceptual orientation is published under the Civic Stack Model section of
+the specs portal. Detailed implementation and conformance contracts belong to
+Civic Stack Specs.
+
 The reference Hiaka application is only one possible consumer of the stack.
 
 The stack must also be usable by third-party applications, government portals, local authorities, civil 

@@ -1,0 +1,48 @@
+---
+title: "Shared Digital Services"
+description: "Generic digital capabilities that support the Civic Stack Model through explicit interfaces."
+---
+
+Shared Digital Services provide generic infrastructure used by Civic Modules
+and Civic Blueprints.
+
+They answer:
+
+**Which non-civic capabilities does the stack need to consume?**
+
+Examples include:
+
+* authentication and identity;
+* participant verification;
+* territory registries;
+* notifications;
+* document storage;
+* search and GIS;
+* audit infrastructure.
+
+## Supporting Boundary
+
+Shared Digital Services are not a fourth civic component layer. They support
+the model without owning civic participation rules, experience patterns or
+complete process definitions.
+
+## Integration Rule
+
+Civic components access Shared Digital Services through explicit ports and
+adapters. Core domain logic must not depend directly on a particular identity
+provider, object store, notification vendor or GIS product.
+
+```text
+Civic component
+      |
+      +-- Identity port
+      +-- Territory port
+      +-- Document port
+      +-- Notification port
+```
+
+## Model Versus Specs
+
+This page defines the supporting role of Shared Digital Services. Future Civic
+Stack Specs will define the shared interfaces, data exchange expectations and
+interoperability requirements needed by implementations.

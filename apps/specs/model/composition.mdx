@@ -1,0 +1,59 @@
+---
+title: "Composition"
+description: "How Civic Modules, Design System patterns and Blueprints form complete civic processes."
+---
+
+Composition is the central rule of the Civic Stack Model.
+
+```text
+Civic Modules + Civic Design System patterns -> Civic Blueprints
+                                      |
+                                      +-- supported by Shared Digital Services
+```
+
+## What Each Part Contributes
+
+| Model concept | Contribution |
+| --- | --- |
+| Civic Module | Reusable civic capability and business rules |
+| Civic Design System pattern | Reusable civic interaction and experience guidance |
+| Civic Blueprint | Complete process composition, actors, stages and lifecycle |
+| Shared Digital Service | Generic infrastructure exposed through explicit interfaces |
+
+## Composition Rules
+
+1. A Blueprint selects the Modules needed for a civic process.
+2. The Blueprint uses Civic Design System patterns to realize civic intents at
+   relevant stages.
+3. Modules retain ownership of their domain rules and state transitions.
+4. Patterns retain ownership of civic experience guidance and semantic usage.
+5. Shared Digital Services are consumed through ports and adapters.
+6. Civic Stack Specs define the contracts that make the composition
+   implementable and testable.
+
+## Public Consultation v0
+
+Public Consultation v0 demonstrates the model with:
+
+* Participation for consultation lifecycle and eligibility references;
+* Contribution for participant submissions and institutional responses;
+* Accountability for commitments, progress and evidence;
+* Inform, Consult and Contribute patterns from the Civic Design System;
+* identity, territory, document and notification services where required.
+
+The [Design System mapping](/design-system/public-consultation-v0-mapping)
+shows how intents, semantic concepts, patterns and Module touchpoints connect in
+this reference slice.
+
+## Anti-Patterns
+
+The composition rule excludes these shortcuts:
+
+* placing Blueprint-specific logic inside a reusable Module;
+* storing core business state inside a Design System pattern;
+* treating Shared Digital Services as Civic Modules;
+* coupling civic domain logic directly to one infrastructure vendor;
+* treating the model overview as an implementation contract.
+
+Read [Architecture](/architecture) for the stable dependency invariants and
+[Civic Stack Specs](/specs) for the contract layer.

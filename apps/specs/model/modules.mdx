@@ -1,0 +1,46 @@
+---
+title: "Civic Modules"
+description: "Reusable civic capabilities and business rules in the Civic Stack Model."
+---
+
+Civic Modules are the reusable capability components of the Civic Stack Model.
+
+They answer:
+
+**What civic capability does the stack provide?**
+
+## Responsibilities
+
+A Civic Module owns a coherent civic domain boundary, including its concepts,
+business rules, use cases, permissions and state transitions.
+
+The initial Modules are:
+
+* Participation;
+* Contribution;
+* Deliberation;
+* Decision;
+* Accountability.
+
+## Boundaries
+
+A Module must not depend on one Civic Blueprint. The Participation Module, for
+example, must remain usable by Public Consultation, Citizen Initiative and
+Participatory Budget Blueprints.
+
+A Module does not define how every interaction is presented to a civic actor.
+That experience language belongs to the Civic Design System. Generic identity,
+notification, storage and territory capabilities belong to Shared Digital
+Services.
+
+## Relationship To Blueprints
+
+Civic Blueprints select and coordinate Modules to support a complete civic
+process. A Blueprint may constrain which Module capabilities it requires, but
+it does not absorb their business rules.
+
+## Model Versus Specs
+
+This page defines the conceptual role of Civic Modules. Read the [Civic Modules
+specs overview](/modules/overview) for the specification entry point. Detailed
+Module contracts will define APIs, events, authorization and conformance.
