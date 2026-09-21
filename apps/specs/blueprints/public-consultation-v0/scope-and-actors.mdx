@@ -1,0 +1,149 @@
+---
+title: "Scope And Actors"
+description: "Normative scope, actor responsibilities and identity boundaries for Public Consultation v0."
+---
+
+<Note>
+**Blueprint:** `BP-PUBLIC-CONSULTATION` · **Version:** `0.1.0` ·
+**Status:** draft · **Primary profile:** Blueprint
+</Note>
+
+## Purpose
+
+Public Consultation v0 specifies a reusable civic process in which an
+institution publishes a bounded public question, receives contributions,
+publishes an outcome and exposes implementation progress.
+
+The Blueprint covers this flow:
+
+```text
+Institution configures consultation
+→ Institution publishes consultation
+→ Public visitor discovers consultation
+→ Participant checks eligibility
+→ Participant submits contribution
+→ Contribution is published according to moderation policy
+→ Institution closes contribution period
+→ Institution publishes outcome summary
+→ Institution optionally responds to individual contributions
+→ Institution creates commitments for announced actions
+→ Institution updates progress and evidence
+→ Public visitor follows implementation
+```
+
+## Actors
+
+### Public Visitor
+
+A Public Visitor discovers and reads published consultations, contributions,
+institutional outcomes, commitments and public evidence. Reading public civic
+content does not require an account.
+
+### Participant
+
+A Participant checks eligibility, creates and submits contributions, inspects
+their contribution state and follows outcomes and commitments.
+
+A Participant account is required to contribute. Additional identity,
+residency or territorial verification is conditional on the consultation's
+eligibility policy.
+
+### Institution Manager
+
+An Institution Manager configures, publishes, opens and closes consultations;
+publishes outcome summaries; responds to contributions; and creates or updates
+commitments within an authorized organization, process and territory scope.
+
+### Moderator
+
+Moderator is optional. When enabled, the role reviews or moderates
+contributions according to the declared publication policy. It does not grant
+institutional outcome or commitment permissions.
+
+### Facilitator
+
+Facilitator is optional. The role can support civic participation through
+explicitly granted capabilities, but it does not inherit Moderator or
+Institution Manager permissions.
+
+## Identity And Eligibility Boundary
+
+Hiaka keeps these concepts separate:
+
+* Account authenticates access;
+* Participant represents the civic actor within the process;
+* Verified Identity holds protected verification data;
+* Public Profile controls publicly visible participant information;
+* Eligibility determines whether an action is permitted under process rules.
+
+Verification must not automatically publish legal identity. Eligibility can
+use verified attributes without exposing those attributes to the public.
+
+## Non-Goals
+
+Public Consultation v0 does not define:
+
+* electoral voting or a legally binding ballot;
+* advanced public deliberation;
+* a formal decision or selection mechanism;
+* a generic workflow engine;
+* mandatory national identity verification;
+* mandatory individual response to every contribution;
+* one deployment topology or infrastructure vendor.
+
+## Normative Requirements
+
+### BP-PC-001
+
+Published consultation information, published contributions, public outcome
+summaries, commitments and public evidence **MUST** be readable without
+authentication.
+
+**Responsible components:** Participation, Contribution and Accountability.
+
+**Related contracts:** `AUTH-002`, `AUTH-007`, `INT-001`.
+
+**Expected evidence:** anonymous-access API tests and public journey tests.
+
+### BP-PC-002
+
+The Blueprint **MUST** support Public Visitor, Participant and Institution
+Manager as required actors.
+
+**Responsible component:** Blueprint composition.
+
+**Related contracts:** `SPEC-007`, `AUTH-002`.
+
+**Expected evidence:** actor/action matrix and end-to-end journey coverage.
+
+### BP-PC-003
+
+A person **MUST** have a Participant account before submitting a contribution.
+
+**Responsible components:** Participation and authentication service.
+
+**Related contracts:** `AUTH-001`, `AUTH-004`, `INT-003`.
+
+**Expected evidence:** authenticated submission policy and use-case tests.
+
+### BP-PC-004
+
+Account, Participant, Verified Identity, Public Profile and Eligibility
+**MUST** remain distinct concepts.
+
+**Responsible components:** Participation, identity and verification services.
+
+**Related contracts:** `AUTH-004`, `AUTH-005`, `EVT-009`.
+
+**Expected evidence:** domain definitions, data-flow review and privacy tests.
+
+### BP-PC-005
+
+Moderator and Facilitator **MAY** be enabled as optional roles and **MUST NOT**
+receive Institution Manager permissions implicitly.
+
+**Responsible components:** Participation and authorization policy.
+
+**Related contracts:** `AUTH-002`, `AUTH-007`, `AUTH-009`.
+
+**Expected evidence:** role-policy definitions and negative authorization tests.
