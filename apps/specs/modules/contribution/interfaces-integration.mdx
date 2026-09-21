@@ -1,0 +1,66 @@
+---
+title: "Contribution Interfaces and Integration"
+description: "Semantic APIs, events, authorization, ports and persistence boundaries."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Routes describe required semantics, not final OpenAPI schemas.</Note>
+
+## Semantic API
+
+| Operation | Purpose | Authorization | Success event | Idempotency |
+| --- | --- | --- | --- | --- |
+| `POST /processes/{processId}/contributions` | Create draft | participant | `ContributionDraftCreated` | key required |
+| `PUT /contributions/{id}` | Update owned draft | owner | none | version precondition |
+| `POST /contributions/{id}/submit` | Submit and apply publication policy | owner | `ContributionSubmitted`, conditionally `ContributionPublished` | key required |
+| `POST /contributions/{id}/withdraw` | Withdraw contribution | owner | `ContributionWithdrawn` | replay safe |
+| `POST /contributions/{id}/moderate` | Record `APPROVE`, `REJECT`, `RESTRICT` or `RESTORE` | moderator scope | `ContributionModerated`; `ContributionPublished` on approval | key required |
+| `POST /contributions/{id}/respond` | Publish/version individual response | institution scope | `ContributionResponded` | key required |
+| `POST /contributions/{id}/outcome-links` | Link to outcome | institution scope | `ContributionLinkedToOutcome` | key required |
+| `GET /contributions/{id}` | Read public contribution | public | none | safe |
+| `GET /processes/{id}/contributions` | List published contributions | public | none | safe |
+| `GET /participants/me/contributions` | Track owned contributions | owner | none | safe |
+
+`PublishContribution` remains an internal application action used by submission
+or moderation. It is not an independently authorized public REST operation.
+
+Business errors include `contribution_not_found`, `draft_not_editable`,
+`process_not_open`, `participant_ineligible`, `publication_policy_mismatch`,
+`moderation_decision_invalid`, `moderation_reason_required`,
+`response_version_conflict`, `outcome_already_linked`, `outcome_not_available`,
+`version_conflict` and `forbidden_scope`.
+
+## Event Payload Minimum
+
+Events include `contributionId`, `processId`, previous and current state, policy
+version and occurred-at time. Moderation events include decision and public-safe
+reason. Response events include response version; outcome-link events include
+the typed outcome reference. A response that announces actions includes their
+stable identifiers and commitment expectations. All accountable actions include an actor reference.
+Payloads exclude draft content unless explicitly required by a protected
+integration contract.
+
+## Authorization And Audit
+
+Draft ownership, process scope, institution scope and moderator role are
+evaluated independently. Submission, publication, withdrawal, moderation,
+response and outcome linking create appropriate audit evidence. Frontend checks
+are never sufficient authorization.
+
+## External Ports
+
+| Port | Requirement |
+| --- | --- |
+| Authentication | Resolve participant and institutional actor context. |
+| Participation | Read process state and publication policy, and evaluate eligibility through the published contract. |
+| Document storage | Validate and resolve attachment references. |
+| Territory registry | Validate optional geographic references independently from attachments. |
+| Notifications | Notify owners of material state changes when enabled. |
+| Audit | Record accountable moderation and institutional actions. |
+| Clock / identifiers | Provide deterministic time and stable identifiers. |
+
+## Persistence Boundary
+
+Contribution persists its aggregate, state history, responses and external
+references. It must not read Participation tables, store process or outcome
+copies as authoritative records, own document binaries or require a shared
+transaction with another Module.

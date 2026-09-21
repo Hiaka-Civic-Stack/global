@@ -25,6 +25,7 @@ or national implementation.
 | `INT-008` | Territory references **MUST** support arbitrary hierarchies without hard-coded Madagascar-specific levels. |
 | `INT-009` | Date, time and identifier formats **MUST** be unambiguous across system boundaries. |
 | `INT-010` | Adapter failures **MUST** surface a documented failure category without leaking vendor-specific errors into the civic domain. |
+| `INT-011` | Cross-component references to public civic objects **MUST** expose the shared `PublicCivicReference` contract. |
 
 ## Ports And Adapters
 
@@ -41,6 +42,31 @@ Civic component
 
 An adapter translates a provider contract into the port. Replacing the
 provider must not require changes to core civic business rules.
+
+## Public Civic Reference
+
+Modules exchange references without reading another Module's persistence or
+copying its object as authoritative data. A `PublicCivicReference` contains:
+
+```json
+{
+  "type": "Commitment",
+  "id": "commitment-123",
+  "version": "7",
+  "publicStatus": "ACTIVE",
+  "terminal": false,
+  "resolvedAt": "2026-09-21T10:30:00Z"
+}
+```
+
+`type`, `id` and `version` identify the referenced public representation.
+`publicStatus` uses the owning Module's documented vocabulary. `terminal` gives
+consumers a stable completion signal without transferring ownership of the
+source lifecycle. `resolvedAt` records the observation time.
+
+The owning Module remains authoritative. A consuming Module stores the stable
+reference and any relation metadata it owns, but not an authoritative copy of
+the referenced object.
 
 ## Locale And Territory
 
@@ -80,6 +106,7 @@ Evidence should include:
 * locale and territory examples;
 * failure translation tests;
 * dependency classification.
+* `PublicCivicReference` producer and consumer contract tests.
 
 ## Non-Goals
 

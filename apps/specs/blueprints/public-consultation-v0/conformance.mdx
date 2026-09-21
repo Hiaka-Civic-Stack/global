@@ -24,35 +24,35 @@ links and documented provisional-pattern gaps.
 
 | Requirement | Cross-cutting contracts | Responsible component | Expected evidence | Result |
 | --- | --- | --- | --- | --- |
-| BP-PC-001 | AUTH, INT | Participation, Contribution, Accountability | Anonymous-access and public journey tests | Not evaluated |
+| BP-PC-001 | AUTH, INT | `PART-FR-009`, `PART-FR-011`, `CONT-FR-010`, `ACC-FR-009`, `ACC-FR-010` | Anonymous-access and public journey tests | Not evaluated |
 | BP-PC-002 | SPEC, AUTH | Blueprint composition | Actor/action matrix and journey coverage | Not evaluated |
-| BP-PC-003 | AUTH, INT | Participation, authentication service | Authenticated submission policy tests | Not evaluated |
-| BP-PC-004 | AUTH, EVT | Participation, identity services | Domain definitions and privacy tests | Not evaluated |
+| BP-PC-003 | AUTH, INT | `CONT-FR-001`, `CONT-FR-003`, authentication service | Authenticated submission policy tests | Not evaluated |
+| BP-PC-004 | AUTH, EVT | `PART-NFR-004`, identity services | Domain definitions and privacy tests | Not evaluated |
 | BP-PC-005 | AUTH | Participation, authorization policy | Optional-role and negative policy tests | Not evaluated |
-| BP-PC-006 | SPEC, INT | Blueprint, Participation | Stage/state documentation and lifecycle tests | Not evaluated |
-| BP-PC-007 | EVT, AUD | Participation | Lifecycle tests and public status mapping | Not evaluated |
-| BP-PC-008 | EVT, AUD | Participation, Blueprint | Separate close and outcome transition tests | Not evaluated |
+| BP-PC-006 | SPEC, INT | Blueprint, Participation domain model | Stage/state documentation and lifecycle tests | Not evaluated |
+| BP-PC-007 | EVT, AUD | `PART-FR-001` through `PART-FR-007`, `PART-FR-013` through `PART-FR-015` | Lifecycle tests and public status mapping | Not evaluated |
+| BP-PC-008 | EVT, AUD | `PART-FR-005`, `PART-FR-006` | Separate close and outcome transition tests | Not evaluated |
 | BP-PC-009 | INT, SPEC | Blueprint | Variants with and without Deliberation | Not evaluated |
 | BP-PC-010 | INT, SPEC | Blueprint | Internal-review variant without Decision | Not evaluated |
 | BP-PC-011 | SPEC, INT | Blueprint | Component manifest and composition tests | Not evaluated |
 | BP-PC-012 | SPEC, API | Blueprint | Ownership matrix and Module review | Not evaluated |
 | BP-PC-013 | SPEC, CONF | Experience composition | Design System mapping and review | Not evaluated |
 | BP-PC-014 | CONF | Experience composition | Disclosed provisional mapping gaps | Not evaluated |
-| BP-PC-015 | INT | Modules and adapters | Dependency matrix, ports and adapter tests | Not evaluated |
-| BP-PC-016 | INT, AUTH | Participation, Contribution | Published policy and policy-variant tests | Not evaluated |
-| BP-PC-017 | AUTH, AUD | Participation, Contribution | Closed-period tests | Not evaluated |
-| BP-PC-018 | AUTH, INT | Participation, verification service | Eligibility and adapter tests | Not evaluated |
-| BP-PC-019 | AUTH, AUD, EVT | Contribution | Participant-state and privacy tests | Not evaluated |
-| BP-PC-020 | AUTH, EVT | Participation, identity services | Data-flow and public representation tests | Not evaluated |
-| BP-PC-021 | API, AUD, EVT | Participation, Contribution | Outcome operation, event and lifecycle test | Not evaluated |
+| BP-PC-015 | INT | Module interface contracts and adapters | Dependency matrix, ports and adapter tests | Not evaluated |
+| BP-PC-016 | INT, AUTH | `PART-FR-002`, `CONT-FR-004` | Published policy and policy-variant tests | Not evaluated |
+| BP-PC-017 | AUTH, AUD | `PART-FR-005`, `CONT-FR-003` | Closed-period tests | Not evaluated |
+| BP-PC-018 | AUTH, INT | `PART-FR-012`, verification service | Eligibility and adapter tests | Not evaluated |
+| BP-PC-019 | AUTH, AUD, EVT | `CONT-FR-007`, `CONT-FR-011`, `CONT-NFR-003` | Participant-state and privacy tests | Not evaluated |
+| BP-PC-020 | AUTH, EVT | `PART-NFR-004`, identity services | Data-flow and public representation tests | Not evaluated |
+| BP-PC-021 | API, AUD, EVT | Participation (`PART-FR-006`, `PART-FR-011`) | Outcome operation, event and lifecycle test | Not evaluated |
 | BP-PC-022 | SPEC, AUD | Blueprint, institutional content | Outcome schema and content review | Not evaluated |
-| BP-PC-023 | AUTH, AUD, INT | Contribution | Response relation and attribution tests | Not evaluated |
-| BP-PC-024 | API, AUD, EVT | Accountability | Outcome-to-commitment journey tests | Not evaluated |
-| BP-PC-025 | AUD, INT | Accountability | Commitment history and evidence tests | Not evaluated |
-| BP-PC-026 | API, INT, CONF | Blueprint | Action matrix and OpenAPI operations | Not evaluated |
-| BP-PC-027 | EVT, INT, CONF | Blueprint | Event matrix, schemas and producer tests | Not evaluated |
-| BP-PC-028 | AUTH | Composing Modules | Actor/action matrix and policy tests | Not evaluated |
-| BP-PC-029 | AUD | Modules, audit infrastructure | Audit catalogue, schemas and tests | Not evaluated |
+| BP-PC-023 | AUTH, AUD, INT | Contribution (`CONT-FR-008`, `CONT-FR-009`) | Response relation and attribution tests | Not evaluated |
+| BP-PC-024 | API, AUD, EVT | Accountability (`ACC-FR-001`, `ACC-FR-011`) | Outcome-to-commitment journey tests | Not evaluated |
+| BP-PC-025 | AUD, INT | Accountability (`ACC-FR-002` through `ACC-FR-010`, `ACC-FR-013`, `ACC-FR-014`) | Commitment history and evidence tests | Not evaluated |
+| BP-PC-026 | API, INT, CONF | Blueprint mapped to Module interface contracts | Action matrix and semantic API operations | Not evaluated |
+| BP-PC-027 | EVT, INT, CONF | Blueprint mapped to Module event contracts | Event matrix, payload contracts and producer tests | Not evaluated |
+| BP-PC-028 | AUTH | Module authorization contracts | Actor/action matrix and policy tests | Not evaluated |
+| BP-PC-029 | AUD | Module audit contracts and audit infrastructure | Audit catalogue, schemas and tests | Not evaluated |
 | BP-PC-030 | CONF | Conforming implementation | Completed evidence matrix and gap disclosure | Not evaluated |
 
 ## Result Rules
@@ -74,11 +74,11 @@ name these gaps and cannot represent them as complete pattern conformance.
 Institutional response and commitment tracking have clear Blueprint contracts,
 but their Decide and Account experience mappings remain provisional.
 
-### Future Module Contract Depth
+### Machine-Readable Contract Depth
 
-The Blueprint identifies actions and events before the Module v0 specs define
-their detailed payloads and invariants. Later Module specs must preserve the
-Blueprint boundary rather than being copied into it.
+The Module v0 specs define semantic operations, payload minima and invariants.
+OpenAPI and event-schema artifacts remain future work and must preserve the
+Blueprint and Module ownership boundaries.
 
 ### Configurable Moderation
 

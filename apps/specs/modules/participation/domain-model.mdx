@@ -1,0 +1,76 @@
+---
+title: "Participation Domain Model"
+description: "Concepts, states and invariants owned by Participation."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Normative but not yet stable.</Note>
+
+## Concepts
+
+| Concept | Meaning |
+| --- | --- |
+| `CivicProcess` | Aggregate describing one bounded civic process. |
+| `ProcessStage` | Configured period with a civic purpose and temporal bounds. |
+| `ParticipationPeriod` | Interval during which a named capability is available. |
+| `TerritorialScope` | References to one or more nodes in an external territory hierarchy. |
+| `EligibilityPolicyRef` | Stable reference to policy criteria evaluated through a port. |
+| `EnabledCapability` | Declared optional capability available to compositions. |
+| `ProcessOutcome` | Institution-owned public summary and next steps for the process. |
+| `AnnouncedAction` | Stable outcome-owned action identifier, summary and commitment expectation. |
+| `FollowUpRef` | `PublicCivicReference` plus Participation-owned `required` relation metadata. |
+
+## Lifecycle
+
+The core lifecycle supports `DRAFT`, `PUBLISHED`, `OPEN`, `CLOSED`,
+`RESPONDED`, `TRACKING`, `COMPLETED` and `ARCHIVED`. A Blueprint may constrain
+or label these states but cannot redefine their Module invariants. `TRACKING`
+records that public follow-up exists; Participation stores only stable
+follow-up references and does not own commitment state.
+
+| Current state | Allowed next states |
+| --- | --- |
+| `DRAFT` | `PUBLISHED`, `ARCHIVED` |
+| `PUBLISHED` | `OPEN`, `ARCHIVED` |
+| `OPEN` | `CLOSED` |
+| `CLOSED` | `RESPONDED`, `ARCHIVED` |
+| `RESPONDED` | `TRACKING`, `COMPLETED`, `ARCHIVED` |
+| `TRACKING` | `COMPLETED`, `ARCHIVED` |
+| `COMPLETED` | `ARCHIVED` |
+| `ARCHIVED` | none |
+
+`ProcessStage` has an independent operational state: `SCHEDULED`, `OPEN` or
+`CLOSED`. Opening or closing a stage does not silently change the process
+state. A stage may open only while the process is `OPEN`; closing the final
+participatory stage does not close the process unless `CloseProcess` is also
+executed.
+
+## Invariants
+
+* A process has one stable identifier and accountable institution.
+* Public states require valid public metadata, locale and temporal rules.
+* `OPEN` requires a published process and an active participation period.
+* `CLOSED` does not imply `RESPONDED`.
+* `RESPONDED` requires exactly one current published `ProcessOutcome`.
+* `TRACKING` requires at least one validated public follow-up reference.
+* Published outcomes retain version and provenance history.
+* Every concrete action announced by an outcome has a stable
+  `announcedActionId`. Its identity remains stable across outcome corrections;
+  removal or material replacement is recorded explicitly.
+* The first outcome version moves `CLOSED` to `RESPONDED`. Corrections may
+  create a new current version only in `RESPONDED` or `TRACKING`; `COMPLETED`
+  and `ARCHIVED` outcomes are immutable.
+* A stage can be opened only after its configured temporal and capability
+  preconditions pass, and a closed stage cannot be reopened in v0.
+* Territorial scope uses external identifiers and arbitrary hierarchies.
+* Eligibility stores policy references and evaluation results, not verified
+  legal identity unless an explicit lawful contract requires it.
+* Completed or archived processes reject participation-opening transitions.
+* A `FollowUpRef` records whether that follow-up is required for process
+  completion. Participation resolves status through `PublicCivicReference` and
+  never infers terminal state from provider-specific values.
+
+## Ownership Boundary
+
+Contribution may reference a process and outcome identifier but cannot mutate
+their state. Accountability may reference the process or outcome but owns its
+own commitment lifecycle.

@@ -79,8 +79,9 @@ the institutional conclusion and next steps.
 **Failure states:** unauthorized closure, incomplete outcome summary, private
 review data exposed or announced action without a commitment.
 
-**Components:** Participation and Contribution; Inform plus provisional Decide
-mapping; audit infrastructure.
+**Components:** Participation owns the process outcome; Contribution owns any
+individual responses and contribution-to-outcome relations; Inform plus
+provisional Decide mapping; audit infrastructure.
 
 ## Journey 4: Track Commitments
 
@@ -134,13 +135,18 @@ The mandatory public outcome summary explains:
 * which next steps are planned;
 * which uncertainties or limitations remain.
 
+Every concrete announced action has a stable `announcedActionId` and declares
+that a public commitment is required. The identifier remains stable across
+outcome corrections.
+
 Individual responses are optional. They remain visibly institutional and link
 to the contribution they address.
 
 ## Commitments
 
 When an outcome or individual response announces a concrete action, the
-institution creates a commitment. The commitment exposes responsible actor,
+institution creates exactly one commitment whose version-pinned `SourceRef`
+includes the `announcedActionId`. The commitment exposes responsible actor,
 status, progress history and public evidence.
 
 ## Normative Requirements
@@ -208,9 +214,11 @@ identity through the Participant's public profile by default.
 The institution **MUST** publish one public outcome summary after the
 contribution period closes.
 
-**Responsible components:** Participation and Contribution.
+**Responsible component:** Participation.
 
 **Related contracts:** `API-004`, `AUD-001`, `EVT-001`.
+
+**Related Module requirements:** `PART-FR-006`, `PART-FR-011`.
 
 **Expected evidence:** outcome publication operation, event and lifecycle test.
 
@@ -235,19 +243,26 @@ Individual institutional responses **MAY** be published and, when present,
 
 **Related contracts:** `AUTH-008`, `AUD-003`, `INT-002`.
 
+**Related Module requirements:** `CONT-FR-008`, `CONT-FR-009`.
+
 **Expected evidence:** response relation schema and institutional attribution
 tests.
 
 ### BP-PC-024
 
-When an institution announces a concrete action, it **MUST** create a public
-commitment for that action.
+When an institution announces a concrete action, it **MUST** assign a stable
+`announcedActionId` and create exactly one public commitment for that action.
+The commitment source **MUST** pin the outcome or response version and include
+that action identifier.
 
 **Responsible component:** Accountability.
 
 **Related contracts:** `API-004`, `AUD-001`, `EVT-001`.
 
-**Expected evidence:** outcome-to-commitment journey and relation tests.
+**Related Module requirements:** `ACC-FR-001`, `ACC-FR-011`.
+
+**Expected evidence:** outcome/response-to-commitment journey, source-version,
+uniqueness and missing-commitment coverage tests.
 
 ### BP-PC-025
 
@@ -258,6 +273,9 @@ related contributions or the outcome summary where relevant.
 **Responsible component:** Accountability.
 
 **Related contracts:** `AUD-003`, `AUD-010`, `INT-002`.
+
+**Related Module requirements:** `ACC-FR-002` through `ACC-FR-010`,
+`ACC-FR-013`, `ACC-FR-014`.
 
 **Expected evidence:** commitment representation, history and public evidence
 tests.

@@ -1,0 +1,73 @@
+---
+title: "Participation Interfaces and Integration"
+description: "Semantic APIs, events, authorization, ports and persistence boundaries."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Routes describe required semantics, not final OpenAPI schemas.</Note>
+
+## Semantic API
+
+| Operation | Purpose | Authorization | Success event | Idempotency |
+| --- | --- | --- | --- | --- |
+| `POST /processes` | Create draft | institution scope | `ProcessCreated` | key required |
+| `PUT /processes/{id}/configuration` | Replace validated draft configuration | process manager | `ProcessConfigured` | version precondition |
+| `POST /processes/{id}/publish` | Publish process | process manager | `ProcessPublished` | replay safe |
+| `POST /processes/{id}/open` | Open participation | process manager or scheduler | `ProcessOpened` | replay safe |
+| `POST /processes/{id}/close` | Close participation | process manager or scheduler | `ProcessClosed` | replay safe |
+| `POST /processes/{id}/stages/{stageId}/open` | Open configured stage | process manager or scheduler | `ProcessStageOpened` | replay safe |
+| `POST /processes/{id}/stages/{stageId}/close` | Close configured stage | process manager or scheduler | `ProcessStageClosed` | replay safe |
+| `POST /processes/{id}/outcomes` | Publish/version outcome | institution scope | `ProcessOutcomePublished` | key required |
+| `POST /processes/{id}/tracking` | Start public follow-up | institution scope | `ProcessTrackingStarted` | replay safe |
+| `POST /processes/{id}/complete` | Complete process | process manager | `ProcessCompleted` | replay safe |
+| `POST /processes/{id}/archive` | Archive process | authorized operator | `ProcessArchived` | replay safe |
+| `GET /processes` | List public processes | public | none | safe |
+| `GET /processes/{id}` | Get public process | public or scoped actor | none | safe |
+| `GET /processes/{id}/participation-conditions` | Get periods and eligibility requirements | public | none | safe |
+| `POST /processes/{id}/eligibility-evaluations` | Evaluate current actor against policy | participant/system scope | none | key required |
+| `GET /processes/{id}/outcome` | Get public outcome | public | none | safe |
+
+Business errors include `process_not_found`, `stage_not_found`, `invalid_transition`,
+`configuration_incomplete`, `participation_period_invalid`,
+`stage_precondition_failed`, `outcome_immutable`,
+`eligibility_attributes_missing`, `eligibility_service_unavailable`,
+`version_conflict` and `forbidden_scope`.
+Errors follow [API Conventions](/contracts/api-conventions).
+
+## Event Payload Minimum
+
+Every event follows the [Domain Event envelope](/contracts/domain-events) and
+includes `processId`, `accountableInstitutionId`, previous and current state
+when relevant, configuration or outcome version, and occurred-at time. Events
+must not contain verified identity attributes or unpublished content.
+
+## Authorization And Audit
+
+Institution actions require organization, process and territory scope.
+Publication, closure, outcome publication, completion, archival and eligibility
+policy changes create audit records under `AUTH-*` and `AUD-*`.
+
+## External Ports
+
+| Port | Requirement |
+| --- | --- |
+| Authentication | Resolve actor and trusted authentication context. |
+| Identity/verification | Evaluate policy attributes and return a minimal decision. |
+| Territory registry | Resolve external territory references and ancestry. |
+| Document storage | Store official-document references without owning binary data. |
+| Notifications | Receive process transition notifications when enabled. |
+| Public reference resolver | Validate typed follow-up references through published contracts. |
+| Audit | Record accountable action independently from events. |
+| Clock | Supply deterministic current time. |
+| Identifier generator | Supply stable non-guessable identifiers. |
+
+## Persistence Boundary
+
+Participation persists only its aggregates, outcome versions, policy
+references and integration state. It must not store Contribution or
+Accountability records, expose persistence models as DTOs, or require a shared
+transaction with another Module.
+
+Follow-up resolution applies [`INT-011`](/contracts/interoperability). The
+resolver returns `PublicCivicReference`; Participation stores `type`, `id`, the
+last observed version and its own `required` flag. It refreshes status before
+completion and treats an unavailable required reference as non-terminal.

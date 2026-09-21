@@ -1,0 +1,72 @@
+---
+title: "Participation"
+description: "Reusable lifecycle, scope, eligibility-reference and outcome capabilities for civic processes."
+---
+
+<Note>**Status: draft · Version: 0.1.0 · ID: MOD-PART · Profile: Module · Accountable owner: Hiaka Civic Stack maintainers.** Normative but not yet stable.</Note>
+
+Participation owns the lifecycle and public identity of a civic process. It
+defines when participation is possible and publishes the process-level outcome
+without owning contributions, individual responses or commitments.
+
+## Responsibilities
+
+* process identity, metadata and accountable institution;
+* stages, participation periods and lifecycle transitions;
+* territorial scope and eligibility-policy references;
+* enabled capability declarations;
+* public process status and `ProcessOutcome`;
+* stable references consumed by other Modules.
+
+## Non-Responsibilities
+
+Participation does not own contribution content, moderation, individual
+institutional responses, deliberation, formal decision strategies,
+commitments, verified legal identity or Shared Digital Service implementations.
+
+## Consumers And Dependencies
+
+Products, Blueprints and other Modules consume Participation through published
+APIs and events. Authentication is required for protected actions. Identity or
+verification, territory, document and notification services are conditional
+ports. No specific Blueprint or provider is required.
+
+## Actors
+
+Public visitors read published processes and outcomes. Participants inspect
+participation conditions. Institution managers configure and transition
+processes. Authorized operators may archive records, while schedulers may
+execute explicitly authorized temporal transitions.
+
+## Specification
+
+* [Domain Model](/modules/participation/domain-model)
+* [Functional Requirements](/modules/participation/functional-requirements)
+* [Interfaces and Integration](/modules/participation/interfaces-integration)
+* [Quality and Conformance](/modules/participation/quality-conformance)
+
+## Risks And Trade-Offs
+
+Keeping eligibility as a policy reference protects identity boundaries but
+requires explicit adapter behavior. Owning the process outcome keeps lifecycle
+transitions coherent while leaving contribution-level responses independent.
+
+## Assumptions And Open Questions
+
+The specification assumes trusted organization, territory and verification
+contracts can be supplied through ports. No unresolved question prevents the
+v0 contract; deployment-specific retention and service targets remain declared
+implementation parameters.
+
+## Common Structure Coverage
+
+Identity, purpose, scope, actors and risks are covered here. The Domain Model
+covers terminology. Interfaces and Integration covers interfaces, exchange and
+dependencies. Quality and Conformance covers cross-cutting obligations,
+evidence and trade-offs. Change history is recorded below.
+
+## Change History
+
+| Version | Date | Change |
+| --- | --- | --- |
+| `0.1.0` | 2026-09-21 | Initial Module specification. |

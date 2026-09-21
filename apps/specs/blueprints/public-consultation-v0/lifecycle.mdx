@@ -75,12 +75,17 @@ DRAFT
 | `OPEN` | Contribution period starts | Eligible Participants can submit | `CLOSED` |
 | `CLOSED` | Contribution period ends or is closed by an authorized actor | New submissions are no longer accepted; outcome is pending | `RESPONDED` |
 | `RESPONDED` | Public outcome summary is published | Institutional conclusion and next steps are visible | `TRACKING` or `COMPLETED` |
-| `TRACKING` | At least one public commitment exists | Progress and evidence remain open to public review | `COMPLETED` |
-| `COMPLETED` | Response obligations and required tracking have ended | Consultation lifecycle is complete | None |
+| `TRACKING` | At least one required `CommitmentRef` exists for an announced action | Progress and evidence remain open to public review | `COMPLETED` |
+| `COMPLETED` | Every required commitment reference reports a terminal public state | Consultation lifecycle is complete | None |
 
 `CLOSED` does not imply institutional response. A consultation without a
 concrete announced action can move from `RESPONDED` to `COMPLETED` without
 entering `TRACKING`.
+
+For this Blueprint, every tracking reference is a `PublicCivicReference` of
+type `Commitment`. Commitments required by an announced action use
+`required: true`. `COMPLETED` and `CLOSED_WITHOUT_COMPLETION` are both terminal
+for process completion, while their different public meanings remain visible.
 
 ## Ownership
 

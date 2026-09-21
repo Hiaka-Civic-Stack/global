@@ -1,0 +1,71 @@
+---
+title: "Accountability Interfaces and Integration"
+description: "Semantic APIs, events, authorization, ports and persistence boundaries."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Routes describe required semantics, not final OpenAPI schemas.</Note>
+
+## Semantic API
+
+| Operation | Purpose | Authorization | Success event | Idempotency |
+| --- | --- | --- | --- | --- |
+| `POST /commitments` | Create public active commitment | institution scope | `CommitmentCreated` | key required |
+| `POST /commitments/{id}/responsible-organization` | Reassign with reason and effective time | institution scope | `ResponsibleOrganizationAssigned` | key required |
+| `POST /commitments/{id}/milestones` | Create milestone | commitment manager | `MilestoneCreated` | key required |
+| `POST /commitments/{id}/milestones/{milestoneId}/start` | Start milestone | commitment manager | `MilestoneStarted` | replay safe |
+| `POST /commitments/{id}/milestones/{milestoneId}/cancel` | Cancel milestone with reason | commitment manager | `MilestoneCancelled` | replay safe |
+| `POST /commitments/{id}/progress-updates` | Append progress or superseding correction | commitment manager | `CommitmentProgressUpdated` | key required |
+| `POST /commitments/{id}/evidence` | Attach evidence to typed owned target | commitment manager | `EvidenceAttached` | key required |
+| `POST /commitments/{id}/milestones/{milestoneId}/complete` | Complete milestone | commitment manager | `MilestoneCompleted` | replay safe |
+| `POST /commitments/{id}/complete` | Complete commitment | commitment manager | `CommitmentCompleted` | replay safe |
+| `POST /commitments/{id}/close-without-completion` | Close with reason | institution scope | `CommitmentClosedWithoutCompletion` | replay safe |
+| `GET /commitments` | List public commitments | public | none | safe |
+| `GET /commitments/{id}` | Read commitment | public | none | safe |
+| `GET /commitments/{id}/history` | Read progress and history | public | none | safe |
+
+Business errors include `commitment_not_found`, `source_not_available`,
+`source_version_not_available`, `announced_action_already_committed`,
+`responsible_organization_required`, `invalid_transition`,
+`progress_signal_invalid`, `superseded_entry_not_found`,
+`evidence_target_invalid`, `final_public_evidence_required`,
+`public_reason_required`, `version_conflict` and `forbidden_scope`.
+
+## Event Payload Minimum
+
+Events include `commitmentId`, typed source reference, previous and current
+state where applicable, accountable actor reference and occurred-at time.
+Responsibility events include previous and new organization, reason and
+effective time. Progress events include immutable entry identifier, signal and
+optional superseded-entry identifier. Evidence events include typed target and
+public-safe provenance. Payloads never embed source objects or document binaries.
+
+## Authorization And Audit
+
+Institution and commitment scopes are enforced at the application boundary.
+Responsibility changes, progress updates, evidence attachment, completion and
+closure create audit evidence separate from Domain Events.
+
+## External Ports
+
+| Port | Requirement |
+| --- | --- |
+| Authentication | Resolve institutional actor context. |
+| Source resolver | Validate typed public civic-object references through published contracts. |
+| Organization registry | Resolve stable organization references. |
+| Document storage | Validate evidence references and provenance metadata. |
+| Notifications | Notify subscribers of material changes when enabled. |
+| Audit | Record accountable actions independently from events. |
+| Clock / identifiers | Provide deterministic time and stable identifiers. |
+
+## Persistence Boundary
+
+Accountability persists commitments, milestones, immutable progress/evidence
+entries and history. It must not copy source objects as authoritative records,
+read another Module's database, own document binaries or require distributed
+transactions.
+
+Public commitment reads expose [`PublicCivicReference`](/contracts/interoperability)
+with `terminal: true` for `COMPLETED` and `CLOSED_WITHOUT_COMPLETION`, and
+`terminal: false` for `ACTIVE`. Source resolution also uses `INT-011`, while
+`SourceRef` additionally pins the source version and provenance used when the
+commitment was created.

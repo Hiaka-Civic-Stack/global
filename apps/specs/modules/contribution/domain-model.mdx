@@ -1,0 +1,68 @@
+---
+title: "Contribution Domain Model"
+description: "Concepts, states and invariants owned by Contribution."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Normative but not yet stable.</Note>
+
+## Concepts
+
+| Concept | Meaning |
+| --- | --- |
+| `Contribution` | Aggregate containing participant-authored civic content and state. |
+| `ContributorRef` | Private ownership reference distinct from public profile data. |
+| `PublicationPolicy` | `IMMEDIATE` or `PRE_MODERATED` behavior supplied by the process contract. |
+| `ModerationDecision` | `APPROVE`, `REJECT`, `RESTRICT` or `RESTORE`, with reason, policy version and accountable actor. |
+| `InstitutionalResponse` | Versioned institution-authored response linked to one contribution. |
+| `ResponseAnnouncedAction` | Stable response-version action identifier and commitment expectation. |
+| `AttachmentRef` | Reference to externally stored content with validation metadata. |
+| `GeographicRef` | Optional external location or territory reference. |
+| `OutcomeRef` | Stable reference linking a contribution to a Participation-owned outcome. |
+
+## States
+
+| Current state | Trigger | Next state |
+| --- | --- | --- |
+| `DRAFT` | submit under `IMMEDIATE` | `PUBLISHED` |
+| `DRAFT` | submit under `PRE_MODERATED` | `PENDING_MODERATION` |
+| `PENDING_MODERATION` | `APPROVE` | `PUBLISHED` |
+| `PENDING_MODERATION` | `REJECT` | `REJECTED` |
+| `PENDING_MODERATION` | participant withdraws | `WITHDRAWN` |
+| `PUBLISHED` | `RESTRICT` | `RESTRICTED` |
+| `PUBLISHED` | participant withdraws | `WITHDRAWN` |
+| `RESTRICTED` | `RESTORE` | `PUBLISHED` |
+
+`REJECTED` and `WITHDRAWN` are terminal in v0. `ContributionSubmitted` is a
+domain fact emitted by submission, not a durable aggregate state.
+
+An institutional response and outcome link are versioned relations on a
+contribution that is or was public; they do not replace its publication state.
+
+## Invariants
+
+* Only the owning participant can edit or submit a draft.
+* Submission requires an open process and a positive applicable eligibility
+  decision supplied through Participation contracts.
+* A contribution is published directly under `IMMEDIATE` and awaits approval
+  under `PRE_MODERATED`.
+* Immediate submission commits the accepted contribution and both submission
+  and publication events atomically through the same application operation.
+* Moderation preserves decision, reason, policy version, actor and history.
+* `APPROVE` applies only to pending moderation, `REJECT` only to pending
+  moderation, `RESTRICT` only to published content and `RESTORE` only to
+  restricted content.
+* A previously public contribution that becomes `WITHDRAWN` or `RESTRICTED`
+  retains a stable public tombstone with identifier, status, timestamps and a
+  public-safe reason. Draft, pending and rejected content is never public.
+* Public representations never expose private contributor or moderation data.
+* A contribution has zero or one current institutional response. Corrections
+  create a new attributed version; previous versions remain reviewable. A
+  response can target `PUBLISHED`, `RESTRICTED` or `WITHDRAWN` only when the
+  contribution has previously been public.
+* Every concrete action announced by an institutional response has a stable
+  `announcedActionId`. Its identity remains stable across response corrections.
+* Outcome references never grant Contribution ownership of the outcome.
+* A contribution may have multiple unique outcome references. Links are
+  append-only in v0, cannot duplicate the same outcome identifier and can
+  target only a contribution that is or was public.
+* Attachment references are validated without storing binary content.

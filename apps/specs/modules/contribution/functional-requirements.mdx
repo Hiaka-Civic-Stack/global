@@ -1,0 +1,109 @@
+---
+title: "Contribution Functional Requirements"
+description: "Normative functional behavior, commands and queries for Contribution v0."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** All requirements are `core` unless stated otherwise.</Note>
+
+## Requirements
+
+### CONT-FR-001 — Create draft
+
+An authenticated participant **MUST** be able to create a private draft linked
+to a process. Command: `CreateContributionDraft`. Event:
+`ContributionDraftCreated`. Evidence: ownership, privacy and API tests.
+
+### CONT-FR-002 — Update draft
+
+Only the owner **MUST** be able to update a draft before submission, using a
+version precondition. Command: `UpdateContributionDraft`. Evidence: ownership,
+validation and concurrency tests.
+
+### CONT-FR-003 — Submit contribution
+
+The Module **MUST** validate content, open-period status and applicable
+eligibility before accepting submission. The operation **MUST** use the current
+process policy version returned by Participation. Command: `SubmitContribution`.
+Event: `ContributionSubmitted`. Evidence: invariant, closed-period,
+eligibility, policy-version and adapter tests.
+
+### CONT-FR-004 — Apply publication policy
+
+The Module **MUST** apply the process-declared `IMMEDIATE` or `PRE_MODERATED`
+policy deterministically. Immediate submission publishes after validation;
+pre-moderated submission enters `PENDING_MODERATION`. Under `IMMEDIATE`, the
+submission operation **MUST** atomically persist publication and emit
+`ContributionSubmitted` followed by `ContributionPublished` through the same
+outbox boundary. Evidence: both policy variants, event-ordering, atomicity and
+policy-version tests.
+
+### CONT-FR-005 — Publish contribution
+
+An authorized policy path **MUST** publish a valid contribution once. Under
+`PRE_MODERATED`, `PublishContribution` is an internal application action caused
+by an `APPROVE` moderation decision; clients do not call it independently.
+Under `IMMEDIATE`, it is part of `SubmitContribution`. Event:
+`ContributionPublished`. Evidence: authorization, causation, idempotency and
+public-representation tests.
+
+### CONT-FR-006 — Withdraw contribution
+
+The owner **MUST** be able to withdraw a `PENDING_MODERATION` or `PUBLISHED`
+contribution without erasing required history. A previously public contribution
+retains a public tombstone. Command: `WithdrawContribution`. Event:
+`ContributionWithdrawn`. Evidence: state, ownership, tombstone and retention tests.
+
+### CONT-FR-007 — Moderate contribution
+
+An authorized moderator **MUST** record `APPROVE`, `REJECT`, `RESTRICT` or
+`RESTORE`, an appropriate participant reason, a public-safe reason where
+applicable and the policy version. The decision **MUST** obey the state table.
+Command: `ModerateContribution`. Event: `ContributionModerated`. Evidence:
+decision/state, actor-scope, reason, tombstone, restoration, privacy and audit tests.
+
+### CONT-FR-008 — Respond to contribution
+
+An authorized institution actor **MAY** publish one current, visibly
+institutional response linked to a contribution that is or was public. A
+correction creates a new attributed version and preserves prior versions. Capability:
+`institutional-response`. Command: `RespondToContribution`. Event:
+`ContributionResponded`. Evidence: attribution, cardinality, version-history,
+relation and authorization tests. Every concrete announced action in the
+response **MUST** expose a stable `announcedActionId` and declare whether a
+public commitment is required.
+
+### CONT-FR-009 — Link to outcome
+
+An authorized institution actor **MAY** append one or more unique links from a
+contribution that is or was public to existing Participation-owned outcomes
+without copying or mutating them. Links cannot be removed in v0. Capability: `outcome-link`.
+Command: `LinkContributionToOutcome`. Event: `ContributionLinkedToOutcome`.
+Evidence: uniqueness, append-only, reference and unavailable-outcome tests.
+
+### CONT-FR-010 — Public contribution queries
+
+The Module **MUST** expose paginated published contributions by process and
+identifier while excluding protected content. Previously public withdrawn or
+restricted contributions return stable tombstones and remain linkable. Queries:
+`GetPublicContribution`, `ListPublishedContributions`. Evidence: filtering,
+pagination, tombstone, stable-link and privacy tests.
+
+### CONT-FR-011 — Participant tracking
+
+An authenticated owner **MUST** be able to inspect draft, submission,
+publication and moderation state with an appropriate reason. Queries:
+`ListParticipantContributions`, `GetParticipantContributionState`. Evidence:
+ownership, denial and sensitive-reason tests.
+
+### CONT-FR-012 — Attachment references
+
+When enabled, the Module **MAY** accept validated attachment references without
+owning binary content. Capability: `attachments`. Evidence: adapter,
+media-metadata, invalid-reference and provider-failure tests.
+
+### CONT-FR-013 — Geographic references
+
+When enabled, the Module **MAY** accept validated geographic references without
+owning territory or location records. Capability: `geographic-references`.
+Evidence: territory adapter, arbitrary-hierarchy, invalid-reference and
+provider-failure tests.

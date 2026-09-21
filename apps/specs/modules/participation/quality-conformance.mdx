@@ -1,0 +1,41 @@
+---
+title: "Participation Quality and Conformance"
+description: "Participation-specific NFRs, tests and evidence matrix."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Results remain `Not evaluated` until an implementation supplies evidence.</Note>
+
+The [shared Module NFR baseline](/modules/specification-baseline) applies.
+
+## Participation NFRs
+
+| ID | Requirement | Expected evidence |
+| --- | --- | --- |
+| `PART-NFR-001` | Lifecycle transitions **MUST** be atomic, deterministic and reject stale aggregate versions. | State-machine, concurrency and persistence tests |
+| `PART-NFR-002` | Time-based opening and closure **MUST** use an injectable clock and documented timezone rules. | Clock-boundary and timezone tests |
+| `PART-NFR-003` | The same policy version and input attributes **MUST** produce the same eligibility decision. | Determinism and adapter contract tests |
+| `PART-NFR-004` | Eligibility processing **MUST** minimize attributes and **MUST NOT** expose legal identity publicly by default. | Data-flow, privacy and representation tests |
+| `PART-NFR-005` | Public process queries **MUST** be paginated and benchmarked against deployment-defined latency and capacity targets. | Repeatable workload report |
+| `PART-NFR-006` | Outcome and lifecycle history **MUST** remain reviewable after completion or archival according to retention policy. | Retention and recovery tests |
+
+## Test Expectations
+
+Required evidence includes domain invariant tests, application command/query
+tests, API contract tests, event producer tests, authorization denial tests,
+audit integration tests, persistence concurrency tests and every conditional
+port's adapter tests.
+
+## Conformance Matrix
+
+| Requirement | Behavior/interface | Evidence | Result |
+| --- | --- | --- | --- |
+| `PART-FR-001..005`, `PART-FR-014..015` | Core process and stage lifecycle APIs and events | Domain, API and event tests | Not evaluated |
+| `PART-FR-006..007`, `PART-FR-013` | Outcome, tracking and completion | Transition, reference, audit and representation tests | Not evaluated |
+| `PART-FR-009..011` | Public queries | Privacy, locale and pagination tests | Not evaluated |
+| `PART-NFR-001..006` | Quality obligations | Listed NFR evidence | Not evaluated |
+| `MOD-NFR-001..012` | Shared Module quality baseline | Baseline evidence for each requirement | Not evaluated |
+| `PART-FR-008` | Archive capability | Capability declaration and tests | Not evaluated |
+| `PART-FR-012` | Eligibility capability | Capability declaration and adapter tests | Not evaluated |
+
+Core Conformance requires all core FRs and NFRs. Archive and eligibility are
+claimed separately as Capability Conformance.

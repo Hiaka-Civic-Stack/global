@@ -1,0 +1,64 @@
+---
+title: "Contribution"
+description: "Reusable drafting, submission, publication, moderation and response capabilities."
+---
+
+<Note>**Status: draft · Version: 0.1.0 · ID: MOD-CONT · Profile: Module · Accountable owner: Hiaka Civic Stack maintainers.** Normative but not yet stable.</Note>
+
+Contribution owns participant-authored submissions and their publication,
+moderation and individual institutional-response lifecycle.
+
+## Responsibilities
+
+* drafts, validation and submission;
+* immediate or pre-moderated publication;
+* withdrawal and moderation state with appropriate reasons;
+* attachment and geographic references;
+* individual institutional responses;
+* references from contributions to process outcomes.
+
+## Non-Responsibilities
+
+Contribution does not own civic process lifecycle, eligibility policies,
+verified identity, global process outcomes, deliberation, formal decisions,
+commitments or binary document storage.
+
+## Dependencies
+
+It consumes published Participation contracts for process state, participation
+conditions and eligibility decisions. These are interface dependencies, not a
+database or Blueprint dependency.
+
+## Actors And Consumers
+
+Participants own drafts and submit contributions. Public visitors read
+published contributions. Institution managers publish individual responses,
+and moderators act only when a declared policy grants that role. Products and
+other Modules consume published APIs and events.
+
+## Assumptions, Risks And Open Questions
+
+The specification assumes process conditions can be resolved through a
+versioned contract. Provider unavailability must fail safely rather than permit
+an unverified submission. No unresolved question prevents the v0 contract;
+content-policy details remain deployment configuration.
+
+## Specification
+
+* [Domain Model](/modules/contribution/domain-model)
+* [Functional Requirements](/modules/contribution/functional-requirements)
+* [Interfaces and Integration](/modules/contribution/interfaces-integration)
+* [Quality and Conformance](/modules/contribution/quality-conformance)
+
+## Common Structure Coverage
+
+Identity, purpose, scope, actors, assumptions and risks are covered here. The
+Domain Model covers terminology. Interfaces and Integration covers interfaces,
+exchange and dependencies. Quality and Conformance covers cross-cutting
+obligations and evidence. Change history is recorded below.
+
+## Change History
+
+| Version | Date | Change |
+| --- | --- | --- |
+| `0.1.0` | 2026-09-21 | Initial Module specification. |

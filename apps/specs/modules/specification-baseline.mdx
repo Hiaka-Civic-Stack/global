@@ -1,0 +1,91 @@
+---
+title: "Module Specification Baseline"
+description: "Shared structure, quality baseline and conformance model for Civic Module specifications."
+---
+
+<Note>**Status: draft · Version: 0.1.0 · ID: MOD-BASE · Profile: Module · Accountable owner: Hiaka Civic Stack maintainers.** This baseline is normative but not yet stable.</Note>
+
+This baseline extends the [Module Profile](/framework/profiles/module). A
+Module specification must remain reusable across Civic Blueprints and must not
+depend on a particular product, deployment topology, framework or vendor.
+
+## Required Specification Suite
+
+Every Module spec must publish:
+
+1. overview, responsibilities and boundaries;
+2. domain concepts, states and invariants;
+3. functional requirements, commands and queries;
+4. API, event, authorization, port and persistence contracts;
+5. non-functional requirements, tests and conformance evidence.
+
+## Requirement Contract
+
+Functional and non-functional requirements use separate stable identifiers.
+Each requirement must state:
+
+* normative behavior using **MUST**, **SHOULD** or **MAY**;
+* `core` or named optional capability classification;
+* affected concepts and invariants;
+* related commands, queries, APIs and events where applicable;
+* authorization and audit obligations;
+* inspectable expected evidence.
+
+## Shared Non-Functional Baseline
+
+All `MOD-NFR-*` requirements are core requirements for every Civic Module.
+
+| ID | Concern | Minimum obligation | Expected evidence |
+| --- | --- | --- | --- |
+| `MOD-NFR-001` | Security and privacy | Implementations **MUST** apply least privilege, minimize sensitive data and prevent sensitive values from entering public representations or logs. | Threat model, policy tests and data-flow review |
+| `MOD-NFR-002` | Transition integrity | Implementations **MUST** validate invariants atomically before acknowledging a state-changing command. | Domain tests and persistence integration tests |
+| `MOD-NFR-003` | Idempotency | Implementations **MUST** make retry-sensitive commands idempotent or expose a documented conflict outcome. | Duplicate-delivery tests |
+| `MOD-NFR-004` | Auditability | Implementations **MUST** record accountable actions separately from Domain Events. | Audit catalogue and integration tests |
+| `MOD-NFR-005` | Interoperability | Implementations **MUST** publish versioned contracts and stable identifiers without exposing persistence models. | Contract review and compatibility tests |
+| `MOD-NFR-006` | Performance and capacity | Implementations **MUST** define deployment targets and measure latency, throughput, payload size and pagination under a documented workload. | Repeatable benchmark report |
+| `MOD-NFR-007` | Resilience and recovery | Implementations **MUST** define retry, timeout, backup and recovery targets per deployment and prevent acknowledged data loss. | Failure tests and recovery exercise |
+| `MOD-NFR-008` | Observability | Implementations **MUST** expose structured diagnostics, correlation identifiers and actionable failure signals without leaking protected data. | Telemetry review and failure-path tests |
+| `MOD-NFR-009` | Localization and territory | Implementations **MUST** preserve locale metadata and arbitrary territorial hierarchies without hard-coded country levels. | Locale and territory variants |
+| `MOD-NFR-010` | Portability | Implementations **MUST** keep domain behavior independent from frameworks, databases and service vendors. | Dependency review and adapter tests |
+| `MOD-NFR-011` | Accessible representations | Implementations **MUST** supply programmatic statuses, reasons and labels needed by conforming accessible interfaces. | Representation review against Design System contracts |
+| `MOD-NFR-012` | Data lifecycle | Implementations **MUST** document retention, deletion, minimization and legal-hold behavior for owned records. | Policy configuration and lifecycle tests |
+
+Targets such as latency, availability, capacity, retention duration and recovery
+time are deployment-defined. The measurement method and minimum safe behavior
+are part of the Module contract; arbitrary universal SLAs are not.
+
+## Interface Rules
+
+Semantic API contracts define method, route, purpose, required business data,
+preconditions, stable business errors, authorization scope, emitted events,
+audit effects and idempotency. Machine-readable OpenAPI and event schemas are
+future artifacts and must preserve these semantics.
+
+Modules consume Shared Digital Services through explicit ports. Direct access
+to another Module's persistence, transport DTOs derived from persistence
+records, implicit distributed transactions and mandatory vendor technologies
+are prohibited.
+
+## Conformance Model
+
+* **Core Conformant**: every applicable core requirement has passing evidence.
+* **Capability Conformant**: every requirement for a declared optional
+  capability has passing evidence in addition to Core Conformance.
+* **Partially Conformant**: evidence is incomplete without a demonstrated
+  mandatory violation.
+* **Non-Conformant**: a mandatory requirement has a demonstrated violation.
+
+Every matrix uses:
+
+```text
+Requirement -> behavior -> interface -> evidence -> result
+```
+
+A Blueprint may map its needs to Module requirements, but that mapping does not
+become a Module dependency.
+
+## Risks, Open Questions And Change History
+
+Deployment-defined targets improve portability but require conformance reports
+to disclose their selected values and workloads. No open question prevents use
+of version `0.1.0`. This version introduces the first shared Module baseline.

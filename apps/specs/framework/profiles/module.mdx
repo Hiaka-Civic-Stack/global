@@ -16,6 +16,8 @@ usable across multiple Civic Blueprints.
 In addition to the common core, a Module specification must define:
 
 * domain concepts and invariants;
+* functional requirements and their capability classification;
+* non-functional requirements and measurable evidence;
 * commands and queries;
 * Domain Events;
 * API surface;
@@ -23,6 +25,10 @@ In addition to the common core, a Module specification must define:
 * persistence boundaries;
 * external ports;
 * test expectations.
+
+The [Module Specification Baseline](/modules/specification-baseline) defines
+the required document suite, requirement metadata and `Core + Optional
+Capabilities` conformance model.
 
 ## Domain Boundary
 
@@ -60,6 +66,10 @@ Evidence should include:
 * authorization policy tests;
 * persistence integration tests;
 * adapter contract tests.
+
+Every normative Module requirement must appear in a conformance matrix linking
+the requirement to observable behavior, an interface where applicable, the
+expected evidence and an evaluation result.
 
 ## Non-Goals
 

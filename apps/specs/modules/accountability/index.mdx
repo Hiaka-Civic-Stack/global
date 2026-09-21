@@ -1,0 +1,63 @@
+---
+title: "Accountability"
+description: "Reusable public commitment, milestone, progress and evidence capabilities."
+---
+
+<Note>**Status: draft · Version: 0.1.0 · ID: MOD-ACC · Profile: Module · Accountable owner: Hiaka Civic Stack maintainers.** Normative but not yet stable.</Note>
+
+Accountability turns announced institutional actions into public commitments
+whose responsibility, progress, evidence and history can be inspected.
+
+## Responsibilities
+
+* public commitments and source references;
+* responsible organizations;
+* milestones and progress updates;
+* public evidence references;
+* completion or explained closure;
+* attributable status and progress history.
+
+## Non-Responsibilities
+
+Accountability does not decide what an institution should do, own source
+processes, outcomes or contributions, implement document storage, or redefine
+institutional identity and authorization.
+
+## Dependencies
+
+Source objects are referenced through stable published identifiers. Document,
+organization, notification and audit integrations use ports. No Blueprint,
+database or provider is mandatory.
+
+## Actors And Consumers
+
+Public visitors inspect commitments and history. Institution and commitment
+managers create and update commitments within authorized scope. Products and
+other Modules consume public commitment APIs and events.
+
+## Assumptions, Risks And Open Questions
+
+The specification assumes source and organization references can be validated
+through versioned contracts. Long-lived public history increases retention and
+correction obligations, so implementations must preserve provenance without
+silently rewriting records. No unresolved question prevents the v0 contract.
+
+## Specification
+
+* [Domain Model](/modules/accountability/domain-model)
+* [Functional Requirements](/modules/accountability/functional-requirements)
+* [Interfaces and Integration](/modules/accountability/interfaces-integration)
+* [Quality and Conformance](/modules/accountability/quality-conformance)
+
+## Common Structure Coverage
+
+Identity, purpose, scope, actors, assumptions and risks are covered here. The
+Domain Model covers terminology. Interfaces and Integration covers interfaces,
+exchange and dependencies. Quality and Conformance covers cross-cutting
+obligations and evidence. Change history is recorded below.
+
+## Change History
+
+| Version | Date | Change |
+| --- | --- | --- |
+| `0.1.0` | 2026-09-21 | Initial Module specification. |

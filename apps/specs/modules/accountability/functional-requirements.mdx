@@ -1,0 +1,117 @@
+---
+title: "Accountability Functional Requirements"
+description: "Normative functional behavior, commands and queries for Accountability v0."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** All requirements are `core` unless stated otherwise.</Note>
+
+## Requirements
+
+### ACC-FR-001 — Create commitment
+
+An authorized institution actor **MUST** be able to create a public `ACTIVE`
+commitment with source, purpose and responsible organization references.
+When the source is an announced action, the reference **MUST** include source
+type, object ID, source version, provenance and `announcedActionId`, and the
+Module **MUST** enforce one commitment per announced action.
+Command: `CreateCommitment`. Event: `CommitmentCreated`. Evidence: initial-state,
+public-representation, source-version, semantic-uniqueness, retry,
+authorization and unavailable-source tests.
+
+### ACC-FR-002 — Assign responsibility
+
+For an active commitment, the Module **MUST** validate and record a new responsible organization with a
+public reason and effective time. It retains the previous assignment and
+accountable actor. Command: `AssignResponsibleOrganization`. Event:
+`ResponsibleOrganizationAssigned`. Evidence: organization-port, attribution,
+reason, history and scope tests.
+
+### ACC-FR-003 — Create milestone
+
+For an active commitment, authorized managers **MAY** create ordered milestones with a public result and
+optional target date. Capability: `milestones`. Command: `CreateMilestone`.
+Event: `MilestoneCreated`. Evidence: ordering and date-validation tests.
+
+### ACC-FR-004 — Publish progress
+
+For an active commitment, authorized managers **MUST** be able to append a dated progress update with
+an `ON_TRACK`, `AT_RISK`, `DELAYED` or `BLOCKED` signal, narrative and evidence
+expectations. A correction **MUST** identify `supersedesProgressUpdateId` and
+must not modify the prior entry. Command: `UpdateCommitmentProgress`. Event:
+`CommitmentProgressUpdated`. Evidence: signal-vocabulary, append-only,
+supersession, authorization and public-representation tests.
+
+### ACC-FR-005 — Attach evidence
+
+For an active commitment, the Module **MUST** validate and attach a provenanced evidence reference to a
+typed `COMMITMENT`, `MILESTONE` or `PROGRESS_UPDATE` target owned by the same
+commitment, without owning binary content. Command: `AttachEvidence`. Event:
+`EvidenceAttached`. Evidence: target-ownership, document-port, provenance and
+failure tests.
+
+### ACC-FR-006 — Complete milestone
+
+When milestones are enabled, an authorized manager **MAY** complete an
+`IN_PROGRESS` milestone only when its evidence rule is satisfied. Capability: `milestones`. Command:
+`CompleteMilestone`. Event: `MilestoneCompleted`. Evidence: invariant and
+missing-evidence tests.
+
+### ACC-FR-007 — Complete commitment
+
+The Module **MUST** complete an active commitment only with at least one final
+public evidence reference. A commitment without final evidence cannot become
+`COMPLETED` and must use explained closure where appropriate. Command:
+`CompleteCommitment`. Event: `CommitmentCompleted`. Evidence: transition,
+public-evidence, missing-evidence and audit tests.
+
+### ACC-FR-008 — Close without completion
+
+An authorized institution actor **MUST** be able to close an unattainable or
+superseded commitment with a public reason, without rewriting its history.
+Command: `CloseCommitmentWithoutCompletion`. Event:
+`CommitmentClosedWithoutCompletion`. Evidence: reason, authorization and
+history tests.
+
+### ACC-FR-009 — Query public commitments
+
+The Module **MUST** expose paginated public commitments by identifier, source,
+responsible organization and status. Queries: `GetPublicCommitment`,
+`ListPublicCommitments`. Evidence: filtering, pagination and privacy tests.
+
+### ACC-FR-010 — Query progress and history
+
+The Module **MUST** expose chronological progress, milestones, evidence and
+significant history using public-safe attribution. Queries:
+`GetCommitmentProgress`, `GetCommitmentHistory`. Evidence: ordering,
+provenance and representation tests.
+
+### ACC-FR-011 — Preserve source relations
+
+The Module **MUST** retain stable typed relations to source objects and
+**SHOULD** support related contribution references without taking ownership of
+them. Every source relation **MUST** pin the referenced public version and
+provenance. Evidence: reference-integrity, version-correction and
+unavailable-provider tests.
+
+### ACC-FR-012 — Declare progress method
+
+If numeric progress is exposed, the Module **MUST** declare its calculation
+method identifier and version, input snapshot and an integer result from `0`
+through `100`. Later input changes must not rewrite previous values;
+narrative-only progress remains valid. Capability: `numeric-progress`.
+Evidence: range, deterministic calculation, snapshot and disclosure tests.
+
+### ACC-FR-013 — Start milestone
+
+When milestones are enabled, an authorized manager **MAY** move a `PLANNED`
+milestone to `IN_PROGRESS`. Capability: `milestones`. Command:
+`StartMilestone`. Event: `MilestoneStarted`. Evidence: transition,
+authorization and idempotency tests.
+
+### ACC-FR-014 — Cancel milestone
+
+When milestones are enabled, an authorized manager **MAY** cancel a `PLANNED`
+or `IN_PROGRESS` milestone with a public reason. Cancellation preserves history
+and cannot be reversed in v0. Capability: `milestones`. Command:
+`CancelMilestone`. Event: `MilestoneCancelled`. Evidence: allowed-state,
+public-reason, terminal-state and audit tests.

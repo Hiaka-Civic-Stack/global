@@ -8,8 +8,9 @@ description: "Expected API actions, Domain Events, authorization and auditabilit
 This page identifies the contracts that a Public Consultation v0 composition
 needs from Participation, Contribution and Accountability.
 
-Future Module specifications own exact DTOs, errors, payloads, invariants and
-producer behavior.
+The Module v0 specifications own semantic operations, errors, payload minima,
+invariants and producer behavior. Future machine-readable schemas must preserve
+those contracts.
 
 ## Expected API Actions
 
@@ -19,15 +20,26 @@ producer behavior.
 | `POST /processes/{id}/publish` | Participation | `API-004`, `AUTH-008`, `AUD-001` |
 | `POST /processes/{id}/open` | Participation | `API-004`, `AUTH-002`, `AUD-004` |
 | `POST /processes/{id}/close` | Participation | `API-004`, `AUTH-008`, `AUD-001` |
-| `POST /processes/{id}/contributions` | Contribution | `API-003`, `AUTH-004`, `INT-002` |
+| `POST /processes/{id}/eligibility-evaluations` | Participation, when eligibility is configured | `API-004`, `AUTH-004`, `INT-003` |
+| `POST /processes/{processId}/contributions` | Contribution | `API-003`, `AUTH-004`, `INT-002` |
 | `POST /contributions/{id}/submit` | Contribution | `API-004`, `API-007`, `AUTH-001` |
-| `POST /contributions/{id}/publish` | Contribution | `API-004`, `AUTH-002`, `AUD-004` |
+| `POST /contributions/{id}/withdraw` | Contribution | `API-004`, `AUTH-002`, `AUD-004` |
 | `POST /contributions/{id}/moderate` | Contribution | `API-004`, `AUTH-008`, `AUD-001` |
 | `POST /contributions/{id}/respond` | Contribution | `API-004`, `AUTH-008`, `AUD-001` |
-| `POST /processes/{id}/outcomes` | Participation and Contribution | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /contributions/{id}/outcome-links` | Contribution | `API-004`, `AUTH-008`, `INT-011` |
+| `POST /processes/{id}/outcomes` | Participation | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /processes/{id}/tracking` | Participation | `API-004`, `AUTH-008`, `INT-002` |
+| `POST /processes/{id}/complete` | Participation | `API-004`, `AUTH-008`, `AUD-004` |
 | `POST /commitments` | Accountability | `API-003`, `AUTH-008`, `AUD-001` |
+| `POST /commitments/{id}/responsible-organization` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
 | `POST /commitments/{id}/progress-updates` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/evidence` | Accountability | `API-004`, `AUTH-008`, `AUD-005` |
 | `POST /commitments/{id}/complete` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/close-without-completion` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/milestones` | Accountability, when milestones are enabled | `API-002`, `AUTH-008`, `AUD-001` |
+| `POST /commitments/{id}/milestones/{milestoneId}/start` | Accountability, when milestones are enabled | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/milestones/{milestoneId}/complete` | Accountability, when milestones are enabled | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/milestones/{milestoneId}/cancel` | Accountability, when milestones are enabled | `API-004`, `AUTH-008`, `AUD-004` |
 
 All operations apply documented errors, versioning, interoperability and
 conformance requirements from the cross-cutting contracts.
@@ -42,24 +54,50 @@ conformance requirements from the cross-cutting contracts.
 | `ProcessClosed` | Participation | `EVT-001`, `EVT-007`, `AUD-001` |
 | `ContributionSubmitted` | Contribution | `EVT-001`, `EVT-005`, `EVT-009` |
 | `ContributionPublished` | Contribution | `EVT-001`, `EVT-007`, `AUD-004` |
+| `ContributionWithdrawn` | Contribution | `EVT-001`, `EVT-006`, `AUD-004` |
 | `ContributionModerated` | Contribution | `EVT-001`, `EVT-006`, `AUD-001` |
 | `ContributionResponded` | Contribution | `EVT-001`, `EVT-006`, `AUD-003` |
-| `OutcomePublished` | Participation and Contribution | `EVT-001`, `EVT-005`, `AUD-001` |
+| `ContributionLinkedToOutcome` | Contribution | `EVT-001`, `EVT-005`, `INT-011` |
+| `ProcessOutcomePublished` | Participation | `EVT-001`, `EVT-005`, `AUD-001` |
+| `ProcessTrackingStarted` | Participation | `EVT-001`, `EVT-005`, `INT-002` |
+| `ProcessCompleted` | Participation | `EVT-001`, `EVT-007`, `AUD-004` |
 | `CommitmentCreated` | Accountability | `EVT-001`, `EVT-005`, `AUD-001` |
+| `ResponsibleOrganizationAssigned` | Accountability | `EVT-001`, `EVT-006`, `AUD-004` |
 | `CommitmentProgressUpdated` | Accountability | `EVT-001`, `EVT-007`, `AUD-004` |
+| `EvidenceAttached` | Accountability | `EVT-001`, `EVT-005`, `AUD-005` |
 | `CommitmentCompleted` | Accountability | `EVT-001`, `EVT-007`, `AUD-004` |
+| `CommitmentClosedWithoutCompletion` | Accountability | `EVT-001`, `EVT-006`, `AUD-004` |
+| `MilestoneCreated` | Accountability, when milestones are enabled | `EVT-001`, `EVT-005`, `AUD-001` |
+| `MilestoneStarted` | Accountability, when milestones are enabled | `EVT-001`, `EVT-007`, `AUD-004` |
+| `MilestoneCompleted` | Accountability, when milestones are enabled | `EVT-001`, `EVT-007`, `AUD-004` |
+| `MilestoneCancelled` | Accountability, when milestones are enabled | `EVT-001`, `EVT-006`, `AUD-004` |
 
-Event payloads remain owned by future Module specifications. Domain Events do
-not replace audit records.
+Event payloads remain owned by Module specifications. Domain Events do not
+replace audit records.
+
+## Module Requirement Traceability
+
+| Blueprint need | Module requirements |
+| --- | --- |
+| Process creation, configuration and lifecycle | `PART-FR-001` through `PART-FR-007`, `PART-FR-013` through `PART-FR-015` |
+| Public discovery and participation conditions | `PART-FR-009` through `PART-FR-012` |
+| Contribution draft, submission and publication | `CONT-FR-001` through `CONT-FR-005` |
+| Withdrawal, moderation and participant tracking | `CONT-FR-006`, `CONT-FR-007`, `CONT-FR-010`, `CONT-FR-011` |
+| Individual institutional response and outcome relation | `CONT-FR-008`, `CONT-FR-009` |
+| Commitment creation and responsibility | `ACC-FR-001`, `ACC-FR-002` |
+| Progress, evidence, completion and public history | `ACC-FR-003` through `ACC-FR-011`, `ACC-FR-013`, `ACC-FR-014` |
+
+These links validate composition. They do not make Public Consultation a
+dependency of any Module specification.
 
 ## Authorization Matrix
 
 | Actor | Allowed actions | Required scope | Denial expectation |
 | --- | --- | --- | --- |
-| Public Visitor | Read published civic information | Published resources | Unpublished or restricted resources remain inaccessible |
+| Public Visitor | Read published civic information and public tombstones | Published resources | Protected content remains inaccessible; a public-safe tombstone preserves stable links after withdrawal or restriction |
 | Participant | Create and submit own contribution | Open process, eligibility, territory and ownership | Explicit non-sensitive denial |
 | Institution Manager | Configure, publish, close, respond and manage commitments | Organization, process and territory | Default deny outside accountable scope |
-| Moderator | Review, restrict or approve contributions | Enabled role, process and moderation policy | No moderation permission when role or policy is absent |
+| Moderator | `APPROVE`, `REJECT`, `RESTRICT` or `RESTORE` contributions | Enabled role, process, contribution state and moderation policy | No moderation permission when role, state or policy is absent |
 | Facilitator | Explicit support actions | Granted process capability | No implicit moderation or institutional permission |
 
 Authorization is enforced at the application or domain boundary, never only in

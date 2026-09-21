@@ -1,0 +1,118 @@
+---
+title: "Participation Functional Requirements"
+description: "Normative functional behavior, commands and queries for Participation v0."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** All requirements below are `core` unless stated otherwise.</Note>
+
+## Requirements
+
+### PART-FR-001 — Create process
+
+The Module **MUST** create a `DRAFT` process with stable identity, accountable
+institution and locale. Command: `CreateProcess`. Event: `ProcessCreated`.
+Evidence: aggregate and API tests for valid, duplicate and unauthorized input.
+
+### PART-FR-002 — Configure process
+
+The Module **MUST** validate metadata, stages, periods, territory, eligibility
+policy references and enabled capabilities before configuration is accepted.
+Command: `ConfigureProcess`. Event: `ProcessConfigured`. Evidence: invariant and
+configuration-variant tests.
+
+### PART-FR-003 — Publish process
+
+Only an authorized institution actor **MUST** be able to publish a complete
+process. Command: `PublishProcess`. Event: `ProcessPublished`. Evidence:
+positive, negative, audit and missing-content tests.
+
+### PART-FR-004 — Open participation
+
+The Module **MUST** open participation only for a published process whose
+temporal and capability preconditions are satisfied. Command: `OpenProcess`.
+Event: `ProcessOpened`. Evidence: transition and deterministic-clock tests.
+
+### PART-FR-005 — Close participation
+
+The Module **MUST** close an open process idempotently and expose that new
+submissions are no longer accepted. Command: `CloseProcess`. Event:
+`ProcessClosed`. Evidence: transition, retry and public-status tests.
+
+### PART-FR-006 — Publish process outcome
+
+After closure, an authorized institution actor **MUST** be able to publish one
+current `ProcessOutcome`, moving the process to `RESPONDED`. An authorized
+correction **MAY** create a new current version while the process is
+`RESPONDED` or `TRACKING`; completed and archived outcomes are immutable.
+Every concrete announced action **MUST** have a stable `announcedActionId` and
+declare whether a public commitment is required.
+Command: `PublishProcessOutcome`. Event: `ProcessOutcomePublished`. Evidence:
+schema, authorization, version-history, immutable-state, audit and
+separate-close/outcome tests.
+
+### PART-FR-007 — Complete process
+
+The Module **MUST** complete only a `RESPONDED` or `TRACKING` process whose
+configured process obligations are satisfied. A tracking process additionally
+requires every mandatory public follow-up to report a terminal state through
+its published contract. Command: `CompleteProcess`. Event: `ProcessCompleted`.
+Evidence: both source-state transitions, reference-state and unmet-obligation
+tests.
+
+### PART-FR-008 — Archive process
+
+Authorized operators **MAY** archive a non-active process without deleting its
+public outcome or audit references. Capability: `archive`. Command:
+`ArchiveProcess`. Event: `ProcessArchived`. Evidence: retention and access tests.
+
+### PART-FR-009 — Query public processes
+
+The Module **MUST** expose paginated public process listings and process detail
+without leaking draft, protected or internal policy data. Queries:
+`ListPublishedProcesses`, `GetPublicProcess`. Evidence: filtering, pagination
+and privacy tests.
+
+### PART-FR-010 — Query participation conditions
+
+The Module **MUST** expose active periods, territorial scope, enabled
+capabilities and human-readable eligibility requirements. Queries:
+`GetParticipationConfiguration`, `GetEligibilityRequirements`. Evidence:
+locale, territory and policy-representation tests.
+
+### PART-FR-011 — Query process outcome
+
+The Module **MUST** expose the current public outcome and its provenance while
+preserving prior versions for authorized review. Query: `GetProcessOutcome`.
+Evidence: public representation and version-history tests.
+
+### PART-FR-012 — Evaluate eligibility contract
+
+When eligibility is configured, the Module **MUST** evaluate it through the
+verification port and return a minimal decision with reason code, expiry and
+policy version. The result includes a stable decision reference that a consuming
+Module can verify without receiving identity attributes. Application query:
+`EvaluateParticipationEligibility`. Capability: `eligibility`. Evidence:
+adapter, decision-reference, privacy and policy-version tests.
+
+### PART-FR-013 — Start public tracking
+
+After response, an authorized actor **MUST** be able to move a process to
+`TRACKING` using at least one validated `PublicCivicReference`. Each relation
+**MUST** declare `required: true|false`. The Module stores the reference and
+relation metadata without copying or owning the referenced object's state.
+Command: `StartProcessTracking`.
+Event: `ProcessTrackingStarted`. Evidence: transition, reference and unavailable
+provider tests.
+
+### PART-FR-014 — Open stage
+
+The Module **MUST** open a scheduled stage only while its process is `OPEN` and
+the stage's temporal and capability preconditions are satisfied. Command:
+`OpenStage`. Event: `ProcessStageOpened`. Evidence: state, clock and capability
+tests.
+
+### PART-FR-015 — Close stage
+
+The Module **MUST** close an open stage idempotently without implicitly closing
+the process. Command: `CloseStage`. Event: `ProcessStageClosed`. Evidence:
+state-independence, retry and final-stage tests.

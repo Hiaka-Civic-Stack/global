@@ -1,0 +1,62 @@
+---
+title: "Accountability Domain Model"
+description: "Concepts, states and invariants owned by Accountability."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Normative but not yet stable.</Note>
+
+## Concepts
+
+| Concept | Meaning |
+| --- | --- |
+| `Commitment` | Publicly trackable institutional undertaking. |
+| `SourceRef` | Version-pinned reference containing source type, object ID, version, provenance and optional announced-action ID. |
+| `ResponsibleOrganizationRef` | Stable reference to the accountable organization. |
+| `Milestone` | Optional bounded result with target and completion state. |
+| `ProgressUpdate` | Immutable, dated and attributable progress statement with an `ON_TRACK`, `AT_RISK`, `DELAYED` or `BLOCKED` signal. |
+| `EvidenceRef` | Provenanced reference to externally stored public evidence, targeting a commitment, milestone or progress update. |
+| `CommitmentHistoryEntry` | Immutable record of a significant state or responsibility change. |
+
+## States
+
+| Current commitment state | Allowed next states |
+| --- | --- |
+| `ACTIVE` | `COMPLETED`, `CLOSED_WITHOUT_COMPLETION` |
+| `COMPLETED` | none |
+| `CLOSED_WITHOUT_COMPLETION` | none |
+
+| Current milestone state | Allowed next states |
+| --- | --- |
+| `PLANNED` | `IN_PROGRESS`, `CANCELLED` |
+| `IN_PROGRESS` | `COMPLETED`, `CANCELLED` |
+| `COMPLETED` | none |
+| `CANCELLED` | none |
+
+Milestone cancellation requires a public reason and does not erase history.
+
+Progress signals communicate implementation health and do not change the
+`Commitment` or `Milestone` state. State transitions require their explicit
+commands.
+
+## Invariants
+
+* A commitment has a stable version-pinned source reference, responsible organization and
+  public purpose when it is created as `ACTIVE`.
+* A source announced action can have at most one commitment in v0. Retries
+  return the existing commitment; a conflicting second commitment is rejected.
+* Responsibility, milestone, progress and evidence mutations require an
+  `ACTIVE` commitment; terminal commitments are immutable.
+* Source references are validated but never copied as authoritative records.
+* Progress updates are append-only; corrections supersede rather than rewrite.
+  A correction names `supersedesProgressUpdateId`; the replaced entry remains
+  visible in authorized history.
+* Evidence records include a typed target, provenance, media metadata and
+  public visibility. The target must belong to the same commitment.
+* Completion requires at least one final public evidence reference.
+* Closure without completion requires an accountable actor and public reason.
+* Responsibility changes preserve previous and new organization references,
+  accountable actor, public reason and effective time.
+* Significant state and responsibility changes remain chronologically visible.
+* Numeric progress is an integer from `0` through `100`, calculated by a
+  declared versioned method from a recorded input snapshot. Later milestone
+  changes affect only later calculations and do not rewrite prior updates.

@@ -139,7 +139,45 @@
               {
                 "group": "Civic Modules",
                 "pages": [
-                  "modules/overview"
+                  "modules/overview",
+                  "modules/specification-baseline",
+                  {
+                    "group": "Participation",
+                    "pages": [
+                      "modules/participation",
+                      "modules/participation/domain-model",
+                      "modules/participation/functional-requirements",
+                      "modules/participation/interfaces-integration",
+                      "modules/participation/quality-conformance"
+                    ]
+                  },
+                  {
+                    "group": "Contribution",
+                    "pages": [
+                      "modules/contribution",
+                      "modules/contribution/domain-model",
+                      "modules/contribution/functional-requirements",
+                      "modules/contribution/interfaces-integration",
+                      "modules/contribution/quality-conformance"
+                    ]
+                  },
+                  {
+                    "group": "Accountability",
+                    "pages": [
+                      "modules/accountability",
+                      "modules/accountability/domain-model",
+                      "modules/accountability/functional-requirements",
+                      "modules/accountability/interfaces-integration",
+                      "modules/accountability/quality-conformance"
+                    ]
+                  },
+                  {
+                    "group": "Deferred Modules",
+                    "pages": [
+                      "modules/deliberation",
+                      "modules/decision"
+                    ]
+                  }
                 ]
               },
               {

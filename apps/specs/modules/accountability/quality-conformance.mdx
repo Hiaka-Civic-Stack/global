@@ -1,0 +1,40 @@
+---
+title: "Accountability Quality and Conformance"
+description: "Accountability-specific NFRs, tests and evidence matrix."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Results remain `Not evaluated` until an implementation supplies evidence.</Note>
+
+The [shared Module NFR baseline](/modules/specification-baseline) applies.
+
+## Accountability NFRs
+
+| ID | Requirement | Expected evidence |
+| --- | --- | --- |
+| `ACC-NFR-001` | Significant history entries **MUST** be append-only; corrections supersede rather than overwrite. | Persistence and tamper tests |
+| `ACC-NFR-002` | Every evidence reference **MUST** retain source, author, timestamp, media metadata and integrity information when available. | Provenance and adapter tests |
+| `ACC-NFR-003` | Numeric progress **MUST** be deterministic for the same declared method and input versions. | Calculation and replay tests |
+| `ACC-NFR-004` | Public history **MUST** remain chronological, attributable and available under the configured retention policy. | Ordering, retention and recovery tests |
+| `ACC-NFR-005` | Public commitment queries **MUST** be paginated and benchmarked against deployment-defined targets. | Repeatable workload report |
+| `ACC-NFR-006` | Provider outages **MUST NOT** erase acknowledged updates and **MUST** expose diagnosable retry or degraded states. | Failure injection and recovery tests |
+
+## Test Expectations
+
+Evidence includes aggregate transition tests, append-only persistence tests,
+API and event contracts, authorization denial tests, public representation
+tests, deterministic progress tests and source/document adapter failure tests.
+
+## Conformance Matrix
+
+| Requirement | Behavior/interface | Evidence | Result |
+| --- | --- | --- | --- |
+| `ACC-FR-001..002` | Commitment and responsibility | Domain, port and authorization tests | Not evaluated |
+| `ACC-FR-004..005` | Progress and evidence | Vocabulary, supersession, target, provenance and API tests | Not evaluated |
+| `ACC-FR-007..011` | Completion, closure and public queries | Transition, audit and representation tests | Not evaluated |
+| `ACC-NFR-001..006` | Quality obligations | Listed NFR evidence | Not evaluated |
+| `MOD-NFR-001..012` | Shared Module quality baseline | Baseline evidence for each requirement | Not evaluated |
+| `ACC-FR-003`, `ACC-FR-006`, `ACC-FR-013..014` | Milestones | Capability declaration, lifecycle and reason tests | Not evaluated |
+| `ACC-FR-012` | Numeric progress | Capability declaration and calculation tests | Not evaluated |
+
+Core Conformance requires all core FRs and NFRs. Milestone and numeric-progress
+capabilities are claimed separately.

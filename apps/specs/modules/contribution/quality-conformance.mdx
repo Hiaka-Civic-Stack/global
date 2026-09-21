@@ -1,0 +1,41 @@
+---
+title: "Contribution Quality and Conformance"
+description: "Contribution-specific NFRs, tests and evidence matrix."
+---
+
+<Note>**Status: draft · Version: 0.1.0.** Results remain `Not evaluated` until an implementation supplies evidence.</Note>
+
+The [shared Module NFR baseline](/modules/specification-baseline) applies.
+
+## Contribution NFRs
+
+| ID | Requirement | Expected evidence |
+| --- | --- | --- |
+| `CONT-NFR-001` | Draft updates **MUST** preserve ownership and reject stale versions without losing acknowledged content. | Concurrency and persistence tests |
+| `CONT-NFR-002` | Retried submissions **MUST NOT** create duplicate contributions or duplicate publication events. | Idempotency and event-producer tests |
+| `CONT-NFR-003` | Moderation reasons **MUST** separate participant-visible information from protected administrative detail. | Privacy and representation tests |
+| `CONT-NFR-004` | Public content and attachment metadata **MUST** pass documented validation and safe-rendering contracts. | Malformed-content, media-type and adapter tests |
+| `CONT-NFR-005` | Public list and owner-tracking queries **MUST** be paginated and benchmarked against deployment targets. | Repeatable workload report |
+| `CONT-NFR-006` | State, moderation and response history **MUST** remain attributable and recoverable under retention policy. | Audit, retention and recovery tests |
+
+## Test Expectations
+
+Evidence includes aggregate tests for every state transition, application tests
+for both publication policies, API and event contracts, authorization denial
+tests, privacy tests, persistence concurrency tests and adapter failure tests.
+
+## Conformance Matrix
+
+| Requirement | Behavior/interface | Evidence | Result |
+| --- | --- | --- | --- |
+| `CONT-FR-001..007` | Core draft-to-moderation flow | State, atomicity, API, policy and event-ordering tests | Not evaluated |
+| `CONT-FR-010..011` | Public and owner queries | Privacy, pagination and denial tests | Not evaluated |
+| `CONT-NFR-001..006` | Quality obligations | Listed NFR evidence | Not evaluated |
+| `MOD-NFR-001..012` | Shared Module quality baseline | Baseline evidence for each requirement | Not evaluated |
+| `CONT-FR-008` | Institutional response | Capability declaration and tests | Not evaluated |
+| `CONT-FR-009` | Outcome linking | Capability declaration and tests | Not evaluated |
+| `CONT-FR-012` | Attachments | Capability declaration and document adapter tests | Not evaluated |
+| `CONT-FR-013` | Geographic references | Capability declaration and territory adapter tests | Not evaluated |
+
+Core Conformance requires all core FRs and NFRs. Response, outcome-link,
+attachment and geographic-reference capabilities are claimed separately.

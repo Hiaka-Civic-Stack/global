@@ -205,6 +205,9 @@ Deliverables:
   * responsibilities;
   * non-responsibilities;
   * domain concepts;
+  * invariants;
+  * functional requirements;
+  * non-functional requirements and measurable evidence;
   * commands;
   * queries;
   * events;
@@ -212,6 +215,7 @@ Deliverables:
   * authorization rules;
   * persistence boundaries;
   * test expectations;
+  * core and optional-capability conformance;
 * keep Deliberation and Decision as overview-level specs only.
 
 Validation:
@@ -224,6 +228,10 @@ Acceptance criteria:
 * each v0 module can be handed to a future module repository owner;
 * Participation, Contribution and Accountability are detailed enough for
   implementation planning;
+* every functional and non-functional requirement has a stable identifier and
+  expected evidence;
+* Public Consultation v0 traces to Module requirements without becoming a
+  Module dependency;
 * Deliberation and Decision are not accidentally pulled into the v0 critical
   path.
 
