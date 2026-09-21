@@ -1,0 +1,78 @@
+---
+title: "Auditability"
+description: "Draft normative requirements for traceable civic actions and accountable state changes."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines the minimum auditability needed for trustworthy civic
+processes. Audit records support accountability, investigation and review of
+important actions without automatically making restricted information public.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `AUD-001` | Specifications **MUST** identify important civic actions that require audit records. |
+| `AUD-002` | Audit records **MUST** include an unambiguous timestamp and action type. |
+| `AUD-003` | Audit records **MUST** identify the accountable actor or documented system actor. |
+| `AUD-004` | State-change records **MUST** capture previous state, new state and reason when relevant. |
+| `AUD-005` | Audit records **MUST** preserve source and provenance information. |
+| `AUD-006` | Audit data **MUST** be protected against unauthorized modification and access. |
+| `AUD-007` | Retention and deletion expectations **MUST** be documented for each audit category. |
+| `AUD-008` | Public evidence **MUST** be distinguished from restricted internal audit data. |
+| `AUD-009` | Audit records **MUST NOT** be replaced by Domain Events without an explicit audit projection satisfying this contract. |
+| `AUD-010` | Audit evidence **SHOULD** be retrievable by authorized reviewers using stable civic object identifiers. |
+
+## Audit Record Model
+
+An audit record should represent:
+
+```text
+who + did what + to which civic object + when + from where + why
+```
+
+For state changes, the record also captures the relevant previous and new
+state. The reason may be mandatory for institutional decisions, moderation,
+status overrides and other actions that affect public trust.
+
+## Public Evidence And Internal Audit
+
+A public commitment history can expose status, responsible institution,
+milestones and evidence to participants. An internal audit record can include
+restricted administrative context needed for investigation.
+
+These views can relate to the same civic action, but they have different
+audiences, privacy rules and retention policies.
+
+## Domain Event Boundary
+
+A Domain Event communicates a completed business fact to consumers. An audit
+record preserves reviewable accountability evidence. An event may feed an audit
+projection only when that projection adds the controls and fields required by
+this contract.
+
+## Expected Evidence
+
+Evidence should include:
+
+* audit record schemas;
+* lists of auditable civic actions;
+* authorization rules for audit access;
+* retention and deletion policies;
+* integrity controls;
+* tests for important state transitions;
+* mappings between public evidence and restricted audit records.
+
+## Non-Goals
+
+This contract does not require public disclosure of all audit data, prescribe
+one storage technology or treat decorative activity timelines as audit logs.
+
+## Dependencies
+
+Audit access applies the Authorization contract. Event-derived projections
+apply the Domain Events contract. Cross-system audit evidence applies the
+Interoperability and Conformance contracts.

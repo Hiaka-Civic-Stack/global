@@ -1,0 +1,87 @@
+---
+title: "Authorization"
+description: "Draft normative requirements for civic authorization and eligibility boundaries."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines how Hiaka components protect civic actions and resources.
+It separates authentication, authorization, participant eligibility, verified
+identity and public profile concerns.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `AUTH-001` | Authorization **MUST** be enforced at the application or domain boundary, not only in the frontend. |
+| `AUTH-002` | Each protected action **MUST** identify the actor, permission and protected resource. |
+| `AUTH-003` | Authorization policies **MUST** support resource and territorial scope where applicable. |
+| `AUTH-004` | Authentication, participant eligibility and authorization **MUST** remain distinct decisions. |
+| `AUTH-005` | Verified legal identity **MUST NOT** automatically become public profile data. |
+| `AUTH-006` | Denied actions **MUST** return an explicit, non-sensitive denial result. |
+| `AUTH-007` | Default access **MUST** be denied when no applicable policy grants an action. |
+| `AUTH-008` | Privileged institutional actions **MUST** be attributable to an accountable actor. |
+| `AUTH-009` | Policy inputs and decisions **SHOULD** be testable independently from transport and UI layers. |
+| `AUTH-010` | Authorization documentation **MUST** identify external identity or eligibility dependencies through interfaces rather than vendors. |
+
+## Decision Model
+
+An authorization decision should evaluate:
+
+```text
+actor + requested action + protected resource + policy context -> decision
+```
+
+Policy context can include process stage, territorial scope and an eligibility
+result. Eligibility is an input to policy when relevant; it is not equivalent
+to authentication or legal identity.
+
+## Denial Behavior
+
+A denial result must be explicit enough for the caller to handle safely without
+revealing protected policy inputs or personal data. A product may explain a
+public eligibility rule while withholding sensitive verification details.
+
+## Examples
+
+Conformant evidence:
+
+```text
+Given an ineligible participant
+When publishContribution is requested
+Then the application policy denies the action
+And no contribution is published
+```
+
+Non-conformant control:
+
+```text
+Hide the Publish button for ineligible participants.
+```
+
+Hiding a frontend control does not enforce authorization at the application or
+domain boundary.
+
+## Expected Evidence
+
+Evidence should include:
+
+* policy definitions;
+* application use-case or domain policy tests;
+* protected-operation documentation;
+* territorial and resource-scope tests;
+* denial response examples;
+* interface definitions for identity and eligibility dependencies.
+
+## Non-Goals
+
+This contract does not mandate one identity provider, collapse eligibility into
+authentication or define public profile presentation.
+
+## Dependencies
+
+Protected operations also apply the API contract. Privileged actions apply the
+Auditability contract. External identity and eligibility integrations apply the
+Interoperability contract.
