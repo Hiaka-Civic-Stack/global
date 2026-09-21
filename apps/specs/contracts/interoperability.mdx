@@ -1,0 +1,94 @@
+---
+title: "Interoperability"
+description: "Draft normative requirements for open, portable and territory-aware Hiaka contracts."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines how Civic Stack components exchange information and
+consume Shared Digital Services without coupling the civic domain to one vendor
+or national implementation.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `INT-001` | Component interfaces **MUST** be openly documented. |
+| `INT-002` | Exchanged data **MUST** use documented schemas and stable identifiers. |
+| `INT-003` | Shared Digital Services **MUST** be consumed through explicit ports or contracts. |
+| `INT-004` | Civic domain contracts **MUST NOT** require one vendor-specific implementation. |
+| `INT-005` | Required and optional dependencies **MUST** be identified explicitly. |
+| `INT-006` | Contract versions and compatibility expectations **MUST** be documented. |
+| `INT-007` | Locale values **MUST** use documented language tags and preserve local civic terminology. |
+| `INT-008` | Territory references **MUST** support arbitrary hierarchies without hard-coded Madagascar-specific levels. |
+| `INT-009` | Date, time and identifier formats **MUST** be unambiguous across system boundaries. |
+| `INT-010` | Adapter failures **MUST** surface a documented failure category without leaking vendor-specific errors into the civic domain. |
+
+## Ports And Adapters
+
+Civic components depend on capability-oriented ports:
+
+```text
+Civic component
+      |
+      +-- Identity port
+      +-- Territory port
+      +-- Document port
+      +-- Notification port
+```
+
+An adapter translates a provider contract into the port. Replacing the
+provider must not require changes to core civic business rules.
+
+## Locale And Territory
+
+Language tags should use a documented interoperable representation such as
+BCP 47. Translated content must preserve local civic meaning instead of
+assuming one-to-one vocabulary across Malagasy, French and English.
+
+Territories are identified independently from labels and administrative level
+names. A deployment may configure Region, District, Commune and Fokontany
+without making those levels mandatory in the core contract.
+
+## Failure Example
+
+Conformant domain-facing result:
+
+```text
+NotificationDeliveryUnavailable
+```
+
+Non-conformant domain-facing result:
+
+```text
+VendorSdkSocketTimeoutError
+```
+
+The adapter can retain provider diagnostics for operations while returning a
+stable failure category to the civic application boundary.
+
+## Expected Evidence
+
+Evidence should include:
+
+* public interface definitions;
+* exchanged-data schemas;
+* adapter contract tests;
+* compatibility and version documentation;
+* locale and territory examples;
+* failure translation tests;
+* dependency classification.
+
+## Non-Goals
+
+This contract does not mandate one API gateway, identity provider, messaging
+system, territory registry or deployment topology.
+
+## Dependencies
+
+Interoperable HTTP interfaces apply the API contract. Exchanged events apply
+the Domain Events contract. Protected integrations apply Authorization and
+Auditability requirements. Claims are evaluated through the Conformance
+contract.

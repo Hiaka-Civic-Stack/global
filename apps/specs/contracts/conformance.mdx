@@ -1,0 +1,106 @@
+---
+title: "Conformance"
+description: "Draft normative requirements for evidence-based Hiaka conformance claims."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines how an implementation, product or component is evaluated
+against a versioned Hiaka specification.
+
+Conformance is evidence-based. A declaration of alignment without inspectable
+evidence is not a conformance claim.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `CONF-001` | A conformance claim **MUST** identify the specification version and primary profile evaluated. |
+| `CONF-002` | Every applicable `MUST` and `MUST NOT` requirement **MUST** have inspectable evidence. |
+| `CONF-003` | Every unmet `SHOULD` or `SHOULD NOT` requirement **MUST** include a documented exception and rationale. |
+| `CONF-004` | Non-applicable requirements **MUST** include a scope-based justification. |
+| `CONF-005` | Evidence **MUST** identify its type, location, owner and review date. |
+| `CONF-006` | Conformance reports **MUST** preserve requirement identifiers exactly. |
+| `CONF-007` | A result **MUST** be classified as conformant, partially conformant or non-conformant. |
+| `CONF-008` | Any unmet applicable mandatory requirement **MUST** prevent a conformant result. |
+| `CONF-009` | Conformance reports **MUST** distinguish missing evidence from evidence of non-conformance. |
+| `CONF-010` | Conformance evidence **SHOULD** be reproducible or independently reviewable. |
+
+## Evidence Matrix
+
+Use one row for each applicable or explicitly non-applicable requirement:
+
+| Requirement | Applicability | Evidence type | Evidence location | Result | Notes |
+| --- | --- | --- | --- | --- | --- |
+| API-002 | Applicable | OpenAPI document | `openapi.yaml` | Pass | Version validated in CI |
+
+Accepted evidence types include contracts, schemas, automated tests, policy
+definitions, accessibility reviews, localization reviews and documented
+architectural decisions.
+
+## Result Classification
+
+### Conformant
+
+All applicable mandatory requirements pass with inspectable evidence. Any
+exception to a recommended requirement is documented and accepted in the
+report.
+
+### Partially Conformant
+
+The evaluation remains incomplete because required evidence is missing, but no
+mandatory violation has been demonstrated. The report must name every gap and
+must not present the result as conformant.
+
+### Non-Conformant
+
+Evidence demonstrates violation of one or more applicable mandatory
+requirements.
+
+## Missing Evidence Versus Failure
+
+Missing evidence means the reviewer cannot verify an obligation. Evidence of
+non-conformance means the reviewer can verify that the obligation is not met.
+Both prevent a conformant result, but they require different remediation.
+
+## Expected Evidence
+
+The conformance report itself must include:
+
+* specification identity and version;
+* primary profile;
+* evaluation scope;
+* completed evidence matrix;
+* exceptions and non-applicability rationales;
+* final classification;
+* evaluator, owner and review date.
+
+## Conformant And Non-Conformant Claims
+
+Conformant claim:
+
+```text
+Public Consultation API draft 0.1 is conformant with API-001 through API-010.
+The evidence matrix links each requirement to OpenAPI and contract tests.
+```
+
+Non-conformant claim:
+
+```text
+This product follows Hiaka best practices.
+```
+
+The second statement identifies no specification version, profile,
+requirements or evidence.
+
+## Non-Goals
+
+This contract does not create certification authority, automated scoring,
+procurement policy or stable-status governance.
+
+## Dependencies
+
+Conformance evaluates the applicable framework profile and cross-cutting
+contracts. It does not replace their domain-specific requirements.
