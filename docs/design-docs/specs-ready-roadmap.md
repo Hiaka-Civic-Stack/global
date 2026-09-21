@@ -156,26 +156,24 @@ Acceptance criteria:
 
 ## Sprint 4: Public Consultation v0 Specification
 
+Status: implemented in the hub specification portal.
+
 Objective:
 
 Make Public Consultation v0 the first builder-ready blueprint.
 
 Deliverables:
 
-* extend the Public Consultation v0 spec with:
-  * actors;
-  * lifecycle;
-  * stages;
-  * required modules;
-  * required patterns;
-  * key user journeys;
-  * expected API actions;
-  * expected events;
-  * audit requirements;
-  * conformance checklist;
+* publish a hierarchical Public Consultation v0 Blueprint suite covering
+  actors, lifecycle, composition, journeys, contracts and conformance;
 * identify Participation, Contribution and Accountability as the required
   modules;
-* keep Deliberation and Decision outside the critical v0 path.
+* keep Deliberation and Decision optional and outside the critical v0 path;
+* define 30 evidence-based `BP-PC-*` requirements;
+* specify configurable contribution publication, mandatory public outcome and
+  commitment obligations;
+* map expected API actions, Domain Events, authorization and auditability to
+  Sprint 3 cross-cutting contracts.
 
 Validation:
 
@@ -185,8 +183,10 @@ Validation:
 Acceptance criteria:
 
 * a builder can understand the end-to-end Public Consultation v0 flow;
-* the required modules and excluded modules are explicit;
-* the blueprint is concrete enough to guide future implementation work.
+* required and optional Modules are explicit;
+* the Blueprint is concrete enough to guide future Module specs and
+  implementation work;
+* every Blueprint requirement has an expected evidence path.
 
 ## Sprint 5: Module Specs v0
 

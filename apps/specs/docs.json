@@ -145,7 +145,18 @@
               {
                 "group": "Civic Blueprints",
                 "pages": [
-                  "blueprints/public-consultation-v0"
+                  {
+                    "group": "Public Consultation v0",
+                    "pages": [
+                      "blueprints/public-consultation-v0",
+                      "blueprints/public-consultation-v0/scope-and-actors",
+                      "blueprints/public-consultation-v0/lifecycle",
+                      "blueprints/public-consultation-v0/composition",
+                      "blueprints/public-consultation-v0/civic-journeys",
+                      "blueprints/public-consultation-v0/contract-expectations",
+                      "blueprints/public-consultation-v0/conformance"
+                    ]
+                  }
                 ]
               }
             ]

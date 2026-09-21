@@ -1,44 +1,95 @@
 ---
 title: "Public Consultation v0"
-description: "The first thin vertical slice for Hiaka."
+description: "The first builder-ready Civic Blueprint specification for Hiaka."
 ---
 
-Public Consultation v0 validates the first concrete composition of Hiaka.
+<Note>
+**ID:** `BP-PUBLIC-CONSULTATION` · **Version:** `0.1.0` · **Status:** draft ·
+**Primary profile:** [Blueprint](/framework/profiles/blueprint)
+</Note>
 
-<Note>**Status: orientation draft.** Sprint 4 will apply the full [Blueprint
-Profile](/framework/profiles/blueprint) and [Common Spec
-Structure](/framework/common-spec-structure) to this reference process.</Note>
+Public Consultation v0 is the first complete Blueprint specification used to
+validate Hiaka's [Common Spec Structure](/framework/common-spec-structure),
+component composition and evidence-based conformance model.
+
+## Purpose
+
+The Blueprint enables an institution to publish a bounded public question,
+receive contributions, publish an accountable outcome and expose progress on
+announced actions.
 
 ```text
-Institution creates consultation
+Institution configures consultation
 → Institution publishes consultation
+→ Public visitor discovers consultation
+→ Participant checks eligibility
 → Participant submits contribution
-→ Contribution is published
-→ Institution responds
-→ Institution creates commitment
-→ Commitment progress is updated
-→ Participant sees implementation progress
+→ Contribution is published according to moderation policy
+→ Institution closes contribution period
+→ Institution publishes outcome summary
+→ Institution optionally responds to individual contributions
+→ Institution creates commitments for announced actions
+→ Institution updates progress and evidence
+→ Public visitor follows implementation
 ```
 
-Initial modules involved:
+## Composition Summary
+
+Required Modules:
 
 * Participation
 * Contribution
 * Accountability
 
-## Design System Mapping
+Optional Modules:
+
+* Deliberation, when public deliberation is enabled;
+* Decision, when a formal decision mechanism is configured.
+
+Required Civic Design System patterns are Inform, Consult and Contribute.
+Decide and Account are provisional mappings until their dedicated pattern specs
+exist.
+
+## Specification Pages
+
+* [Scope And Actors](/blueprints/public-consultation-v0/scope-and-actors)
+* [Lifecycle](/blueprints/public-consultation-v0/lifecycle)
+* [Composition](/blueprints/public-consultation-v0/composition)
+* [Civic Journeys](/blueprints/public-consultation-v0/civic-journeys)
+* [Contract Expectations](/blueprints/public-consultation-v0/contract-expectations)
+* [Conformance](/blueprints/public-consultation-v0/conformance)
+
+## Assumptions And Dependencies
+
+The v0 flow assumes public read access, authenticated contribution, a declared
+eligibility policy and an explicit contribution publication policy. Shared
+Digital Services are consumed through published interfaces and classified as
+required, conditional or optional.
+
+## Boundaries
+
+The Blueprint composes Modules and patterns. It does not own Module DTOs,
+persistence models or internal business invariants. It does not require
+electoral voting, advanced public deliberation, formal decision mechanisms or
+a generic workflow engine.
+
+## Risks And Open Questions
+
+Decide and Account conformance remains provisional. Detailed Module payloads
+and invariants are deferred to Participation, Contribution and Accountability
+v0 specs.
+
+## Design System View
 
 Public Consultation v0 is the first blueprint used to validate the Civic
 Design System against a real civic process.
 
-The mapping connects the blueprint flow to:
+Read the [Public Consultation v0 Design System
+Mapping](/design-system/public-consultation-v0-mapping) for intents, semantic
+concepts, patterns and experience checks.
 
-* civic intents;
-* semantic concepts;
-* Civic Design System patterns;
-* module touchpoints;
-* conformance checks.
+## Change History
 
-Read the mapping:
-
-* [Public Consultation v0 Design System Mapping](/design-system/public-consultation-v0-mapping)
+| Version | Date | Change |
+| --- | --- | --- |
+| `0.1.0` | 2026-09-21 | First complete draft Blueprint specification. |

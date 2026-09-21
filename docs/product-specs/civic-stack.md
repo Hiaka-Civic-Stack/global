@@ -484,31 +484,44 @@ DISCOVER
    ↓
 CONTRIBUTE
    ↓
-DELIBERATE
+[DELIBERATE]
    ↓
-EVALUATE
+[EVALUATE]
    ↓
 RESPOND
    ↓
 TRACK
 ```
 
+`DELIBERATE` and `EVALUATE` are optional in v0. Public deliberation can add the
+Deliberation Module. Internal evaluation does not require the Decision Module
+unless a formal decision mechanism is configured.
+
 Civic Design System patterns:
 
-* publish civic information
-* submit contribution
-* discuss contribution
-* evaluate contribution
-* publish institutional response
-* create commitment
-* track commitment
+* Inform, Consult and Contribute are required;
+* Decide and Account are provisional mappings until dedicated pattern specs
+  exist.
 
-Modules:
+Required Modules:
 
 * Participation
 * Contribution
-* Deliberation
 * Accountability
+
+Optional Modules:
+
+* Deliberation
+* Decision
+
+The consultation declares `immediate` or `pre_moderated` as its contribution
+publication policy. After contribution closure, the institution publishes one
+public outcome summary. Individual responses are optional. A concrete announced
+action requires a public commitment with responsible actor, progress and
+evidence.
+
+The Blueprint composes these capabilities but does not take ownership of Module
+business rules.
 
 This Blueprint is the first end-to-end implementation target.
 
