@@ -1,0 +1,57 @@
+---
+title: "Specification Framework"
+description: "The common contract kernel and specialized profiles for Hiaka specifications."
+---
+
+<Note>**Status: draft.** This framework is normative but not yet stable.</Note>
+
+The Hiaka Specification Framework defines how Civic Stack Specs are written,
+reviewed and evaluated.
+
+It uses a **Contract Kernel + Profiles** model:
+
+* the Contract Kernel defines obligations shared by every specification;
+* a primary profile adds the sections required for one type of Civic Stack
+  Model component.
+
+Every specification MUST declare one primary profile. It MAY declare additional
+profiles only when it genuinely specifies multiple component types, and it
+MUST explain why those profiles are necessary.
+
+## Contract Kernel
+
+The kernel provides two foundations:
+
+* [Normative Language](/framework/normative-language) defines how requirements
+  are expressed and identified.
+* [Common Spec Structure](/framework/common-spec-structure) defines the minimum
+  content every Hiaka specification must contain.
+
+## Specialized Profiles
+
+The framework defines four profiles:
+
+* Module Profile;
+* Blueprint Profile;
+* Civic Design System Profile;
+* Shared Service Profile.
+
+Each profile extends the common structure without replacing it. Profile pages
+are published with the component-specific requirements they govern.
+
+## Model And Specs Boundary
+
+The [Civic Stack Model](/model) explains the concepts and relationships that
+compose Hiaka. Civic Stack Specs turn those concepts into requirements that can
+guide implementation, integration and conformance review.
+
+Model pages answer what the stack contains. This framework defines how a
+component contract must be written and evaluated.
+
+## Conformance Orientation
+
+Normative requirements must be observable and linked to inspectable evidence.
+A claim of alignment without evidence is not a conformance claim.
+
+The cross-cutting contracts define the evidence expected for APIs, Domain
+Events, authorization, auditability, interoperability and conformance.

@@ -1,0 +1,68 @@
+---
+title: "Normative Language"
+description: "How Hiaka specifications express mandatory, recommended and optional requirements."
+---
+
+<Note>**Status: draft.** These rules are normative but not yet stable.</Note>
+
+Hiaka specifications use explicit normative keywords so requirements can be
+implemented, reviewed and cited without ambiguity.
+
+## Keywords
+
+* **MUST** and **MUST NOT** identify mandatory conformance requirements.
+* **SHOULD** and **SHOULD NOT** identify recommended requirements. An
+  implementation that does not follow one must provide a documented,
+  evidence-backed exception.
+* **MAY** identifies an optional capability. Implementations that provide the
+  capability must remain interoperable with implementations that omit it.
+
+Normative keywords are written in uppercase when they carry these meanings.
+Lowercase uses are explanatory prose.
+
+## Requirement Form
+
+Every normative statement MUST:
+
+1. describe one observable obligation;
+2. use one stable requirement identifier;
+3. identify the component or implementation responsible;
+4. state or link to the evidence expected for review.
+
+A requirement SHOULD avoid combining independent obligations. Split combined
+obligations when they could pass or fail separately.
+
+## Requirement Identifiers
+
+Cross-cutting requirements use domain-scoped identifiers:
+
+| Contract domain | Prefix | Example |
+| --- | --- | --- |
+| API conventions | `API` | `API-001` |
+| Domain Events | `EVT` | `EVT-001` |
+| Authorization | `AUTH` | `AUTH-001` |
+| Auditability | `AUD` | `AUD-001` |
+| Interoperability | `INT` | `INT-001` |
+| Conformance | `CONF` | `CONF-001` |
+
+Published identifiers MUST NOT be renumbered or reused. A removed requirement
+must be marked deprecated so existing evidence remains traceable.
+
+## Normative And Informative Content
+
+Examples, diagrams and explanatory prose are informative unless they
+explicitly cite an identified requirement. They MUST NOT introduce hidden
+obligations.
+
+An example can demonstrate a requirement, but it cannot silently narrow the
+set of conforming implementations.
+
+## Draft Semantics
+
+A draft specification is normative but not stable. It can guide implementation
+and conformance review, while compatible refinements are still expected before
+stabilization.
+
+This framework currently defines only `draft`. A complete lifecycle and
+promotion policy will be defined after validation through Public Consultation
+v0 and the first Module specifications.

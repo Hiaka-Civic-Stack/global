@@ -1,0 +1,93 @@
+---
+title: "Common Spec Structure"
+description: "The minimum contract kernel required by every Hiaka specification."
+---
+
+<Note>**Status: draft.** This structure is normative but not yet stable.</Note>
+
+Every Hiaka specification MUST use this common structure and declare one
+primary [specification profile](/framework).
+
+A section MAY be marked `Not applicable` only when the specification gives a
+written reason. A required section MUST NOT be silently omitted.
+
+## 1. Identity
+
+Provide the title, stable specification identifier, version, `draft` status,
+primary profile and accountable owners.
+
+## 2. Purpose And Problem Statement
+
+Describe the recurring civic or integration problem addressed. Explain why a
+reusable contract is needed instead of one product-specific implementation.
+
+## 3. Scope And Boundaries
+
+List scope, responsibilities and non-responsibilities. State which decisions
+belong to another Module, Blueprint, Design System pattern or Shared Service.
+
+## 4. Assumptions And Dependencies
+
+State assumptions, required dependencies and optional dependencies. Reference
+contracts rather than named vendors.
+
+## 5. Actors And Consumers
+
+Identify civic actors, implementing teams and systems that depend on the
+contract. Distinguish human actors from software consumers.
+
+## 6. Domain Concepts And Terminology
+
+Define the terms needed to read the specification consistently. Reuse Civic
+Stack terminology and explain any new concept.
+
+## 7. Interfaces And Integration Expectations
+
+Describe the interfaces exposed or consumed, their ownership and the stability
+expected by integrators.
+
+## 8. Data Exchange Expectations
+
+Describe exchanged information, identifiers, schema ownership, privacy
+constraints and compatibility expectations.
+
+## 9. Cross-Cutting Obligations
+
+Identify applicable API, event, authorization, auditability, interoperability,
+accessibility, localization, security and operability requirements.
+
+## 10. Conformance And Evidence
+
+List applicable normative requirements and the inspectable evidence expected
+for each one. Explain why any cross-cutting requirement is not applicable.
+
+## 11. Risks And Trade-Offs
+
+Document relevant civic, technical, privacy and interoperability risks. State
+the trade-offs accepted by the specification.
+
+## 12. Open Questions
+
+List unresolved decisions that do not prevent use of the current draft. Each
+question must have an owner or a stated decision point.
+
+## 13. Change History
+
+Record version, date and a concise description of material changes. Preserve
+references to deprecated requirements.
+
+## Authoring Checklist
+
+Before review, confirm that the specification:
+
+* declares exactly one primary profile;
+* contains every common section or a reason it is not applicable;
+* uses normative keywords consistently;
+* assigns unique, stable identifiers to normative requirements;
+* identifies evidence for every applicable mandatory requirement;
+* states responsibilities and non-responsibilities;
+* separates required dependencies from optional dependencies;
+* contains no product- or vendor-specific requirement unless the scope
+  explicitly demands it;
+* distinguishes normative requirements from examples;
+* records risks, trade-offs and open questions.
