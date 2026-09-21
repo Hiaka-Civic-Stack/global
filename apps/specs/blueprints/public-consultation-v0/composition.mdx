@@ -1,0 +1,160 @@
+---
+title: "Composition"
+description: "Required Modules, Design System patterns and Shared Digital Services for Public Consultation v0."
+---
+
+<Note>**Status: draft.** This page is normative but not yet stable.</Note>
+
+Public Consultation v0 composes reusable Civic Stack Model components. The
+Blueprint defines their roles and dependencies without absorbing their business
+rules.
+
+## Required Civic Modules
+
+### Participation
+
+Participation owns:
+
+* consultation identity and metadata;
+* lifecycle and stage configuration;
+* contribution period;
+* territorial scope;
+* eligibility policy reference;
+* process publication and externally visible status.
+
+### Contribution
+
+Contribution owns:
+
+* contribution drafts and submissions;
+* contribution publication;
+* moderation state and reason;
+* attachment and geographic references where enabled;
+* institutional responses linked to contributions.
+
+### Accountability
+
+Accountability owns:
+
+* commitments;
+* responsible organizations;
+* milestones;
+* progress updates;
+* evidence;
+* completion state and history.
+
+## Optional Civic Modules
+
+Deliberation is optional. It is required only when the consultation exposes a
+public `DELIBERATE` stage with discussion capabilities.
+
+Decision is optional. It is required only when the consultation adds a formal
+selection, prioritization or decision mechanism.
+
+Neither Module blocks the Public Consultation v0 critical path.
+
+## Required Civic Design System Patterns
+
+### Inform
+
+Inform makes institutional ownership, status, dates, scope, results and next
+steps understandable.
+
+### Consult
+
+Consult frames the public question, eligible audience, contribution period and
+expected institutional outcome.
+
+### Contribute
+
+Contribute guides submission, validation, publication state, moderation state
+and participant follow-up.
+
+## Provisional Pattern Mappings
+
+Decide is provisionally mapped to institutional response and rationale.
+
+Account is provisionally mapped to commitments, progress and public evidence.
+
+These mappings guide experience design but do not support complete Civic Design
+System conformance until dedicated Decide and Account pattern specs exist.
+
+## Shared Digital Services
+
+| Service | Classification | Trigger | Consumer | Interface boundary |
+| --- | --- | --- | --- | --- |
+| Authentication | Required | Participant or institutional action | Participation and application boundary | Authentication port |
+| Identity or verification | Conditional | Eligibility policy requires verified attributes | Participation | Identity or verification port |
+| Territory registry | Conditional | Consultation or eligibility is territorial | Participation | Territory port |
+| Document storage | Conditional | Official documents, attachments or evidence are enabled | Participation, Contribution, Accountability | Document port |
+| Notifications | Optional | Process configuration enables proactive updates | All required Modules | Notification port |
+| Audit infrastructure | Required | Sensitive institutional or moderation action occurs | All required Modules | Audit port |
+
+No provider implementation is mandatory. Adapters translate provider behavior
+into the published capability contract.
+
+## Composition Boundary
+
+The Blueprint can require a capability and constrain its role in the process.
+It does not define Module DTOs, persistence models or internal invariants.
+
+Future Module specs remain the source of truth for commands, queries, events,
+authorization policies and domain behavior.
+
+## Normative Requirements
+
+### BP-PC-011
+
+Public Consultation v0 **MUST** compose Participation, Contribution and
+Accountability as required Civic Modules.
+
+**Responsible component:** Blueprint composition.
+
+**Related contracts:** `SPEC-007`, `INT-005`.
+
+**Expected evidence:** component manifest and end-to-end composition tests.
+
+### BP-PC-012
+
+The Blueprint **MUST NOT** duplicate or take ownership of business rules owned
+by its required or optional Civic Modules.
+
+**Responsible component:** Blueprint specification.
+
+**Related contracts:** `SPEC-007`, `API-003`.
+
+**Expected evidence:** ownership matrix and review against Module contracts.
+
+### BP-PC-013
+
+The Blueprint **MUST** apply Inform, Consult and Contribute as required Civic
+Design System patterns.
+
+**Responsible component:** Blueprint experience composition.
+
+**Related contracts:** `SPEC-008`, `CONF-001`.
+
+**Expected evidence:** Design System mapping and experience conformance review.
+
+### BP-PC-014
+
+Decide and Account mappings **MUST** be disclosed as provisional until their
+dedicated pattern specifications exist.
+
+**Responsible component:** Blueprint experience composition.
+
+**Related contracts:** `CONF-003`, `CONF-009`.
+
+**Expected evidence:** disclosed conformance gaps and mapping references.
+
+### BP-PC-015
+
+Every Shared Digital Service dependency **MUST** be classified as required,
+conditional or optional and consumed through an explicit interface.
+
+**Responsible components:** consuming Modules and infrastructure adapters.
+
+**Related contracts:** `INT-003`, `INT-004`, `INT-005`.
+
+**Expected evidence:** dependency matrix, port definitions and adapter contract
+tests.
