@@ -30,8 +30,8 @@ The specification must state which business rules and state transitions the
 Module owns. It must also identify adjacent capabilities that belong to another
 Module, a Civic Blueprint, the Civic Design System or a Shared Digital Service.
 
-A Module MUST remain independent from any single Civic Blueprint. Blueprint
-names can appear in examples, but they MUST NOT become required runtime
+Under `SPEC-006`, a Module remains independent from any single Civic Blueprint.
+Blueprint names can appear in examples, but they do not become required runtime
 dependencies.
 
 ## Contracts
@@ -45,9 +45,10 @@ The Module specification must identify applicable requirements from:
 * interoperability;
 * conformance.
 
-Transport DTOs and persistence records MUST NOT be presented as domain
-entities. Infrastructure implementations must remain behind ports declared by
-the application or domain boundary.
+Under `API-003`, transport DTOs are not presented as domain entities.
+Persistence records remain separate for the same boundary reason.
+Infrastructure implementations stay behind ports declared by the application
+or domain boundary.
 
 ## Expected Evidence
 

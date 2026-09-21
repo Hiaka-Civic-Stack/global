@@ -77,6 +77,23 @@ examples and conformance guidance.
 Implementation repositories for individual Civic Modules should be independent
 repositories with their own contracts, tests, release cycles and documentation.
 
+## Civic Stack Specs Framework
+
+Civic Stack Specs use a Contract Kernel + Profiles model.
+
+The Contract Kernel defines the common structure and normative language shared
+by all specifications. Four profiles extend it for Civic Modules, Civic
+Blueprints, the Civic Design System and Shared Digital Services.
+
+Current specifications are normative drafts. Requirements use explicit
+`MUST`, `SHOULD` and `MAY` language and domain-scoped identifiers for the
+specification framework, API, event, authorization, auditability,
+interoperability and conformance contracts.
+
+Conformance is evidence-based. A conformance claim must identify the spec
+version and primary profile, then link each applicable mandatory requirement
+to inspectable evidence.
+
 ---
 
 # Product principles

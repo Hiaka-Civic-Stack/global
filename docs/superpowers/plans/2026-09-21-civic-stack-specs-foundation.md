@@ -14,7 +14,7 @@
 
 * All new specifications have status `draft`: normative enough for implementation and conformance review, but not stable.
 * Normative keywords are `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT` and `MAY`.
-* Requirement identifiers use domain prefixes: `API-*`, `EVT-*`, `AUTH-*`, `AUD-*`, `INT-*`, `CONF-*`.
+* Requirement identifiers use domain prefixes: `SPEC-*`, `API-*`, `EVT-*`, `AUTH-*`, `AUD-*`, `INT-*`, `CONF-*`.
 * Published identifiers are not renumbered; removed requirements are deprecated rather than reused.
 * Every conformance claim points to inspectable evidence.
 * Every specification declares one primary profile.
@@ -302,7 +302,7 @@ Expected evidence must include event schemas, producer contract tests and compat
 Run:
 
 ```bash
-rg -o "(API|EVT)-[0-9]{3}" apps/specs/contracts | sort | uniq -d
+rg --no-filename -o '^\| `(API|EVT)-[0-9]{3}`' apps/specs/contracts | sort | uniq -d
 ```
 
 Expected: no output. Then run:
@@ -383,7 +383,7 @@ Run:
 
 ```bash
 rg -n "frontend|eligibility|public profile|Domain Events|public evidence|retention" apps/specs/contracts/authorization.mdx apps/specs/contracts/auditability.mdx
-rg -o "(AUTH|AUD)-[0-9]{3}" apps/specs/contracts | sort | uniq -d
+rg --no-filename -o '^\| `(AUTH|AUD)-[0-9]{3}`' apps/specs/contracts | sort | uniq -d
 pnpm --filter @hiaka/specs typecheck
 git diff --check
 ```
@@ -470,7 +470,7 @@ Define results precisely:
 Run:
 
 ```bash
-rg -o "(API|EVT|AUTH|AUD|INT|CONF)-[0-9]{3}" apps/specs/contracts | sort | uniq -d
+rg --no-filename -o '^\| `(API|EVT|AUTH|AUD|INT|CONF)-[0-9]{3}`' apps/specs/contracts | sort | uniq -d
 ```
 
 Expected: no output.
@@ -479,7 +479,7 @@ Run:
 
 ```bash
 for prefix in API EVT AUTH AUD INT CONF; do
-  count=$(rg -o "${prefix}-[0-9]{3}" apps/specs/contracts | sort -u | wc -l | tr -d ' ')
+  count=$(rg --no-filename -o "^\\| \`${prefix}-[0-9]{3}\`" apps/specs/contracts | sort -u | wc -l | tr -d ' ')
   test "$count" = "10" || { echo "$prefix expected 10 identifiers, found $count"; exit 1; }
 done
 ```
@@ -590,7 +590,7 @@ Expected: all commands exit 0. A macOS duplicate `GNotificationCenterDelegate` w
 Run:
 
 ```bash
-rg -o "(API|EVT|AUTH|AUD|INT|CONF)-[0-9]{3}" apps/specs/contracts | sort | uniq -d
+rg --no-filename -o '^\| `(API|EVT|AUTH|AUD|INT|CONF)-[0-9]{3}`' apps/specs/contracts | sort | uniq -d
 rg -n "T[B]D|T[O]DO|F[I]XME|place[h]older" apps/specs/framework apps/specs/contracts
 ```
 

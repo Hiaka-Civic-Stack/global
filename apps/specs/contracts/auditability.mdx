@@ -54,6 +54,25 @@ record preserves reviewable accountability evidence. An event may feed an audit
 projection only when that projection adds the controls and fields required by
 this contract.
 
+## Examples
+
+Conformant record:
+
+```text
+Institution actor 42 changed commitment 17 from planned to in-progress at
+2026-09-21T10:30:00Z because implementation work started, with source request
+and policy decision references.
+```
+
+Non-conformant record:
+
+```text
+Commitment updated.
+```
+
+The second record lacks the accountable actor, timestamp, state transition,
+reason and provenance needed for review.
+
 ## Expected Evidence
 
 Evidence should include:

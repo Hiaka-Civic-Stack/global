@@ -120,22 +120,17 @@ Acceptance criteria:
 
 ## Sprint 3: Civic Stack Specs Foundation
 
+Status: implemented in the hub specification portal.
+
 Objective:
 
 Turn the specs portal into a real contract layer.
 
 Deliverables:
 
-* define the standard structure of a Hiaka spec:
-  * purpose;
-  * responsibilities;
-  * boundaries;
-  * API surface;
-  * events;
-  * authorization;
-  * auditability;
-  * localization;
-  * conformance checks;
+* define a Contract Kernel with normative language and a common spec structure;
+* define specialized profiles for Modules, Blueprints, the Civic Design System
+  and Shared Services;
 * create cross-cutting specs pages:
   * API conventions;
   * Domain events;
@@ -143,7 +138,10 @@ Deliverables:
   * Auditability model;
   * Interoperability model;
   * Conformance model;
-* update Mintlify navigation so Civic Stack Specs are navigable by contract.
+* assign stable domain-scoped identifiers to normative requirements;
+* define evidence-based conformance;
+* update Mintlify navigation so Civic Stack Specs are navigable by framework,
+  contract and component specification.
 
 Validation:
 
@@ -152,7 +150,7 @@ Validation:
 
 Acceptance criteria:
 
-* every future module or blueprint spec can follow one standard structure;
+* every future spec can use the common structure and one primary profile;
 * cross-cutting contract pages are discoverable from the specs portal;
 * specs read as implementation guidance, not overview copy.
 

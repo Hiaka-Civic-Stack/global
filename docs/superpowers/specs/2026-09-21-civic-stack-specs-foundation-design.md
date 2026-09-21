@@ -169,6 +169,7 @@ domain:
 
 | Domain | Prefix | Example |
 | --- | --- | --- |
+| Specification framework | `SPEC` | `SPEC-001` |
 | API conventions | `API` | `API-001` |
 | Domain events | `EVT` | `EVT-001` |
 | Authorization | `AUTH` | `AUTH-001` |
@@ -180,7 +181,8 @@ Identifiers are never renumbered after publication. Removed requirements are
 marked deprecated so that existing conformance evidence remains traceable.
 
 Component-specific requirements may introduce a component prefix in later
-sprints. Sprint 3 defines only the cross-cutting identifier namespaces.
+sprints. Sprint 3 defines the framework and cross-cutting identifier
+namespaces.
 
 ## Cross-Cutting Contracts
 

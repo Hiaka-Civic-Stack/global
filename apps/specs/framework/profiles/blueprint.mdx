@@ -27,12 +27,13 @@ In addition to the common core, a Blueprint specification must define:
 
 ## Composition Boundary
 
-Every required Module and pattern MUST be named with the role it plays in the
-process. Required and optional dependencies MUST remain distinct.
+Every required Module and pattern is named with the role it plays in the
+process. Required and optional dependencies remain distinct.
 
-A Blueprint MUST NOT duplicate or take ownership of Module business rules. It
-may constrain how capabilities are composed for the process, but the source of
-truth for a Module invariant remains the Module specification.
+Under `SPEC-007`, a Blueprint does not duplicate or take ownership of Module
+business rules. It may constrain how capabilities are composed for the process,
+but the source of truth for a Module invariant remains the Module
+specification.
 
 ## Lifecycle
 

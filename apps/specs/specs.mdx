@@ -3,6 +3,9 @@ title: "Civic Stack Specs"
 description: "Implementation contracts and conformance guidance for Hiaka."
 ---
 
+<Note>**Status: draft.** Current Civic Stack Specs are normative enough to guide
+implementation and conformance review, but they are not yet stable.</Note>
+
 The Civic Stack Specs turn the Civic Stack Model into specification and
 implementation guidance.
 
@@ -33,7 +36,36 @@ The specs own:
 The specs should stay precise enough for implementation. They should not
 become marketing copy or high-level conceptual storytelling.
 
-## Start Here
+## Specification Framework
+
+Hiaka uses a Contract Kernel + Profiles model:
+
+* the [Specification Framework](/framework) explains the system;
+* [Normative Language](/framework/normative-language) defines `MUST`, `SHOULD`
+  and `MAY` requirements;
+* the [Common Spec Structure](/framework/common-spec-structure) defines the
+  sections shared by every spec;
+* Module, Blueprint, Civic Design System and Shared Service profiles extend the
+  common structure for their component type.
+
+Every specification declares one primary profile.
+
+## Cross-Cutting Contracts
+
+The contract layer currently defines:
+
+* [API Conventions](/contracts/api-conventions);
+* [Domain Events](/contracts/domain-events);
+* [Authorization](/contracts/authorization);
+* [Auditability](/contracts/auditability);
+* [Interoperability](/contracts/interoperability);
+* [Conformance](/contracts/conformance).
+
+Each normative requirement has a stable domain-scoped identifier. Conformance
+is evidence-based: a product or component must point to inspectable contracts,
+tests, policies, schemas or reviews for every applicable mandatory requirement.
+
+## Component Specifications
 
 Use these pages as the first implementation surfaces:
 
@@ -41,3 +73,10 @@ Use these pages as the first implementation surfaces:
 * [Civic Design System](/design-system)
 * [Public Consultation v0](/blueprints/public-consultation-v0)
 * [Repository Strategy](/repository-strategy)
+
+## Repository Boundary
+
+Mintlify presents the current specs as one navigable portal. As Hiaka matures,
+canonical contracts may move to dedicated component or contract repositories
+with their own release cycles. The portal should continue to provide a coherent
+entry point without pretending that all implementations live in this hub.

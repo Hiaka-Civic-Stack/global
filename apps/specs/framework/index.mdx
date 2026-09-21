@@ -14,9 +14,24 @@ It uses a **Contract Kernel + Profiles** model:
 * a primary profile adds the sections required for one type of Civic Stack
   Model component.
 
-Every specification MUST declare one primary profile. It MAY declare additional
-profiles only when it genuinely specifies multiple component types, and it
-MUST explain why those profiles are necessary.
+Every specification declares one primary profile. It can declare additional
+profiles only when it genuinely specifies multiple component types and
+explains why those profiles are necessary.
+
+## Framework Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `SPEC-001` | Every specification **MUST** declare one primary profile. |
+| `SPEC-002` | Additional profiles **MUST** include a written scope justification. |
+| `SPEC-003` | Every specification **MUST** include each common-core section or explain why it is not applicable. |
+| `SPEC-004` | Specification identity **MUST** include an identifier, version, status and accountable owner. |
+| `SPEC-005` | Every normative conformance requirement **MUST** have a stable identifier and expected evidence. |
+| `SPEC-006` | A Module specification **MUST** remain independent from any single Blueprint. |
+| `SPEC-007` | A Blueprint specification **MUST NOT** duplicate or take ownership of Module business rules. |
+| `SPEC-008` | A product-facing Civic Design System spec **MUST** address accessibility and localization. |
+| `SPEC-009` | A Shared Service specification **MUST NOT** own civic business rules or require one vendor implementation. |
+| `SPEC-010` | A draft specification **MUST** identify itself as normative but not stable. |
 
 ## Contract Kernel
 
