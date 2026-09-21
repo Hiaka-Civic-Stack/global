@@ -1,0 +1,91 @@
+---
+title: "Domain Events"
+description: "Draft normative requirements for observable civic domain facts."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines how important state transitions are represented as
+Domain Events across Civic Modules and Blueprints.
+
+A Domain Event communicates a completed domain fact. It is not a command and it
+is not automatically an audit record.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `EVT-001` | Event names **MUST** describe completed domain facts in past tense. |
+| `EVT-002` | Every event **MUST** contain a globally unique event identifier. |
+| `EVT-003` | Every event **MUST** declare an event type and schema version. |
+| `EVT-004` | Every event **MUST** record its occurrence time using an unambiguous timestamp. |
+| `EVT-005` | Events **MUST** identify the affected aggregate or domain subject. |
+| `EVT-006` | Events **SHOULD** identify the responsible actor when that information is available and lawful to retain. |
+| `EVT-007` | Events **MUST** support correlation and causation identifiers across a business action. |
+| `EVT-008` | Event schema evolution **MUST** preserve documented compatibility within a supported version. |
+| `EVT-009` | Event payloads **MUST NOT** expose private identity data unless the receiving contract explicitly requires and protects it. |
+| `EVT-010` | Domain Events **MUST NOT** be treated as the audit log. |
+
+## Event Envelope
+
+A conforming event envelope contains the contract fields before the
+domain-specific payload:
+
+```json
+{
+  "eventId": "01JEXAMPLE",
+  "eventType": "ContributionPublished",
+  "eventVersion": "1.0",
+  "occurredAt": "2026-09-21T10:30:00Z",
+  "subject": {
+    "type": "Contribution",
+    "id": "contribution-123"
+  },
+  "actorId": "participant-456",
+  "correlationId": "consultation-action-789",
+  "causationId": "command-012",
+  "payload": {}
+}
+```
+
+Actor references are omitted or pseudonymized when retention would be unlawful
+or unnecessary.
+
+## Naming Example
+
+Conformant event name:
+
+```text
+ContributionPublished
+```
+
+Non-conformant event name:
+
+```text
+PublishContribution
+```
+
+The second form describes a command rather than a completed fact.
+
+## Expected Evidence
+
+Evidence should include:
+
+* event schemas;
+* producer contract tests;
+* consumer compatibility tests;
+* schema evolution notes;
+* privacy review for actor and identity fields;
+* correlation tests across the originating business action.
+
+## Non-Goals
+
+This contract does not require a distributed event bus, define one broker or
+replace audit records with an event stream.
+
+## Dependencies
+
+Event-producing operations also apply the API, Authorization, Auditability,
+Interoperability and Conformance contracts where relevant.

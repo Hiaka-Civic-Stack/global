@@ -1,0 +1,86 @@
+---
+title: "API Conventions"
+description: "Draft normative requirements for interoperable Hiaka application APIs."
+---
+
+<Note>**Status: draft.** These requirements are normative but not yet stable.</Note>
+
+## Purpose And Scope
+
+This contract defines the baseline for application APIs exposed by Civic
+Modules, Civic Blueprints and compatible Hiaka implementations.
+
+REST is the initial application protocol. The contract focuses on externally
+observable behavior and leaves framework, language and deployment choices to
+implementers.
+
+## Normative Requirements
+
+| ID | Requirement |
+| --- | --- |
+| `API-001` | Implementations **MUST** expose documented REST interfaces for initial application APIs. |
+| `API-002` | API contracts **MUST** be described with a valid OpenAPI document. |
+| `API-003` | Transport DTOs **MUST** remain separate from domain entities. |
+| `API-004` | Meaningful state transitions **MUST** use explicit business actions when domain validation is required. |
+| `API-005` | Errors **MUST** use a consistent machine-readable shape with a stable code and human-readable message. |
+| `API-006` | Collection endpoints **MUST** document pagination behavior and deterministic ordering. |
+| `API-007` | Retryable commands **MUST** document idempotency behavior. |
+| `API-008` | Breaking contract changes **MUST** introduce an explicit version transition and migration guidance. |
+| `API-009` | Authorization requirements **MUST** be documented per operation and enforced beyond the client UI. |
+| `API-010` | Locale and territory inputs **MUST** use documented, interoperable representations. |
+
+## Standard Error Shape
+
+An error representation should include:
+
+```json
+{
+  "code": "CONTRIBUTION_NOT_PUBLISHABLE",
+  "message": "The contribution cannot be published in its current state.",
+  "details": [],
+  "correlationId": "01JEXAMPLE"
+}
+```
+
+The stable `code` supports programmatic handling. The message can be localized
+at the presentation boundary. Error details must not expose private identity or
+infrastructure internals.
+
+## Business Actions
+
+Conformant action when publishing requires domain validation:
+
+```http
+POST /contributions/{id}/publish
+```
+
+Non-conformant alternative:
+
+```http
+PATCH /contributions/{id}
+{"status":"published"}
+```
+
+Generic status mutation hides the business operation and its validation rules.
+
+## Expected Evidence
+
+Evidence should include:
+
+* OpenAPI documents or fragments;
+* API contract tests;
+* DTO-to-domain mapping tests;
+* idempotency tests for retryable commands;
+* authorization documentation per protected operation;
+* versioning and migration notes.
+
+## Non-Goals
+
+This contract does not define one Module's resources, mandate one server
+framework, prescribe a database or require a distributed deployment.
+
+## Dependencies
+
+API specifications also apply the Authorization, Auditability,
+Interoperability and Conformance contracts. Operations that emit Domain Events
+apply the Domain Events contract.
