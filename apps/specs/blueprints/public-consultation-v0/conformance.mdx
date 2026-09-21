@@ -1,0 +1,106 @@
+---
+title: "Conformance"
+description: "Evidence matrix and conformance boundary for Public Consultation v0."
+---
+
+<Note>**Status: draft.** Matrix results are `Not evaluated` until an implementation supplies inspectable evidence.</Note>
+
+## Normative Requirement
+
+### BP-PC-030
+
+A Public Consultation v0 conformance claim **MUST** provide evidence for every
+applicable `BP-PC-*` requirement and disclose provisional Decide and Account
+mapping gaps.
+
+**Responsible component:** conforming product or implementation.
+
+**Related contracts:** `CONF-001` through `CONF-010`.
+
+**Expected evidence:** completed matrix, profile declaration, implementation
+links and documented provisional-pattern gaps.
+
+## Evidence Matrix
+
+| Requirement | Cross-cutting contracts | Responsible component | Expected evidence | Result |
+| --- | --- | --- | --- | --- |
+| BP-PC-001 | AUTH, INT | Participation, Contribution, Accountability | Anonymous-access and public journey tests | Not evaluated |
+| BP-PC-002 | SPEC, AUTH | Blueprint composition | Actor/action matrix and journey coverage | Not evaluated |
+| BP-PC-003 | AUTH, INT | Participation, authentication service | Authenticated submission policy tests | Not evaluated |
+| BP-PC-004 | AUTH, EVT | Participation, identity services | Domain definitions and privacy tests | Not evaluated |
+| BP-PC-005 | AUTH | Participation, authorization policy | Optional-role and negative policy tests | Not evaluated |
+| BP-PC-006 | SPEC, INT | Blueprint, Participation | Stage/state documentation and lifecycle tests | Not evaluated |
+| BP-PC-007 | EVT, AUD | Participation | Lifecycle tests and public status mapping | Not evaluated |
+| BP-PC-008 | EVT, AUD | Participation, Blueprint | Separate close and outcome transition tests | Not evaluated |
+| BP-PC-009 | INT, SPEC | Blueprint | Variants with and without Deliberation | Not evaluated |
+| BP-PC-010 | INT, SPEC | Blueprint | Internal-review variant without Decision | Not evaluated |
+| BP-PC-011 | SPEC, INT | Blueprint | Component manifest and composition tests | Not evaluated |
+| BP-PC-012 | SPEC, API | Blueprint | Ownership matrix and Module review | Not evaluated |
+| BP-PC-013 | SPEC, CONF | Experience composition | Design System mapping and review | Not evaluated |
+| BP-PC-014 | CONF | Experience composition | Disclosed provisional mapping gaps | Not evaluated |
+| BP-PC-015 | INT | Modules and adapters | Dependency matrix, ports and adapter tests | Not evaluated |
+| BP-PC-016 | INT, AUTH | Participation, Contribution | Published policy and policy-variant tests | Not evaluated |
+| BP-PC-017 | AUTH, AUD | Participation, Contribution | Closed-period tests | Not evaluated |
+| BP-PC-018 | AUTH, INT | Participation, verification service | Eligibility and adapter tests | Not evaluated |
+| BP-PC-019 | AUTH, AUD, EVT | Contribution | Participant-state and privacy tests | Not evaluated |
+| BP-PC-020 | AUTH, EVT | Participation, identity services | Data-flow and public representation tests | Not evaluated |
+| BP-PC-021 | API, AUD, EVT | Participation, Contribution | Outcome operation, event and lifecycle test | Not evaluated |
+| BP-PC-022 | SPEC, AUD | Blueprint, institutional content | Outcome schema and content review | Not evaluated |
+| BP-PC-023 | AUTH, AUD, INT | Contribution | Response relation and attribution tests | Not evaluated |
+| BP-PC-024 | API, AUD, EVT | Accountability | Outcome-to-commitment journey tests | Not evaluated |
+| BP-PC-025 | AUD, INT | Accountability | Commitment history and evidence tests | Not evaluated |
+| BP-PC-026 | API, INT, CONF | Blueprint | Action matrix and OpenAPI operations | Not evaluated |
+| BP-PC-027 | EVT, INT, CONF | Blueprint | Event matrix, schemas and producer tests | Not evaluated |
+| BP-PC-028 | AUTH | Composing Modules | Actor/action matrix and policy tests | Not evaluated |
+| BP-PC-029 | AUD | Modules, audit infrastructure | Audit catalogue, schemas and tests | Not evaluated |
+| BP-PC-030 | CONF | Conforming implementation | Completed evidence matrix and gap disclosure | Not evaluated |
+
+## Result Rules
+
+Apply the [Conformance contract](/contracts/conformance):
+
+* conformant requires evidence for every applicable mandatory requirement;
+* partially conformant indicates incomplete evidence without a demonstrated
+  mandatory violation;
+* non-conformant indicates a demonstrated mandatory violation.
+
+Decide and Account remain provisional Design System mappings. A report must
+name these gaps and cannot represent them as complete pattern conformance.
+
+## Risks And Trade-Offs
+
+### Provisional Pattern Coverage
+
+Institutional response and commitment tracking have clear Blueprint contracts,
+but their Decide and Account experience mappings remain provisional.
+
+### Future Module Contract Depth
+
+The Blueprint identifies actions and events before the Module v0 specs define
+their detailed payloads and invariants. Later Module specs must preserve the
+Blueprint boundary rather than being copied into it.
+
+### Configurable Moderation
+
+Supporting immediate and pre-moderated publication expands the conformance
+surface but avoids prescribing one institutional policy.
+
+### Optional Stages
+
+Optional Deliberation and Evaluation preserve the full consultation model
+without adding premature dependencies to the critical v0 path.
+
+## Open Questions
+
+* Decide pattern specification: resolve before complete response-pattern
+  conformance is claimed.
+* Account pattern specification: resolve before complete accountability-pattern
+  conformance is claimed.
+* Module payload versions: resolve during Participation, Contribution and
+  Accountability v0 specs.
+
+## Change History
+
+| Version | Date | Change |
+| --- | --- | --- |
+| `0.1.0` | 2026-09-21 | First draft Blueprint conformance model and evidence matrix. |

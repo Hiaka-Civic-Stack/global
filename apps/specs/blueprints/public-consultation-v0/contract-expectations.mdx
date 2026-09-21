@@ -1,0 +1,145 @@
+---
+title: "Contract Expectations"
+description: "Expected API actions, Domain Events, authorization and auditability for Public Consultation v0."
+---
+
+<Note>**Status: draft.** These are Blueprint-level expectations, not final Module DTO or schema contracts.</Note>
+
+This page identifies the contracts that a Public Consultation v0 composition
+needs from Participation, Contribution and Accountability.
+
+Future Module specifications own exact DTOs, errors, payloads, invariants and
+producer behavior.
+
+## Expected API Actions
+
+| Action | Responsible Module | Primary contract concerns |
+| --- | --- | --- |
+| `POST /processes` | Participation | `API-002`, `API-003`, `AUTH-002` |
+| `POST /processes/{id}/publish` | Participation | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /processes/{id}/open` | Participation | `API-004`, `AUTH-002`, `AUD-004` |
+| `POST /processes/{id}/close` | Participation | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /processes/{id}/contributions` | Contribution | `API-003`, `AUTH-004`, `INT-002` |
+| `POST /contributions/{id}/submit` | Contribution | `API-004`, `API-007`, `AUTH-001` |
+| `POST /contributions/{id}/publish` | Contribution | `API-004`, `AUTH-002`, `AUD-004` |
+| `POST /contributions/{id}/moderate` | Contribution | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /contributions/{id}/respond` | Contribution | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /processes/{id}/outcomes` | Participation and Contribution | `API-004`, `AUTH-008`, `AUD-001` |
+| `POST /commitments` | Accountability | `API-003`, `AUTH-008`, `AUD-001` |
+| `POST /commitments/{id}/progress-updates` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
+| `POST /commitments/{id}/complete` | Accountability | `API-004`, `AUTH-008`, `AUD-004` |
+
+All operations apply documented errors, versioning, interoperability and
+conformance requirements from the cross-cutting contracts.
+
+## Expected Domain Events
+
+| Event | Producer | Primary contract concerns |
+| --- | --- | --- |
+| `ProcessCreated` | Participation | `EVT-002`, `EVT-003`, `EVT-005` |
+| `ProcessPublished` | Participation | `EVT-001`, `EVT-004`, `AUD-001` |
+| `ProcessOpened` | Participation | `EVT-001`, `EVT-007`, `AUD-004` |
+| `ProcessClosed` | Participation | `EVT-001`, `EVT-007`, `AUD-001` |
+| `ContributionSubmitted` | Contribution | `EVT-001`, `EVT-005`, `EVT-009` |
+| `ContributionPublished` | Contribution | `EVT-001`, `EVT-007`, `AUD-004` |
+| `ContributionModerated` | Contribution | `EVT-001`, `EVT-006`, `AUD-001` |
+| `ContributionResponded` | Contribution | `EVT-001`, `EVT-006`, `AUD-003` |
+| `OutcomePublished` | Participation and Contribution | `EVT-001`, `EVT-005`, `AUD-001` |
+| `CommitmentCreated` | Accountability | `EVT-001`, `EVT-005`, `AUD-001` |
+| `CommitmentProgressUpdated` | Accountability | `EVT-001`, `EVT-007`, `AUD-004` |
+| `CommitmentCompleted` | Accountability | `EVT-001`, `EVT-007`, `AUD-004` |
+
+Event payloads remain owned by future Module specifications. Domain Events do
+not replace audit records.
+
+## Authorization Matrix
+
+| Actor | Allowed actions | Required scope | Denial expectation |
+| --- | --- | --- | --- |
+| Public Visitor | Read published civic information | Published resources | Unpublished or restricted resources remain inaccessible |
+| Participant | Create and submit own contribution | Open process, eligibility, territory and ownership | Explicit non-sensitive denial |
+| Institution Manager | Configure, publish, close, respond and manage commitments | Organization, process and territory | Default deny outside accountable scope |
+| Moderator | Review, restrict or approve contributions | Enabled role, process and moderation policy | No moderation permission when role or policy is absent |
+| Facilitator | Explicit support actions | Granted process capability | No implicit moderation or institutional permission |
+
+Authorization is enforced at the application or domain boundary, never only in
+the frontend.
+
+## Mandatory Audit Actions
+
+Audit evidence is required for:
+
+* consultation publication and closure;
+* moderation decisions;
+* institutional responses;
+* outcome summary publication;
+* commitment creation and material modification;
+* commitment progress, evidence and completion;
+* eligibility or moderation policy changes.
+
+Audit records capture accountable actor, action, civic object, timestamp,
+state transition, reason and provenance where relevant.
+
+## Normative Requirements
+
+### BP-PC-026
+
+The Blueprint specification **MUST** identify expected API actions and map each
+action to its responsible Module and applicable cross-cutting requirements.
+
+**Responsible component:** Blueprint specification.
+
+**Related contracts:** `API-001` through `API-010`, `INT-001`, `CONF-006`.
+
+**Expected evidence:** action matrix, OpenAPI operations and Module contract
+links.
+
+### BP-PC-027
+
+The Blueprint specification **MUST** identify expected Domain Events and map
+each event to its responsible producer and applicable cross-cutting
+requirements.
+
+**Responsible component:** Blueprint specification.
+
+**Related contracts:** `EVT-001` through `EVT-010`, `INT-002`, `CONF-006`.
+
+**Expected evidence:** event matrix, event schemas and producer contract tests.
+
+### BP-PC-028
+
+Every protected Blueprint action **MUST** identify its allowed actor, resource
+scope, process or territory context and denial expectation.
+
+**Responsible components:** composing Modules and authorization policies.
+
+**Related contracts:** `AUTH-001`, `AUTH-002`, `AUTH-003`, `AUTH-006`,
+`AUTH-007`.
+
+**Expected evidence:** actor/action matrix and positive and negative policy
+tests.
+
+### BP-PC-029
+
+Consultation publication, closure, moderation, institutional response, outcome
+publication, policy changes and commitment state changes **MUST** produce
+reviewable audit evidence.
+
+**Responsible components:** Participation, Contribution, Accountability and
+audit infrastructure.
+
+**Related contracts:** `AUD-001` through `AUD-010`.
+
+**Expected evidence:** auditable-action catalogue, audit schemas and state
+transition tests.
+
+## Contract Dependencies
+
+Read the cross-cutting contracts:
+
+* [API Conventions](/contracts/api-conventions);
+* [Domain Events](/contracts/domain-events);
+* [Authorization](/contracts/authorization);
+* [Auditability](/contracts/auditability);
+* [Interoperability](/contracts/interoperability);
+* [Conformance](/contracts/conformance).
