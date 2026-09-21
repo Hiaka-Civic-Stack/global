@@ -1,0 +1,153 @@
+---
+title: "Lifecycle"
+description: "Civic experience stages and operational states for Public Consultation v0."
+---
+
+<Note>**Status: draft.** This page is normative but not yet stable.</Note>
+
+Public Consultation v0 distinguishes the stages a civic actor experiences from
+the operational state of the consultation.
+
+## Civic Experience Stages
+
+```text
+DISCOVER
+   ↓
+CONTRIBUTE
+   ↓
+[DELIBERATE]
+   ↓
+[EVALUATE]
+   ↓
+RESPOND
+   ↓
+TRACK
+```
+
+### Discover
+
+The public learns who owns the consultation, what question is open, who can
+participate, which territory is concerned and when participation starts and
+ends.
+
+### Contribute
+
+Eligible Participants submit contributions and can understand submission,
+publication and moderation state.
+
+### Deliberate
+
+Optional. When enabled as a public discussion capability, this stage can add
+the Deliberation Module through an additional contract.
+
+### Evaluate
+
+Optional. The institution can review contributions internally without a
+Decision Module. A formal selection, prioritization or decision mechanism
+requires an additional Decision contract.
+
+### Respond
+
+The institution publishes the consultation outcome, explains how contributions
+were considered and can respond to individual contributions.
+
+### Track
+
+The public follows commitments, responsible actors, progress, evidence and
+completion.
+
+## Operational States
+
+```text
+DRAFT
+  → PUBLISHED
+  → OPEN
+  → CLOSED
+  → RESPONDED
+  → TRACKING
+  → COMPLETED
+```
+
+| State | Entry condition | Public meaning | Allowed next state |
+| --- | --- | --- | --- |
+| `DRAFT` | Institution creates the consultation | Not publicly available | `PUBLISHED` |
+| `PUBLISHED` | Institution publishes validated consultation information | Publicly discoverable; contribution may not yet be open | `OPEN` |
+| `OPEN` | Contribution period starts | Eligible Participants can submit | `CLOSED` |
+| `CLOSED` | Contribution period ends or is closed by an authorized actor | New submissions are no longer accepted; outcome is pending | `RESPONDED` |
+| `RESPONDED` | Public outcome summary is published | Institutional conclusion and next steps are visible | `TRACKING` or `COMPLETED` |
+| `TRACKING` | At least one public commitment exists | Progress and evidence remain open to public review | `COMPLETED` |
+| `COMPLETED` | Response obligations and required tracking have ended | Consultation lifecycle is complete | None |
+
+`CLOSED` does not imply institutional response. A consultation without a
+concrete announced action can move from `RESPONDED` to `COMPLETED` without
+entering `TRACKING`.
+
+## Ownership
+
+Participation owns the consultation lifecycle and stage configuration. The
+Blueprint constrains the sequence and public meaning but does not redefine
+Participation business invariants.
+
+Contribution and Accountability react to lifecycle transitions through their
+published application and event contracts.
+
+## Normative Requirements
+
+### BP-PC-006
+
+The Blueprint **MUST** distinguish civic experience stages from operational
+process states.
+
+**Responsible component:** Blueprint composition and Participation.
+
+**Related contracts:** `SPEC-007`, `INT-002`.
+
+**Expected evidence:** stage/state documentation and lifecycle tests.
+
+### BP-PC-007
+
+The operational lifecycle **MUST** support `DRAFT`, `PUBLISHED`, `OPEN`,
+`CLOSED`, `RESPONDED`, `TRACKING` and `COMPLETED` as distinct states.
+
+**Responsible component:** Participation.
+
+**Related contracts:** `EVT-003`, `EVT-005`, `AUD-004`.
+
+**Expected evidence:** state-machine or use-case tests and public status mapping.
+
+### BP-PC-008
+
+`CLOSED` **MUST** remain distinct from `RESPONDED`; closing contributions
+**MUST NOT** imply that the institution has published its outcome.
+
+**Responsible components:** Participation and Blueprint composition.
+
+**Related contracts:** `EVT-001`, `AUD-004`.
+
+**Expected evidence:** transition tests proving outcome publication is a
+separate action.
+
+### BP-PC-009
+
+The `DELIBERATE` stage **MAY** be enabled and **MUST NOT** make the Deliberation
+Module mandatory when it is absent.
+
+**Responsible component:** Blueprint composition.
+
+**Related contracts:** `INT-005`, `SPEC-007`.
+
+**Expected evidence:** dependency manifest and lifecycle variants with and
+without public deliberation.
+
+### BP-PC-010
+
+The `EVALUATE` stage **MAY** represent internal institutional review and
+**MUST NOT** make the Decision Module mandatory unless a formal decision
+mechanism is configured.
+
+**Responsible component:** Blueprint composition.
+
+**Related contracts:** `INT-005`, `SPEC-007`.
+
+**Expected evidence:** configuration and journey tests showing internal review
+without a Decision dependency.
