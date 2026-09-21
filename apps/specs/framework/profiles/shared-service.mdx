@@ -1,0 +1,55 @@
+---
+title: "Shared Service Profile"
+description: "The specification profile for generic digital capabilities consumed through explicit interfaces."
+---
+
+<Note>**Status: draft.** This profile is normative but not yet stable.</Note>
+
+The Shared Service Profile extends the [Common Spec Structure](/framework/common-spec-structure)
+for generic infrastructure used by Civic Stack components.
+
+Shared Digital Services include identity, verification, territory, notification,
+document, search, GIS and audit infrastructure capabilities.
+
+## Required Sections
+
+In addition to the common core, a Shared Service specification must define:
+
+* capability boundary;
+* consumer-facing ports;
+* integration contracts;
+* data handling constraints;
+* security expectations;
+* availability and recovery expectations;
+* observability expectations;
+* vendor-neutral adapter requirements.
+
+## Service Boundary
+
+A Shared Service MUST NOT own civic business rules or be presented as a Civic
+Module. It provides a generic capability through an explicit interface.
+
+The specification MUST describe the consumer-facing contract without requiring
+one vendor, product or deployment topology.
+
+## Data And Operations
+
+The specification must identify sensitive data, retention constraints, failure
+behavior and operational responsibilities. Availability and recovery
+expectations must be proportionate to the civic processes that depend on the
+service.
+
+## Expected Evidence
+
+Evidence should include:
+
+* interface or protocol definitions;
+* adapter contract tests;
+* security and data-handling controls;
+* failure and recovery tests;
+* observability signals and runbook references.
+
+## Non-Goals
+
+This profile does not define Civic Module behavior or make a particular
+infrastructure provider mandatory.

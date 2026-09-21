@@ -1,0 +1,56 @@
+---
+title: "Blueprint Profile"
+description: "The specification profile for complete civic processes composed from reusable components."
+---
+
+<Note>**Status: draft.** This profile is normative but not yet stable.</Note>
+
+The Blueprint Profile extends the [Common Spec Structure](/framework/common-spec-structure)
+for a complete civic process.
+
+A Blueprint specification defines how Civic Modules and Civic Design System
+patterns are composed for a recurring democratic process.
+
+## Required Sections
+
+In addition to the common core, a Blueprint specification must define:
+
+* actors;
+* stages and lifecycle;
+* required Civic Modules;
+* required Civic Design System patterns;
+* key civic journeys;
+* process-specific composition constraints;
+* expected actions and Domain Events;
+* audit requirements;
+* Blueprint conformance checks.
+
+## Composition Boundary
+
+Every required Module and pattern MUST be named with the role it plays in the
+process. Required and optional dependencies MUST remain distinct.
+
+A Blueprint MUST NOT duplicate or take ownership of Module business rules. It
+may constrain how capabilities are composed for the process, but the source of
+truth for a Module invariant remains the Module specification.
+
+## Lifecycle
+
+The specification must make stages, transitions, actors and externally visible
+status clear. It must identify which component owns each important action and
+state transition.
+
+## Expected Evidence
+
+Evidence should include:
+
+* lifecycle and journey tests;
+* links to applicable Module contracts;
+* links to applicable Design System patterns;
+* expected API actions and event schemas;
+* audit and conformance matrices.
+
+## Non-Goals
+
+This profile does not define a monolithic application, duplicate component
+contracts or prescribe one deployment topology.

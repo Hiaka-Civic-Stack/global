@@ -1,0 +1,66 @@
+---
+title: "Module Profile"
+description: "The specification profile for reusable Civic Module capabilities and business rules."
+---
+
+<Note>**Status: draft.** This profile is normative but not yet stable.</Note>
+
+The Module Profile extends the [Common Spec Structure](/framework/common-spec-structure)
+for a reusable Civic Module.
+
+A Module specification describes one coherent civic capability. It must remain
+usable across multiple Civic Blueprints.
+
+## Required Sections
+
+In addition to the common core, a Module specification must define:
+
+* domain concepts and invariants;
+* commands and queries;
+* Domain Events;
+* API surface;
+* authorization policies;
+* persistence boundaries;
+* external ports;
+* test expectations.
+
+## Domain Boundary
+
+The specification must state which business rules and state transitions the
+Module owns. It must also identify adjacent capabilities that belong to another
+Module, a Civic Blueprint, the Civic Design System or a Shared Digital Service.
+
+A Module MUST remain independent from any single Civic Blueprint. Blueprint
+names can appear in examples, but they MUST NOT become required runtime
+dependencies.
+
+## Contracts
+
+The Module specification must identify applicable requirements from:
+
+* API conventions;
+* Domain Events;
+* authorization;
+* auditability;
+* interoperability;
+* conformance.
+
+Transport DTOs and persistence records MUST NOT be presented as domain
+entities. Infrastructure implementations must remain behind ports declared by
+the application or domain boundary.
+
+## Expected Evidence
+
+Evidence should include:
+
+* domain and application tests;
+* API contract tests;
+* event schemas and producer tests;
+* authorization policy tests;
+* persistence integration tests;
+* adapter contract tests.
+
+## Non-Goals
+
+This profile does not define one Module's business model. It does not require a
+microservice deployment, one database technology or one application framework.

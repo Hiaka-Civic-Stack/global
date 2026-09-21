@@ -1,0 +1,62 @@
+---
+title: "Civic Design System Profile"
+description: "The specification profile for intent-driven and semantic civic experience contracts."
+---
+
+<Note>**Status: draft.** This profile is normative but not yet stable.</Note>
+
+The Civic Design System Profile extends the [Common Spec Structure](/framework/common-spec-structure)
+for civic experience specifications.
+
+It adopts the structure established by the [Design System Spec
+Structure](/design-system/spec-structure).
+
+## Required Sections
+
+In addition to the common core, a Civic Design System specification must
+define:
+
+* civic intent;
+* semantic concepts;
+* patterns;
+* Module touchpoints;
+* accessibility;
+* localization;
+* conformance checks;
+* examples;
+* non-goals.
+
+## Experience Boundary
+
+The specification must describe an experience contract rather than Module
+business rules. Module touchpoints indicate where underlying capabilities come
+from; they do not transfer ownership of data or state transitions to the Design
+System.
+
+Intent, Semantic and Pattern layers must remain distinguishable in the spec.
+Civic principles apply across all three layers.
+
+## Applicability
+
+API, Domain Event and persistence sections MAY be marked `Not applicable` when
+the experience specification does not expose those contracts. The reason must
+be stated explicitly.
+
+Accessibility and localization are always applicable to product-facing Design
+System specs and MUST NOT be silently omitted.
+
+## Expected Evidence
+
+Evidence may include:
+
+* annotated user journeys;
+* accessibility review results;
+* localization review with Malagasy and French content;
+* semantic mapping tables;
+* observable conformance checks;
+* Blueprint mappings.
+
+## Non-Goals
+
+This profile does not define visual tokens, UI component APIs, Figma object
+structure or the local UI implementation of the Hiaka hub.
